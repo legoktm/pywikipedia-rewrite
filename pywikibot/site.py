@@ -2394,7 +2394,6 @@ redirects on %(site)s wiki""",
         "editconflict": "Page %(title)s not saved due to edit conflict.",
     }
 
-    @must_be(group='user')
     def editpage(self, page, summary, minor=True, notminor=False,
                  bot=True, recreate=True, createonly=False, watch=None):
         """Submit an edited Page object to be saved to the wiki.
