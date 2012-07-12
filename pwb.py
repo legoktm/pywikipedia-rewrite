@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8  -*-
 """wrapper script to use rewrite in 'directory' mode - run scripts using
 python pwb.py <name_of_script> <options>
