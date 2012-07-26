@@ -393,6 +393,13 @@ class Page(object):
         revkey = sorted(self._revisions, reverse=True)[1]
         return revkey
 
+    def currentRevision(self):
+        """Return the revision id for the current revision of this Page."""
+        vh = self.getVersionHistory(total=1)
+        revkey = sorted(self._revisions, reverse=True)[0]
+        return revkey
+
+
     def exists(self):
         """Return True if page exists on the wiki, even if it's a redirect.
 
