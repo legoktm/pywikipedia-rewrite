@@ -1088,7 +1088,11 @@ class Page(object):
                  ) for rev in sorted(self._revisions,
                                      reverse=not reverseOrder)
                ]
-
+    
+    def getCreator(self):
+        """Return the username of the creator of the page"""
+        return self.getVersionHistory(reverseOrder=True, total=1)[0][2]
+    
     def getVersionHistoryTable(self, forceReload=False, reverseOrder=False,
                                step=None, total=None):
         """Return the version history as a wiki table."""
