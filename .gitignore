@@ -1,0 +1,6 @@
+*apicache*
+*.db
+*.log
+pywikibot.lwp
+user-config.py
+throttle.ctrl
