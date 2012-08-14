@@ -1110,7 +1110,7 @@ class Page(object):
         return result
 
     def fullVersionHistory(self, reverseOrder=False, step=None,
-                          total=None):
+                          total=None, startid=None):
         """Iterate previous versions including wikitext.
 
         Takes same arguments as getVersionHistory.
@@ -1121,7 +1121,8 @@ class Page(object):
         """
         self.site.loadrevisions(self, getText=True,
                                 rvdir=reverseOrder,
-                                step=step, total=total)
+                                step=step, total=total,
+                                startid=startid)
         return [( self._revisions[rev].revid,
                   self._revisions[rev].timestamp,
                   self._revisions[rev].user,
