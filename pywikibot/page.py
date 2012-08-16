@@ -2381,7 +2381,7 @@ not supported by PyWikiBot!"""
         m = Link.illegal_titles_pattern.search(t)
         if m:
             raise pywikibot.InvalidTitle(
-                  u"contains illegal char(s) '%s'" % m.group(0))
+                  u"%s contains illegal char(s) '%s'" % (t, m.group(0)))
 
         # Pages with "/./" or "/../" appearing in the URLs will
         # often be unreachable due to the way web browsers deal
