@@ -4,7 +4,7 @@ Objects representing MediaWiki sites (wikis) and families (groups of wikis
 on the same topic in different languages).
 """
 #
-# (C) Pywikipedia bot team, 2008-2010
+# (C) Pywikipedia bot team, 2008-2012
 #
 # Distributed under the terms of the MIT license.
 #
@@ -2099,7 +2099,8 @@ u"allpages: 'includeRedirects' argument is deprecated; use 'filterredirs'.",
             "recentchanges: start must be later than end with reverse=False")
         rcgen = self._generator(api.ListGenerator, type_arg="recentchanges",
                                 rcprop="user|comment|timestamp|title|ids"
-                                       "|sizes|redirect|patrolled|loginfo"
+                                       "|sizes|redirect|loginfo"
+                                       #"|sizes|redirect|patrolled|loginfo" - patrol rights needed
                                        "|flags",
                                 namespaces=namespaces, step=step,
                                 total=total)
@@ -2901,11 +2902,12 @@ u"([[User talk:%(last_user)s|Talk]]) to last version by %(prev_user)s"
             imagepage._imageinfo = result["imageinfo"]
             return
 
-    @deprecate_arg("number", None)
+    @deprecate_arg("number", "step")
     @deprecate_arg("repeat", None)
     @deprecate_arg("namespace", "namespaces")
     @deprecate_arg("rc_show", None)
-    def newpages(self, get_redirect=False, user=None, returndict=False,
+    @deprecate_arg("get_redirect", None) #20120822
+    def newpages(self, user=None, returndict=False,
                  start=None, end=None, reverse=False, showBot=False,
                  showRedirects=False, excludeuser=None,
                  showPatrolled=None, namespaces=None, step=None, total=None):
@@ -2940,8 +2942,8 @@ u"([[User talk:%(last_user)s|Talk]]) to last version by %(prev_user)s"
             if returndict:
                 yield (newpage, pageitem)
             else:
-                yield (newpage, pageitem['newlen'], u'', pageitem['user'],
-                       pageitem['comment'])
+                yield (newpage, pageitem['timestamp'], pageitem['newlen'],
+                       u'', pageitem['user'], pageitem['comment'])
 
     @deprecate_arg("number", None)
     @deprecate_arg("repeat", None)
