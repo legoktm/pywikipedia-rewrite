@@ -4,3 +4,10 @@
 pywikibot.lwp
 user-config.py
 throttle.ctrl
+Pywikipediabot.egg-info/PKG-INFO
+Pywikipediabot.egg-info/SOURCES.txt
+Pywikipediabot.egg-info/dependency_links.txt
+Pywikipediabot.egg-info/requires.txt
+Pywikipediabot.egg-info/top_level.txt
+distribute-0.6.10-py2.7.egg
+distribute-0.6.10.tar.gz
