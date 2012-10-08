@@ -11,3 +11,5 @@ Pywikipediabot.egg-info/requires.txt
 Pywikipediabot.egg-info/top_level.txt
 distribute-0.6.10-py2.7.egg
 distribute-0.6.10.tar.gz
+build
+dist
