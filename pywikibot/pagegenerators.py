@@ -172,6 +172,8 @@ class GeneratorFactory(object):
         self.step = None
         self.limit = None
 
+    def filterNamespaces(self, num):
+        self.namespaces.append(num)
 
     def getCombinedGenerator(self):
         """Return the combination of all accumulated generators.
@@ -588,7 +590,8 @@ def ReferringPageGenerator(referredPage, followRedirects=False,
 
 
 def CategorizedPageGenerator(category, recurse=False, start=None,
-                             step=None, total=None, content=False):
+                             step=None, total=None, content=False,
+                             namespaces=None):
     """Yield all pages in a specific category.
 
     If recurse is True, pages in subcategories are included as well; if
@@ -605,7 +608,7 @@ def CategorizedPageGenerator(category, recurse=False, start=None,
     """
     # TODO: page generator could be modified to use cmstartsortkey ...
     for a in category.articles(
-                      recurse=recurse, step=step, total=total, content=content):
+                      recurse=recurse, step=step, total=total, content=content, namespaces=namespaces):
         if start is None or a.title(withNamespace=False) >= start:
             yield a
 
