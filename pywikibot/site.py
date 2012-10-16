@@ -2395,7 +2395,7 @@ redirects on %(site)s wiki""",
     }
 
     def editpage(self, page, summary, minor=True, notminor=False,
-                 bot=True, recreate=True, createonly=False, watch=None):
+                 bot=True, recreate=True, createonly=False, nocreate=False, watch=None):
         """Submit an edited Page object to be saved to the wiki.
 
         @param page: The Page to be saved; its .text property will be used
@@ -2454,6 +2454,8 @@ redirects on %(site)s wiki""",
             params['recreate'] = ""
         if createonly:
             params['createonly'] = ""
+        if nocreate:
+            params['nocreate'] = ""
         if watch in ["watch", "unwatch", "preferences", "nochange"]:
             params['watchlist'] = watch
         elif watch:
