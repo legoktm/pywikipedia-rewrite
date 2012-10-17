@@ -746,7 +746,9 @@ class Page(object):
         if async:
             pywikibot.async_request(self._save, comment=comment, minor=minor,
                                     watchval=watchval, botflag=botflag,
-                                    async=async, callback=callback)
+                                    async=async, callback=callback,
+                                    recreate=recreate, createonly=createonly,
+                                    nocreate=nocreate)
         else:
             self._save(comment=comment, minor=minor, watchval=watchval,
                        botflag=botflag, async=async, callback=callback,
