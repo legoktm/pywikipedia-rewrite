@@ -764,7 +764,7 @@ class Page(object):
         try:
             done = self.site.editpage(self, summary=comment, minor=minor,
                                       watch=watchval, bot=botflag, recreate=recreate,
-                                      createonly=createonly, nocreate=nocreate)
+                                      createonly=createonly, nocreate=nocreate, newsection=newsection)
             if not done:
                 pywikibot.warning(u"Page %s not saved" % link)
                 raise pywikibot.PageNotSaved(link)
