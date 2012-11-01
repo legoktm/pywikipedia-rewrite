@@ -291,6 +291,7 @@ msg = {
 	# Author: Sarrus
 	# Author: Peter Alberti
 	# Author: Christian List
+	# Author: Kaare
 	'da': {
 		'category-adding': u'Robot: Tilføjer kategorien [[:Category:%(newcat)s|%(newcat)s]]',
 		'category-also-in': u'(også i %(alsocat)s)',
@@ -301,7 +302,7 @@ msg = {
 		'category-section-title': u'Sidehistorik fra den tidligere %(oldcat)s',
 		'category-version-history': u'Robot: Gemmer versionshistorikken for den tidligere %(oldcat)s',
 		'category-was-disbanded': u'Robot: Kategorien blev opløst',
-		'category-was-moved': u'Robot flytter kategori til [[:Category:%(newcat)s|%(title)s]]',
+		'category-was-moved': u'Robot: Flytter kategori til [[:Category:%(newcat)s|%(title)s]]',
 	},
 	# Author: The Evil IP address
 	# Author: Giftpflanze
@@ -914,6 +915,8 @@ msg = {
 		'category-listifying': u'Rôbô : fanaovana lisitra avy amin\'i %(fromcat)s (zavatra %(num)d)',
 		'category-removing': u'Rôbô : Nesorina tamin\'i %(oldcat)s',
 		'category-replacing': u'Rôbô : Fanovana anarana ny sokajy %(oldcat)s miaraka amin\'i %(newcat)s',
+		'category-section-title': u'Tantaram-pejin\'ilay  %(oldcat)s taloha',
+		'category-version-history': u'Rôbô: fitahirizana ny tantaran\'ny santiôna ny  %(oldcat)s taloha',
 		'category-was-disbanded': u'Rôbô : Voafafa ny sokajy',
 		'category-was-moved': u'rôbô : sokajy nafindea tany amin\'ny [[:Category:%(newcat)s|%(title)s]]',
 	},

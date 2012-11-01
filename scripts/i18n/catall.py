@@ -49,8 +49,9 @@ msg = {
 		'catall-changing': u'Robot: Měním kategorie',
 	},
 	# Author: Christian List
+	# Author: Kaare
 	'da': {
-		'catall-changing': u'Robot ændre kategorier',
+		'catall-changing': u'Robot: Ændrer kategorier',
 	},
 	'de': {
 		'catall-changing': u'Bot: Wechsele Kategorien',
@@ -165,6 +166,10 @@ msg = {
 	# Author: StefanusRA
 	'map-bms': {
 		'catall-changing': u'Bot: Ngowahi kategori',
+	},
+	# Author: Jagwar
+	'mg': {
+		'catall-changing': u'Rôbô: manova sokajy',
 	},
 	# Author: Bjankuloski06
 	'mk': {

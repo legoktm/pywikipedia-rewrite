@@ -37,7 +37,7 @@ class PageInUse(pywikibot.Error):
 
 class LoginStatus(object):
     """ Enum for Login statuses.
-    
+
     >>> LoginStatus.NOT_ATTEMPTED
     -3
     >>> LoginStatus.AS_USER
@@ -1031,6 +1031,36 @@ class APISite(BaseSite):
 
     lang = property(fget=language, doc=language.__doc__)
 
+    @property
+    def has_image_repository(self):
+        """Return True if site has a shared image repository like commons"""
+        code, fam = self.family.shared_image_repository(self.code)
+        return bool(code or fam)
+
+    @property
+    def has_data_repository(self):
+        """Return True if site has a shared image repository like wikidata"""
+        code, fam = self.family.shared_data_repository(self.code)
+        return bool(code or fam)
+
+    def image_repository(self):
+        """Return Site object for image repository e.g. commons."""
+
+        code, fam = self.family.shared_image_repository(self.code)
+        if bool(code or fam):
+            return pywikibot.Site(code, fam, self.user())
+        else:
+            return None
+
+    def data_repository(self):
+        """Return Site object for data repository e.g. wikidata."""
+
+        code, fam = self.family.shared_data_repository(self.code)
+        if bool(code or fam):
+            return pywikibot.Site(code, fam, self.user())
+        else:
+            return None
+
     def nice_get_address(self, title):
         """Return shorter URL path to retrieve page titled 'title'."""
         # 'title' is expected to be URL-encoded already
@@ -1158,7 +1188,7 @@ class APISite(BaseSite):
         if hasattr(page, '_redirtarget'):
             return page._redirtarget
         title = page.title(withSection=False)
-        query = api.Request(site=self, action="query", property="info",
+        query = api.Request(site=self, action="query", prop="info",
                             inprop="protection|talkid|subjectid",
                             titles=title.encode(self.encoding()),
                             redirects="")
@@ -2170,7 +2200,7 @@ u"allpages: 'includeRedirects' argument is deprecated; use 'filterredirs'.",
 
     def usercontribs(self, user=None, userprefix=None, start=None, end=None,
                      reverse=False, namespaces=None, showMinor=None,
-                     step=None, total=None):
+                     step=None, total=None, top_only=False):
         """Iterate contributions by a particular user.
 
         Iterated values are in the same format as recentchanges.
@@ -2183,6 +2213,7 @@ u"allpages: 'includeRedirects' argument is deprecated; use 'filterredirs'.",
         @param reverse: Iterate oldest contributions first (default: newest)
         @param showMinor: if True, iterate only minor edits; if False and
             not None, iterate only non-minor edits (default: iterate both)
+        @param top_only: if True, iterate only edits which are the latest revision
 
         """
         if not (user or userprefix):
@@ -2213,6 +2244,8 @@ u"allpages: 'includeRedirects' argument is deprecated; use 'filterredirs'.",
             ucgen.request["ucdir"] = "newer"
         if showMinor is not None:
             ucgen.request["ucshow"] = showMinor and "minor" or "!minor"
+        if top_only:
+            ucgen.request["uctoponly"] = ""
         return ucgen
 
     def watchlist_revs(self, start=None, end=None, reverse=False,

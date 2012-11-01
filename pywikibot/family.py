@@ -822,7 +822,7 @@ class Family:
         """Return MediaWiki version number as a string."""
         # Don't use this, use versionnumber() instead. This only exists
         # to not break family files.
-        return '1.21wmf1'
+        return '1.21wmf2'
 
     def versionnumber(self, code):
         """Return an int identifying MediaWiki version.
@@ -880,6 +880,10 @@ class Family:
 
     def shared_image_repository(self, code):
         """Return the shared image repository, if any."""
+        return (None, None)
+
+    def shared_data_repository(self, code):
+        """Return the shared wikidata repository, if any."""
         return (None, None)
 
     @pywikibot.deprecated("Site.getcurrenttime()")
