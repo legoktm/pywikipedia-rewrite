@@ -316,7 +316,7 @@ class Page(object):
 
     def permalink(self):
         """Return the permalink URL for current revision of this page."""
-        return "%s://%s/%sindex.php?title=%s&oldid=%s" \
+        return "%s://%s%s/index.php?title=%s&oldid=%s" \
                % (self.site.protocol(),
                   self.site.hostname(),
                   self.site.scriptpath(),
