@@ -703,7 +703,8 @@ class Page(object):
         return True
 
     def save(self, comment=None, watch=None, minor=True, botflag=None,
-             force=False, async=False, callback=None, recreate=True, createonly=False, nocreate=False):
+             force=False, async=False, callback=None, recreate=True, createonly=False, nocreate=False,
+             newsection=False):
         """Save the current contents of page's text to the wiki.
 
         @param comment: The edit summary for the modification (optional, but
@@ -748,13 +749,14 @@ class Page(object):
                                     watchval=watchval, botflag=botflag,
                                     async=async, callback=callback,
                                     recreate=recreate, createonly=createonly,
-                                    nocreate=nocreate)
+                                    nocreate=nocreate, newsection=newsection)
         else:
             self._save(comment=comment, minor=minor, watchval=watchval,
                        botflag=botflag, async=async, callback=callback,
-                       recreate=recreate, createonly=createonly, nocreate=nocreate)
+                       recreate=recreate, createonly=createonly, nocreate=nocreate,
+                       newsection=newsection)
 
-    def _save(self, comment, minor, watchval, botflag, async, callback, recreate, createonly, nocreate):
+    def _save(self, comment, minor, watchval, botflag, async, callback, recreate, createonly, nocreate, newsection):
         err = None
         link = self.title(asLink=True)
         if config.cosmetic_changes:
@@ -816,7 +818,8 @@ class Page(object):
 
     def put(self, newtext, comment=u'', watchArticle=None, minorEdit=True,
             botflag=None, force=False, async=False, callback=None,
-            recreate=True, createonly=False, nocreate=False):
+            recreate=True, createonly=False, nocreate=False,
+            newsection=False):
         """Save the page with the contents of the first argument as the text.
 
         This method is maintained primarily for backwards-compatibility.
@@ -831,7 +834,8 @@ class Page(object):
         return self.save(comment=comment, watch=watchArticle,
                         minor=minorEdit, botflag=botflag, force=force,
                         async=async, callback=callback, recreate=recreate,
-                        createonly=createonly, nocreate=nocreate)
+                        createonly=createonly, nocreate=nocreate,
+                        newsection=newsection)
 
     def put_async(self, newtext, comment=u'', watchArticle=None,
                   minorEdit=True, botflag=None, force=False, callback=None):
