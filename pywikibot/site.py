@@ -2264,6 +2264,19 @@ u"allpages: 'includeRedirects' argument is deprecated; use 'filterredirs'.",
             wlgen.request["wlshow"] = "|".join(wlshow)
         return wlgen
 
+    def expandtemplates(self, text, title=None):
+        params = {
+            'action':'expandtemplates',
+            'text':text,
+        }
+        if title:
+            params['title'] = title
+        req = api.Request(**params)
+        data = req.submit()
+        return data['expandtemplates']['*']
+
+
+
     def deletedrevs(self, page, start=None, end=None, reverse=None,
                     get_text=False, step=None, total=None):
         """Iterate deleted revisions.
