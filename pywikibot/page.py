@@ -994,6 +994,7 @@ class Page(object):
         return self.site.pageimages(self, step=step, total=total,
                                     content=content)
 
+    @deprecate_arg("get_redirect", None)
     def templatesWithParams(self):
         """Iterate templates used on this Page.
 
