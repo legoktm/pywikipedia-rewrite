@@ -420,8 +420,6 @@ def handleArgs(*args):
             config.put_throttle = int(arg[len("-putthrottle:") : ])
         elif arg.startswith('-pt:'):
             config.put_throttle = int(arg[len("-pt:") : ])
-        elif arg.startswith("-maxlag:"):
-            config.maxlag = int(arg[len("-maxlag:") : ])
         elif arg == '-log':
             if moduleName not in config.log:
                 config.log.append(moduleName)
@@ -479,9 +477,18 @@ def handleArgs(*args):
             import daemonize
             daemonize.daemonize(redirect_std = arg[11:])
         else:
+            # the argument depends numerical config settings
+            cmd = []
+            if ':' in arg:
+                cmd = arg[1:].split(':')
+            if len(cmd) == 2 and len(cmd[1]) > 0 and \
+               hasattr(config, cmd[0]) and \
+               type(getattr(config, cmd[0])) == int:
+                setattr(config, cmd[0], cmd[1])
             # the argument is not global. Let the specific bot script care
             # about it.
-            nonGlobalArgs.append(arg)
+            else:
+                nonGlobalArgs.append(arg)
 
     if username:
         config.usernames[config.family][config.mylang] = username
@@ -534,6 +541,7 @@ Global arguments available for all bots:
 
 -log              Enable the logfile, using the default filename
                   '%s-bot.log'
+                  Logs will be stored in the logs subdirectory.
 
 -log:xyz          Enable the logfile, using 'xyz' as the filename.
 
