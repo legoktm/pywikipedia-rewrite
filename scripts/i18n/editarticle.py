@@ -1,14 +1,27 @@
 # -*- coding: utf-8 -*-
 msg = {
+
+
+
+	'en': {
+		'editarticle-edit': u'Manual edit with robot: %(description)s',
+	},
 	# Author: Csisc
+	'qqq': {
+		'editarticle-edit': u'Edit summary when the bot owner edits a text while the bot invoked an editor. <code>%(descriptions)s</code> gives further informations.',
+	},	# Author: Csisc
 	'aeb': {
 		'editarticle-edit': u'تعديل يدوي: %(description)s',
+	},
+	# Author: Als-Chlämens
+	'als': {
+		'editarticle-edit': u'Manuelli Bearbeitig: %(description)s',
 	},
 	'ar': {
 		'editarticle-edit': u'تعديل يدوي: %(description)s',
 	},
-	# Author: Xuacu
 	# Author: Esbardu
+	# Author: Xuacu
 	'ast': {
 		'editarticle-edit': u'Edición manual con robó: %(description)s',
 	},
@@ -19,6 +32,10 @@ msg = {
 	# Author: Mucalexx
 	'bar': {
 		'editarticle-edit': u'Manuelle Beorweitung: %(description)s',
+	},
+	# Author: EugeneZelenko
+	'be-tarask': {
+		'editarticle-edit': u'Ручное рэдагаваньне з робатам: %(description)s',
 	},
 	# Author: EugeneZelenko
 	'be-x-old': {
@@ -56,15 +73,13 @@ msg = {
 		'editarticle-edit': u'Manuelle Bearbeitung: %(description)s',
 	},
 	# Author: Erdemaslancan
+	# Author: Mirzali
 	'diq': {
-		'editarticle-edit': u'Boti xo desti %(description)s  timar ke',
+		'editarticle-edit': u'Hesabê boti ra xo desti vurnayış: %(description)s',
 	},
 	# Author: Geraki
 	'el': {
 		'editarticle-edit': u'Μη αυτόματη επεξεργασία με ρομπότ: %(description)s',
-	},
-	'en': {
-		'editarticle-edit': u'Manual edit with robot: %(description)s',
 	},
 	# Author: Airon90
 	'eo': {
@@ -103,7 +118,7 @@ msg = {
 		'editarticle-edit': u'Edición manual con bot: %(description)s',
 	},
 	# Author: Als-Chlämens
-	'als': {
+	'gsw': {
 		'editarticle-edit': u'Manuelli Bearbeitig: %(description)s',
 	},
 	'he': {
@@ -181,7 +196,7 @@ msg = {
 		'editarticle-edit': u'Suntingan manual dengan bot: %(description)s',
 	},
 	# Author: Nghtwlkr
-	'no': {
+	'nb': {
 		'editarticle-edit': u'Manuell redigert med robot: %(description)s',
 	},
 	# Author: Servien
@@ -193,9 +208,17 @@ msg = {
 	'nl': {
 		'editarticle-edit': u'Handmatige bewerking met robot: %(description)s',
 	},
+	# Author: Nghtwlkr
+	'no': {
+		'editarticle-edit': u'Manuell redigert med robot: %(description)s',
+	},
 	# Author: Shisir 1945
 	'or': {
 		'editarticle-edit': u'ରୋବଟ୍‌ ସହିତ ହସ୍ତକୃତ ସମ୍ପାଦନା: %(description)s',
+	},
+	# Author: Val2397
+	'pam': {
+		'editarticle-edit': u'↓Gamatan ya ing pamanalili kapamilatan ning robot: %(description)s',
 	},
 	# Author: Sp5uhe
 	'pl': {
@@ -213,9 +236,6 @@ msg = {
 	# Author: 555
 	'pt-br': {
 		'editarticle-edit': u'Edição manual via Bot: %(description)s',
-	},
-	'qqq': {
-		'editarticle-edit': u'Edit summary when the bot owner edits a text while the bot invoked an editor. <code>%(descriptions)s</code> gives further informations.',
 	},
 	# Author: KlaudiuMihaila
 	# Author: Minisarm
@@ -247,6 +267,10 @@ msg = {
 		'editarticle-edit': u'Ручно уређивање с роботом: %(description)s',
 	},
 	# Author: Rancher
+	'sr-ec': {
+		'editarticle-edit': u'Ручно уређивање с роботом: %(description)s',
+	},
+	# Author: Rancher
 	'sr-el': {
 		'editarticle-edit': u'Ručno uređivanje s robotom: %(description)s',
 	},
@@ -273,12 +297,16 @@ msg = {
 	'tt': {
 		'editarticle-edit': u'Бот белән идарә итү өчен кулланма: %(description)s',
 	},
+	# Author: Ильнар
+	'tt-cyrl': {
+		'editarticle-edit': u'Бот белән идарә итү өчен кулланма: %(description)s',
+	},
 	# Author: Dim Grits
 	'uk': {
 		'editarticle-edit': u'Ручне редагування за допомогою бота: %(description)s',
 	},
-	# Author: Candalua
 	# Author: Alunardon90
+	# Author: Candalua
 	'vec': {
 		'editarticle-edit': u'Modifega a man tramite robot: %(description)s',
 	},
@@ -298,6 +326,10 @@ msg = {
 	'zh': {
 		'editarticle-edit': u'利用机器方式手动编辑：%(description)s',
 	},
+	# Author: Hydra
+	'zh-hans': {
+		'editarticle-edit': u'利用机器方式手动编辑：%(description)s',
+	},
 	# Author: Justincheng12345
 	'zh-hant': {
 		'editarticle-edit': u'手動控制機械人進行更改：%(description)s',
@@ -306,4 +338,4 @@ msg = {
 	'zh-hk': {
 		'editarticle-edit': u'手動控制機械人進行更改：%(description)s',
 	},
-}
+};

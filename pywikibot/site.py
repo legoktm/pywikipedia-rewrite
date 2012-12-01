@@ -52,7 +52,7 @@ class LoginStatus(object):
     NOT_LOGGED_IN = -1
     AS_USER = 0
     AS_SYSOP = 1
-    
+
     @classmethod
     def name(cls, search_value):
         for key, value in cls.__dict__.iteritems():
@@ -624,8 +624,6 @@ class APISite(BaseSite):
 ##    postForm: Post form data to an address at this site.
 ##    postData: Post encoded form data to an http address at this site.
 ##
-##    shared_image_repository: Return tuple of image repositories used by this
-##        site.
 ##    version: Return MediaWiki version string from Family file.
 ##    versionnumber: Return int identifying the MediaWiki version.
 ##    live_version: Return version number read from Special:Version.
@@ -638,7 +636,6 @@ class APISite(BaseSite):
 ##    (note, some methods yield other information in a tuple along with the
 ##    Pages; see method docs for details) --
 ##
-##        linksearch: Special:Linksearch
 
     def __init__(self, code, fam=None, user=None, sysop=None):
         BaseSite.__init__(self, code, fam, user, sysop)
@@ -1034,13 +1031,13 @@ class APISite(BaseSite):
     @property
     def has_image_repository(self):
         """Return True if site has a shared image repository like commons"""
-        code, fam = self.family.shared_image_repository(self.code)
+        code, fam = self.shared_image_repository()
         return bool(code or fam)
 
     @property
     def has_data_repository(self):
         """Return True if site has a shared image repository like wikidata"""
-        code, fam = self.family.shared_data_repository(self.code)
+        code, fam = self.shared_data_repository()
         return bool(code or fam)
 
     def image_repository(self):
@@ -1049,17 +1046,14 @@ class APISite(BaseSite):
         code, fam = self.shared_image_repository()
         if bool(code or fam):
             return pywikibot.Site(code, fam, self.username())
-        else:
-            return None
 
     def data_repository(self):
         """Return Site object for data repository e.g. wikidata."""
 
-        code, fam = self.shared_data_repository(write)
+        code, fam = self.shared_data_repository()
         if bool(code or fam):
-            return pywikibot.Site(code, fam, self.username())
-        else:
-            return None
+            return pywikibot.Site(code, fam, self.username(),
+                                  interface="DataSite")
 
     def is_image_repository(self):
         """Return True if Site object is the image repository."""
@@ -1136,9 +1130,10 @@ class APISite(BaseSite):
         @param history: if true, return the image's version history
 
         """
-        args = {"title": page.title(withSection=False)}
-        if history:
-            args["iilimit"] = "max"
+        title = page.title(withSection=False)
+        args = {"titles": title}
+        if not history:
+            args["total"] = 1
         query = self._generator(api.PropertyGenerator,
                                 type_arg="imageinfo",
                                 iiprop=["timestamp", "user", "comment",
@@ -1148,11 +1143,11 @@ class APISite(BaseSite):
         for pageitem in query:
             if pageitem['title'] != title:
                 raise Error(
-                    u"loadpageinfo: Query on %s returned data on '%s'"
+                    u"loadimageinfo: Query on %s returned data on '%s'"
                     % (page, pageitem['title']))
             api.update_page(page, pageitem)
-            if history:
-                return pageitem['imageinfo']
+            return pageitem['imageinfo'] \
+                   if history else pageitem['imageinfo'][0]
 
     def page_exists(self, page):
         """Return True if and only if page is an existing page on site."""
@@ -2846,7 +2841,7 @@ u"([[User talk:%(last_user)s|Talk]]) to last version by %(prev_user)s"
         return self.logevents(logtype="upload", total=number, start=lestart,
                               end=leend, user=leuser, page=letitle)
 
-    def getImagesFromAnHash(self, hash_found=None):
+    def getFilesFromAnHash(self, hash_found=None):
         """Return all images that have the same hash.
 
         Useful to find duplicates or nowcommons.
@@ -2861,6 +2856,11 @@ u"([[User talk:%(last_user)s|Talk]]) to last version by %(prev_user)s"
             return None
         return [image.title(withNamespace=False)
                 for image in self.allimages(sha1=hash_found)]
+
+    @deprecated('Site().getFilesFromAnHash')
+    def getImagesFromAnHash(self, hash_found=None):
+        return self.getFilesFromAnHash(self, hash_found)
+
 
     def upload(self, imagepage, source_filename=None, source_url=None,
                comment=None, watch=False, ignore_warnings=False):
@@ -3178,29 +3178,112 @@ u"([[User talk:%(last_user)s|Talk]]) to last version by %(prev_user)s"
     def broken_redirects(self, step=None, total=None):
         """Yield Pages without language links from Special:BrokenRedirects."""
         assert self.versionnumber >= 18
-        wigen = self._generator(api.PageGenerator,
+        brgen = self._generator(api.PageGenerator,
                                 type_arg="querypage",
                                 gqppage="BrokenRedirects",
                                 step=step, total=total)
-        return wigen
+        return brgen
 
     def double_redirects(self, step=None, total=None):
         """Yield Pages without language links from Special:BrokenRedirects."""
         assert self.versionnumber >= 18
-        wigen = self._generator(api.PageGenerator,
+        drgen = self._generator(api.PageGenerator,
                                 type_arg="querypage",
                                 gqppage="DoubleRedirects",
                                 step=step, total=total)
-        return wigen
+        return drgen
 
     def redirectpages(self, step=None, total=None):
         """Yield redirect pages from Special:ListRedirects."""
         assert self.versionnumber >= 18
-        wigen = self._generator(api.PageGenerator,
+        lrgen = self._generator(api.PageGenerator,
                                 type_arg="querypage",
                                 gqppage="Listredirects",
                                 step=step, total=total)
-        return wigen
+        return lrgen
+
+
+class DataSite (APISite):
+
+    def __getattr__(self, attr):
+        """Calls to methods get_info, get_sitelinks, get_aliases, get_labels,
+        get_descriptions, get_urls
+
+        """
+
+        if hasattr(self.__class__, attr):
+            return getattr(self.__class__, attr)
+        if attr.startswith("get_"):
+            props = attr.replace("get_", "")
+            if props in ['info', 'sitelinks', 'aliases', 'labels',
+                         'descriptions', 'urls']:
+                if props == 'urls':
+                    props = 'sitelinks/urls'
+                method = self._get_propertyitem
+                f = lambda *args, **params: \
+                    method(props, *args, **params)
+                if hasattr(method, "__doc__"):
+                    f.__doc__ = method.__doc__
+                return f
+        return super(APISite, self).__getattr__(attr)
+
+    def _get_propertyitem(self, props, source, **params):
+        """generic method to get the data for multiple Wikibase items"""
+        wbdata = self.get_item(source, props=props, **params)
+        assert props in wbdata, \
+               "API wbgetitems response lacks %s key" % props
+        return wbdata[props]
+
+    def get_item(self, source, **params):
+        """get the data for multiple Wikibase items"""
+        if type(source) == int or \
+           isinstance(source, basestring) and source.isdigit():
+            ids = str(source)
+            wbrequest = api.Request(site=self, action="wbgetitems", ids=ids,
+                                    **params)
+            wbdata = wbrequest.submit()
+            assert 'success' in wbdata,  \
+                   "API wbgetitems response lacks 'success' key"
+            assert wbdata['success'] == 1, \
+                   "API 'success' key ist not 1"
+            assert 'items' in wbdata,  \
+                   "API wbgetitems response lacks 'items' key"
+            assert ids in wbdata['items'], \
+                   "API  wbgetitems response lacks %s key" % ids
+            return wbdata['items'][ids]
+        else:
+            # not implemented yet
+            raise NotImplementedError
+
+    # deprecated BaseSite methods
+    def fam(self):
+        raise NotImplementedError
+    def urlEncode(self, *args, **kwargs):
+        raise NotImplementedError
+    def getUrl(self, *args, **kwargs):
+        raise NotImplementedError
+    def linkto(self, *args, **kwargs):
+        raise NotImplementedError
+    def loggedInAs(self, *args, **kwargs):
+        raise NotImplementedError
+    def postData(self, *args, **kwargs):
+        raise NotImplementedError
+    def postForm(self, *args, **kwargs):
+        raise NotImplementedError
+
+    # deprecated APISite methods
+    def isBlocked(self, *args, **kwargs):
+        raise NotImplementedError
+    def isAllowed(self, *args, **kwargs):
+        raise NotImplementedError
+    def prefixindex(self, *args, **kwargs):
+        raise NotImplementedError
+    def categories(self, *args, **kwargs):
+        raise NotImplementedError
+    def linksearch(self, *args, **kwargs):
+        raise NotImplementedError
+    def newimages(self, *args, **kwargs):
+        raise NotImplementedError
 
 
 #### METHODS NOT IMPLEMENTED YET ####
@@ -3246,30 +3329,3 @@ sysopnames['%s']['%s']='name' to your user-config.py"""
                 f = open(fn)
                 self._cookies[index] = '; '.join([x.strip() for x in f.readlines()])
                 f.close()
-
-    # THESE ARE FUNCTIONS NOT YET IMPLEMENTED IN THE API
-    def linksearch(self, siteurl):
-        """Yield Pages from results of Special:Linksearch for 'siteurl'."""
-        if siteurl.startswith('*.'):
-            siteurl = siteurl[2:]
-        output(u'Querying [[Special:Linksearch]]...')
-        cache = []
-        for url in [siteurl, '*.' + siteurl]:
-            path = self.linksearch_address(url)
-            get_throttle()
-            html = self.getUrl(path)
-            loc = html.find('<div class="mw-spcontent">')
-            if loc > -1:
-                html = html[loc:]
-            loc = html.find('<div class="printfooter">')
-            if loc > -1:
-                html = html[:loc]
-            R = re.compile('title ?=\"(.*?)\"')
-            for title in R.findall(html):
-                if not siteurl in title:
-                    # the links themselves have similar form
-                    if title in cache:
-                        continue
-                    else:
-                        cache.append(title)
-                        yield Page(self, title)

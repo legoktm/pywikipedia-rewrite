@@ -1,6 +1,20 @@
 # -*- coding: utf-8 -*-
 msg = {
-	# Author: Csisc
+
+
+
+	'en': {
+		'unlink-unlinking': u'Robot: Unlinking "%s"',
+	},	# Author: Csisc
+	'aeb': {
+		'unlink-unlinking': u'روبوت: إزالة وصلات "%s"',
+	},	# Author: Csisc
+	'aeb': {
+		'unlink-unlinking': u'روبوت: إزالة وصلات "%s"',
+	},	# Author: Csisc
+	'aeb': {
+		'unlink-unlinking': u'روبوت: إزالة وصلات "%s"',
+	},	# Author: Csisc
 	'aeb': {
 		'unlink-unlinking': u'روبوت: إزالة وصلات "%s"',
 	},
@@ -8,13 +22,25 @@ msg = {
 	'af': {
 		'unlink-unlinking': u'Robot: verwysing na "%s" verwyder',
 	},
+	# Author: Als-Holder
+	'als': {
+		'unlink-unlinking': u'Bot: „%s“ entlinkt',
+	},
 	'ar': {
 		'unlink-unlinking': u'روبوت: إزالة وصلات "%s"',
 	},
-	# Author: Xuacu
 	# Author: Esbardu
+	# Author: Xuacu
 	'ast': {
 		'unlink-unlinking': u'Robó: Desenllaciando «%s»',
+	},
+	# Author: E THP
+	'azb': {
+		'unlink-unlinking': u'بوت: " %s " باغلانتی‌سی قالدیریلدی',
+	},
+	# Author: EugeneZelenko
+	'be-tarask': {
+		'unlink-unlinking': u'Робат: Выдаленьне спасылак на «%s»',
 	},
 	# Author: EugeneZelenko
 	'be-x-old': {
@@ -52,9 +78,6 @@ msg = {
 	'el': {
 		'unlink-unlinking': u'Ρομπότ: Αποσύνδεση του "%s"',
 	},
-	'en': {
-		'unlink-unlinking': u'Robot: Unlinking "%s"',
-	},
 	# Author: Armando-Martin
 	# Author: Xqt
 	'es': {
@@ -87,7 +110,7 @@ msg = {
 		'unlink-unlinking': u'Bot: Quito a ligazón cara a "%s"',
 	},
 	# Author: Als-Holder
-	'als': {
+	'gsw': {
 		'unlink-unlinking': u'Bot: „%s“ entlinkt',
 	},
 	'he': {
@@ -157,7 +180,7 @@ msg = {
 	'ms': {
 		'unlink-unlinking': u'Robot: Membuang pautan "%s"',
 	},
-	'no': {
+	'nb': {
 		'unlink-unlinking': u'robot: fjerner lenke til "%s"',
 	},
 	# Author: Servien
@@ -170,6 +193,9 @@ msg = {
 	},
 	'nn': {
 		'unlink-unlinking': u'robot: fjerna lenkje til "%s"',
+	},
+	'no': {
+		'unlink-unlinking': u'robot: fjerner lenke til "%s"',
 	},
 	'pl': {
 		'unlink-unlinking': u'Robot odlinkowuje "%s"',
@@ -192,8 +218,9 @@ msg = {
 		'unlink-unlinking': u'Robot: Eliminat legături către „%s”',
 	},
 	# Author: Eleferen
+	# Author: Volkov
 	'ru': {
-		'unlink-unlinking': u'Бот: Удаление ссылки «%s»',
+		'unlink-unlinking': u'бот: удаление ссылки «%s»',
 	},
 	# Author: Teslaton
 	'sk': {
@@ -205,6 +232,10 @@ msg = {
 	},
 	# Author: Rancher
 	'sr': {
+		'unlink-unlinking': u'Робот: уклоњена веза „%s“',
+	},
+	# Author: Rancher
+	'sr-ec': {
 		'unlink-unlinking': u'Робот: уклоњена веза „%s“',
 	},
 	# Author: Rancher
@@ -247,6 +278,10 @@ msg = {
 	'zh': {
 		'unlink-unlinking': u'机器人：断开“%s”链接',
 	},
+	# Author: Yfdyh000
+	'zh-hans': {
+		'unlink-unlinking': u'机器人：断开“%s”链接',
+	},
 	# Author: Breawycker
 	'zh-hant': {
 		'unlink-unlinking': u'機器人： 斷開連結" %s "',
@@ -255,4 +290,4 @@ msg = {
 	'zh-hk': {
 		'unlink-unlinking': u'機械人取消“%s”鏈接',
 	},
-}
+};

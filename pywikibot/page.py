@@ -1547,13 +1547,13 @@ class ImagePage(Page):
         """Return the URL for the image described on this page."""
         # TODO add scaling option?
         if not hasattr(self, '_imageinfo'):
-            self._imageinfo = self.site.getimageinfo(self) #FIXME
+            self._imageinfo = self.site.loadimageinfo(self)
         return self._imageinfo['url']
 
     @deprecated("fileIsShared")
     def fileIsOnCommons(self):
         """Return True if the image is stored on Wikimedia Commons"""
-        return fileIsShared
+        return self.fileIsShared()
 
     def fileIsShared(self):
         """Return True if image is stored on any known shared repository."""
@@ -1583,7 +1583,7 @@ class ImagePage(Page):
     def getFileSHA1Sum(self):
         """Return image file's SHA1 checksum."""
         if not hasattr(self, '_imageinfo'):
-            self._imageinfo = self.site.getimageinfo(self) #FIXME
+            self._imageinfo = self.site.loadimageinfo(self)
         return self._imageinfo['sha1']
 
     def getFileVersionHistory(self):
@@ -1594,7 +1594,7 @@ class ImagePage(Page):
 
         """
         #TODO; return value may need to change
-        return self.site.getimageinfo(self, history=True) #FIXME
+        return self.site.loadimageinfo(self, history=True)
 
     def getFileVersionHistoryTable(self):
         """Return the version history in the form of a wiki table."""
@@ -1738,7 +1738,7 @@ class Category(Page):
         """
         if namespaces is None:
             namespaces = [x for x in self.site.namespaces()
-                          if x>=0 and x!=14]
+                          if x >= 0 and x <> 14]
         for member in self.site.categorymembers(self,
                                                 namespaces=namespaces,
                                                 step=step, total=total,
@@ -1752,9 +1752,9 @@ class Category(Page):
             if not isinstance(recurse, bool) and recurse:
                 recurse = recurse - 1
             for subcat in self.subcategories(step=step):
-                for article in subcat.articles(
-                                      recurse, step=step, total=total,
-                                      content=content, namespaces=namespaces):
+                for article in subcat.articles(recurse, step=step, total=total,
+                                               content=content,
+                                               namespaces=namespaces):
                     yield article
                     if total is not None:
                         total -= 1

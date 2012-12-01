@@ -1,12 +1,30 @@
 # -*- coding: utf-8 -*-
 msg = {
-	# Author: Csisc
+
+
+
+	'en': {
+		'capitalize_redirects-create-redirect': u'Robot: Create redirect to [[%(to)s]]',
+	},	# Author: Csisc
+	'aeb': {
+		'capitalize_redirects-create-redirect': u'روبوت: إنشاء تحويلة إلى [[%(to)s]]',
+	},	# Author: Csisc
+	'aeb': {
+		'capitalize_redirects-create-redirect': u'روبوت: إنشاء تحويلة إلى [[%(to)s]]',
+	},	# Author: Csisc
+	'aeb': {
+		'capitalize_redirects-create-redirect': u'روبوت: إنشاء تحويلة إلى [[%(to)s]]',
+	},	# Author: Csisc
 	'aeb': {
 		'capitalize_redirects-create-redirect': u'روبوت: إنشاء تحويلة إلى [[%(to)s]]',
 	},
 	# Author: Naudefj
 	'af': {
 		'capitalize_redirects-create-redirect': u'Robot: Skep aanstuur na [[%(to)s]]',
+	},
+	# Author: Als-Chlämens
+	'als': {
+		'capitalize_redirects-create-redirect': u'Bötli: e Wyterleitig uff [[%(to)s]] aaglait',
 	},
 	'ar': {
 		'capitalize_redirects-create-redirect': u'روبوت: إنشاء تحويلة إلى [[%(to)s]]',
@@ -15,14 +33,22 @@ msg = {
 	'arc': {
 		'capitalize_redirects-create-redirect': u'ܪܘܒܘܛ: ܒܪܝܬܐ ܕܫܢܝܬܐ ܠ [[%(to)s]]',
 	},
-	# Author: Xuacu
 	# Author: Esbardu
+	# Author: Xuacu
 	'ast': {
 		'capitalize_redirects-create-redirect': u'Robó: Crear redireición a [[%(to)s]]',
 	},
 	# Author: Ebrahimi-amir
 	'az': {
 		'capitalize_redirects-create-redirect': u'Bot: [[%(to)s]] səhifəsinə istiqamətləndirildi',
+	},
+	# Author: E THP
+	'azb': {
+		'capitalize_redirects-create-redirect': u'بوت: [[%(to)s]] صحیفه‌‌سینه ایستیقامتلندیریلدی',
+	},
+	# Author: EugeneZelenko
+	'be-tarask': {
+		'capitalize_redirects-create-redirect': u'Робат: стварыў перанакіраваньне на [[%(to)s]]',
 	},
 	# Author: EugeneZelenko
 	'be-x-old': {
@@ -52,17 +78,18 @@ msg = {
 	'ckb': {
 		'capitalize_redirects-create-redirect': u'ڕۆبۆت: دروستکردنی ڕەوانەکردنەوە بۆ [[%(to)s]]',
 	},
+	# Author: Mormegil
 	# Author: Spiffyk
 	'cs': {
-		'capitalize_redirects-create-redirect': u'Robot: Vytvořte přesměrování na [[%(to)s]]',
+		'capitalize_redirects-create-redirect': u'Robot: Vytvoření přesměrování na [[%(to)s]]',
 	},
 	# Author: Pwyll
 	'cy': {
 		'capitalize_redirects-create-redirect': u'Robot: Creu ailgyfeiriad i [[%(to)s]]',
 	},
-	# Author: Peter Alberti
 	# Author: Christian List
 	# Author: Kaare
+	# Author: Peter Alberti
 	'da': {
 		'capitalize_redirects-create-redirect': u'Robot: Opretter omdirigering til [[%(to)s]]',
 	},
@@ -81,15 +108,12 @@ msg = {
 	'el': {
 		'capitalize_redirects-create-redirect': u'Ρομπότ: Δημιουργία ανακατεύθυνσης [[%(to)s]]',
 	},
-	'en': {
-		'capitalize_redirects-create-redirect': u'Robot: Create redirect to [[%(to)s]]',
-	},
 	# Author: Remux
 	'eo': {
 		'capitalize_redirects-create-redirect': u'Roboto: Kreante redirektilo al [[%(to)s]]',
 	},
-	# Author: Vivaelcelta
 	# Author: Invadinado
+	# Author: Vivaelcelta
 	'es': {
 		'capitalize_redirects-create-redirect': u'Bot: Creando redirección hacia «[[%(to)s]]»',
 	},
@@ -122,14 +146,14 @@ msg = {
 		'capitalize_redirects-create-redirect': u'Bot: Creo unha redirección cara a "[[%(to)s]]"',
 	},
 	# Author: Als-Chlämens
-	'als': {
+	'gsw': {
 		'capitalize_redirects-create-redirect': u'Bötli: e Wyterleitig uff [[%(to)s]] aaglait',
 	},
 	'he': {
 		'capitalize_redirects-create-redirect': u'בוט: יוצר הפניה לדף [[%(to)s]]',
 	},
-	# Author: Dj
 	# Author: Bináris
+	# Author: Dj
 	'hu': {
 		'capitalize_redirects-create-redirect': u'Bot: árirányítás létrehozása a(z) [[%(to)s]] lapra',
 	},
@@ -183,6 +207,10 @@ msg = {
 	'mg': {
 		'capitalize_redirects-create-redirect': u'Rôbô : famoronana fihodinana mankany amin\'i [[%(to)s]]',
 	},
+	# Author: Luthfi94
+	'min': {
+		'capitalize_redirects-create-redirect': u'Robot: Buek pangaliahan ka [[%(to)s]]',
+	},
 	# Author: Bjankuloski06
 	'mk': {
 		'capitalize_redirects-create-redirect': u'Роботот: Создава пренасочување кон [[%(to)s]]',
@@ -196,7 +224,7 @@ msg = {
 		'capitalize_redirects-create-redirect': u'Robot: Maħluq rindirizz lejn [[%(to)s]]',
 	},
 	# Author: Nghtwlkr
-	'no': {
+	'nb': {
 		'capitalize_redirects-create-redirect': u'Robot: Opprett omdirigering til [[%(to)s]]',
 	},
 	# Author: Servien
@@ -211,11 +239,15 @@ msg = {
 	'nl': {
 		'capitalize_redirects-create-redirect': u'Robot: doorverwijzing gemaakt naar [[%(to)s]]',
 	},
-	# Author: Marinsb
 	# Author: Harald Khan
+	# Author: Marinsb
 	# Author: Njardarlogar
 	'nn': {
 		'capitalize_redirects-create-redirect': u'robot: omdirigerer til [[%(to)s]]',
+	},
+	# Author: Nghtwlkr
+	'no': {
+		'capitalize_redirects-create-redirect': u'Robot: Opprett omdirigering til [[%(to)s]]',
 	},
 	# Author: Sp5uhe
 	'pl': {
@@ -238,11 +270,12 @@ msg = {
 	'ro': {
 		'capitalize_redirects-create-redirect': u'Robot: Creat redirecționare către [[%(to)s]]',
 	},
+	# Author: Volkov
 	'ru': {
-		'capitalize_redirects-create-redirect': u'Бот: Создано перенаправление на [[%(to)s]]',
+		'capitalize_redirects-create-redirect': u'бот: создано перенаправление на [[%(to)s]]',
 	},
-	# Author: Wizzard
 	# Author: Teslaton
+	# Author: Wizzard
 	'sk': {
 		'capitalize_redirects-create-redirect': u'Robot: Pridajte presmerovanie na [[%(to)s]]',
 	},
@@ -256,6 +289,10 @@ msg = {
 	},
 	# Author: Rancher
 	'sr': {
+		'capitalize_redirects-create-redirect': u'Робот: направљено преусмерење на [[%(to)s]]',
+	},
+	# Author: Rancher
+	'sr-ec': {
 		'capitalize_redirects-create-redirect': u'Робот: направљено преусмерење на [[%(to)s]]',
 	},
 	# Author: Rancher
@@ -289,15 +326,23 @@ msg = {
 	'tt': {
 		'capitalize_redirects-create-redirect': u'Бот: [[%(to)s]]ка юнәлтү эшләнгән',
 	},
+	# Author: Ajdar
+	'tt-cyrl': {
+		'capitalize_redirects-create-redirect': u'Бот: [[%(to)s]]ка юнәлтү эшләнгән',
+	},
 	# Author: Sahran
 	'ug': {
+		'capitalize_redirects-create-redirect': u'ماشىنا ئادەم: [[%(to)s]]غا قايتا نىشانلىدى',
+	},
+	# Author: Sahran
+	'ug-arab': {
 		'capitalize_redirects-create-redirect': u'ماشىنا ئادەم: [[%(to)s]]غا قايتا نىشانلىدى',
 	},
 	'uk': {
 		'capitalize_redirects-create-redirect': u'Бот: Створено перенаправлення на [[%(to)s]]',
 	},
-	# Author: Candalua
 	# Author: Alunardon90
+	# Author: Candalua
 	'vec': {
 		'capitalize_redirects-create-redirect': u'Robot: Crea rindirisamento a [[%(to)s]]',
 	},
@@ -321,6 +366,10 @@ msg = {
 	'zh': {
 		'capitalize_redirects-create-redirect': u'机器人：创建重定向至[[%(to)s]]',
 	},
+	# Author: Yfdyh000
+	'zh-hans': {
+		'capitalize_redirects-create-redirect': u'机器人：创建重定向至[[%(to)s]]',
+	},
 	# Author: Waihorace
 	'zh-hant': {
 		'capitalize_redirects-create-redirect': u'機械人：創建重定向至[[%(to)s]]',
@@ -329,4 +378,4 @@ msg = {
 	'zh-hk': {
 		'capitalize_redirects-create-redirect': u'機械人創建重定向至[[%(to)s]]',
 	},
-}
+};
