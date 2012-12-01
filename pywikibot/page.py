@@ -1754,7 +1754,7 @@ class Category(Page):
             for subcat in self.subcategories(step=step):
                 for article in subcat.articles(
                                       recurse, step=step, total=total,
-                                      content=content):
+                                      content=content, namespaces=namespaces):
                     yield article
                     if total is not None:
                         total -= 1
