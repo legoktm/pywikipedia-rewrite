@@ -2,9 +2,14 @@
 msg = {
 
 
-
 	'en': {
 		'fixing_redirects-fixing': u'Bot: Fixing redirects',
+	},	# Author: Csisc
+	'aeb': {
+		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
+	},	# Author: Csisc
+	'aeb': {
+		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
 	},	# Author: Csisc
 	'aeb': {
 		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
@@ -33,6 +38,10 @@ msg = {
 	# Author: Xuacu
 	'ast': {
 		'fixing_redirects-fixing': u'Robó: Iguando redireiciones',
+	},
+	# Author: E THP
+	'azb': {
+		'fixing_redirects-fixing': u'بوت: ایستیقامت‌لندیرمه‌لر دوزلدیلدی',
 	},
 	# Author: Jim-by
 	'be-tarask': {
@@ -180,6 +189,10 @@ msg = {
 	# Author: Ooswesthoesbes
 	'li': {
 		'fixing_redirects-fixing': u'Bot: fix redireks',
+	},
+	# Author: Hugo.arg
+	'lt': {
+		'fixing_redirects-fixing': u'robotas: Peradresavimų taisymas',
 	},
 	# Author: Papuass
 	'lv': {

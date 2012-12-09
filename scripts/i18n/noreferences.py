@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'noreferences-add-tag': u'Robot: Adding missing <references /> tag',
 	},
@@ -33,6 +32,10 @@ msg = {
 	# Author: Ebrahimi-amir
 	'az': {
 		'noreferences-add-tag': u'Bot: Unudulmuş <references /> etiketi əlavə olunur',
+	},
+	# Author: E THP
+	'azb': {
+		'noreferences-add-tag': u'بوت: اونودولموش <references /> ائتیکئتی علاوه اولونور',
 	},
 	'be': {
 		'noreferences-add-tag': u'Robot: дабаўлены адсутнічаючы тэг <references />',
@@ -269,6 +272,10 @@ msg = {
 	# Author: Dbc334
 	'sl': {
 		'noreferences-add-tag': u'Robot: Dodajanje manjkajoče oznake <references />',
+	},
+	# Author: Euriditi
+	'sq': {
+		'noreferences-add-tag': u'Roboti: Duke shtuar etiketën <references /> që mungon',
 	},
 	# Author: Rancher
 	'sr': {

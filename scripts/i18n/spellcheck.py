@@ -2,12 +2,15 @@
 msg = {
 
 
-
 	'en': {
 		'spellcheck-checking': u'Bot-aided spell checker',
 	},	# Author: Als-Holder
 	'als': {
 		'spellcheck-checking': u'Bot-unterstitzti Rächtschrybkorrektur',
+	},	'ar': {
+		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
+	},	'ar': {
+		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
 	},	'ar': {
 		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
 	},	'ar': {
@@ -26,6 +29,14 @@ msg = {
 	# Author: Gwenn-Ael
 	'br': {
 		'spellcheck-checking': u'Reizhskrivañ damemgefreek',
+	},
+	# Author: Edinwiki
+	'bs': {
+		'spellcheck-checking': u'Botovska provjera pravopisa',
+	},
+	# Author: XVEC
+	'ca': {
+		'spellcheck-checking': u'Corrector ortogràfic ajudat pel robot',
 	},
 	# Author: Tchoř
 	'cs': {
@@ -49,6 +60,10 @@ msg = {
 	# Author: Reza1615
 	'fa': {
 		'spellcheck-checking': u'ربات کمک کنندهٔ اشتباهات املایی',
+	},
+	# Author: Nedergard
+	'fi': {
+		'spellcheck-checking': u'Botti-avusteinen oikeinkirjoituksen tarkistus',
 	},
 	'fr': {
 		'spellcheck-checking': u'Correction orthographique par robot',
@@ -112,6 +127,10 @@ msg = {
 	'pt': {
 		'spellcheck-checking': u'Bot de correção ortográfica',
 	},
+	# Author: Minisarm
+	'ro': {
+		'spellcheck-checking': u'Verificare ortografică asistată de robot',
+	},
 	# Author: Eleferen
 	# Author: Volkov
 	'ru': {
@@ -136,6 +155,10 @@ msg = {
 	# Author: Lokal Profil
 	'sv': {
 		'spellcheck-checking': u'Robot-assisterad stavningskontroll',
+	},
+	# Author: Base
+	'uk': {
+		'spellcheck-checking': u'перевірка орфографії за допомогою бота',
 	},
 	# Author: Minh Nguyen
 	'vi': {

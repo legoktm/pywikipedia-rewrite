@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'editarticle-edit': u'Manual edit with robot: %(description)s',
 	},

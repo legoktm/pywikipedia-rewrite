@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'interwiki-adding': u'Robot: Adding %(adding)s',
 		'interwiki-adding-modifying': u'Robot: Adding %(adding)s; modifying %(modifying)s',
@@ -98,14 +97,16 @@ msg = {
 		'interwiki-removing-modifying': u'روبوت إزالة: %(removing)s تعديل: %(modifying)s',
 		'interwiki-modifying-from': u'روبوت: تغيير  %(from)s إلى %(modifying)s',
 	},
+	# Author: Basharh
 	'arc': {
-		'interwiki-modifying': u'ܪܘܒܘܛ ܚܘܠܦܐ: %(modifying)s',
-		'interwiki-adding-modifying': u'ܪܘܒܘܛ ܬܘܣܦܬܐ: %(adding)s ܚܘܠܦܐ: %(modifying)s',
-		'interwiki-adding-removing': u'ܪܘܒܘܛ ܬܘܣܦܬܐ: %(adding)s ܠܚܝܐ: %(removing)s',
-		'interwiki-adding-removing-modifying': u'ܪܘܒܘܛ ܬܘܣܦܬܐ: %(adding)s ܠܚܝܐ: %(removing)s ܚܘܠܦܐ: %(modifying)s',
-		'interwiki-adding': u'ܪܘܒܘܛ ܬܘܣܦܬܐ: %(adding)s',
-		'interwiki-removing': u'ܪܘܒܘܛ ܠܚܝܐ: %(removing)s',
-		'interwiki-removing-modifying': u'ܪܘܒܘܛ ܠܚܝܐ: %(removing)s ܚܘܠܦܐ: %(modifying)s',
+		'interwiki-modifying': u'ܪܘܒܘܛ: ܚܘܠܦܐ %(modifying)s',
+		'interwiki-adding-modifying': u'ܪܘܒܘܛ: ܬܘܣܦܬܐ %(adding)s; ܚܘܠܦܐ %(modifying)s',
+		'interwiki-adding-removing': u'ܪܘܒܘܛ: ܬܘܣܦܬܐ %(adding)s; ܠܚܝܐ: %(removing)s',
+		'interwiki-adding-removing-modifying': u'ܪܘܒܘܛ: ܬܘܣܦܬܐ %(adding)s; ܠܚܝܐ %(removing)s; ܚܘܠܦܐ %(modifying)s',
+		'interwiki-adding': u'ܪܘܒܘܛ: ܬܘܣܦܬܐ %(adding)s',
+		'interwiki-removing': u'ܪܘܒܘܛ: ܠܚܝܐ %(removing)s',
+		'interwiki-removing-modifying': u'ܪܘܒܘܛ: ܠܚܝܐ %(removing)s; ܚܘܠܦܐ %(modifying)s',
+		'interwiki-modifying-from': u'ܪܘܒܘܛ: ܚܘܠܦܐ  %(from)s ܠ %(modifying)s',
 	},
 	# Author: Xqt
 	'arz': {
@@ -142,6 +143,15 @@ msg = {
 		'interwiki-adding': u'Bot redaktəsi əlavə edilir: %(adding)s',
 		'interwiki-removing': u'Bot redaktəsi çıxardılır: %(removing)s',
 		'interwiki-removing-modifying': u'Bot redaktəsi çıxardılır: %(removing)s dəyişdirilir: %(modifying)s',
+	},
+	# Author: E THP
+	'azb': {
+		'interwiki-modifying': u'بوت دَییشدیرمه‌سی دییشدیریلیر: %(modifying)s',
+		'interwiki-adding-modifying': u'بوت دَییشدیرمه‌سی علاوه ائدیلیر: %(adding)s دییشدیریلیر: %(modifying)s',
+		'interwiki-adding-removing': u'بوت دَییشدیرمه‌سی علاوه ائدیلیر: %(adding)s چیخاردیلیر: %(removing)s',
+		'interwiki-adding': u'بوت دَییشدیرمه‌سی علاوه‌‌ ائدی‌لیر  %(adding)s',
+		'interwiki-removing': u'بوت رئداکته‌سی چیخاردیلیر: %(removing)s',
+		'interwiki-removing-modifying': u'بوت رئداکته‌سی چیخاردیلیر: %(removing)s دییشدیریلیر: %(modifying)s',
 	},
 	'ba': {
 		'interwiki-modifying': u'робот үҙгәртте: %(modifying)s',
@@ -786,7 +796,7 @@ msg = {
 		'interwiki-adding': u'Vélmenni: Bæti við: %(adding)s',
 		'interwiki-removing': u'Vélmenni: Fjarlægi: %(removing)s',
 		'interwiki-removing-modifying': u'Vélmenni: Fjarlægi: %(removing)s Breyti: %(modifying)s',
-		'interwiki-modifying-from': u'Vélmenni: Færi greinar frá %(from)s yfir í %(modifying)s',
+		'interwiki-modifying-from': u'Vélmenni: Færi %(from)s yfir í %(modifying)s',
 	},
 	# Author: Nemo bis
 	'it': {
@@ -1049,6 +1059,7 @@ msg = {
 		'interwiki-removing': u'ໂຣບົດ ພວມລຶບ: %(removing)s',
 		'interwiki-removing-modifying': u'ໂຣບົດ ພວມລຶບ: %(removing)s ພວມແປງ: %(modifying)s',
 	},
+	# Author: Hugo.arg
 	'lt': {
 		'interwiki-modifying': u'robotas Keičiama: %(modifying)s',
 		'interwiki-adding-modifying': u'robotas Pridedama: %(adding)s Keičiama: %(modifying)s',
@@ -1057,6 +1068,7 @@ msg = {
 		'interwiki-adding': u'robotas Pridedama: %(adding)s',
 		'interwiki-removing': u'robotas Šalinama: %(removing)s',
 		'interwiki-removing-modifying': u'robotas Šalinama: %(removing)s Keičiama: %(modifying)s',
+		'interwiki-modifying-from': u'robotas: Keičiama %(from)s į %(modifying)s',
 	},
 	# Author: Dark Eagle
 	'ltg': {

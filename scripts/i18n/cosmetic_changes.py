@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'cosmetic_changes-append': u'; cosmetic changes',
 		'cosmetic_changes-standalone': u'Robot: Cosmetic changes',
@@ -46,6 +45,7 @@ msg = {
 	# Author: E THP
 	'azb': {
 		'cosmetic_changes-standalone': u'روبات:گوزلتمک',
+		'cosmetic_changes-append': u'؛ زنگینلشدیرمه',
 	},
 	# Author: Mucalexx
 	'bar': {

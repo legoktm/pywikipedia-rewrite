@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'clean_sandbox-cleaned': u'Robot: Automatically cleaned',
 	},
@@ -26,6 +25,10 @@ msg = {
 	# Author: Ebrahimi-amir
 	'az': {
 		'clean_sandbox-cleaned': u'Bot: Avtomatik olaraq təmizləndi',
+	},
+	# Author: E THP
+	'azb': {
+		'clean_sandbox-cleaned': u'بوت: آوتوماتیک اولاراق تمیزلندی',
 	},
 	# Author: Mucalexx
 	'bar': {

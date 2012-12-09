@@ -2,7 +2,6 @@
 msg = {
 
 
-
 	'en': {
 		'welcome-bad_username': u'Robot: Adding a username that needs to be checked',
 		'welcome-updating': u'Robot: Updating log',
