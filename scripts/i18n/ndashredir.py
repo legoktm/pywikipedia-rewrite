@@ -1,26 +1,10 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	# Author: Bináris
 	'en': {
 		'ndashredir-create': u'Bot: Creating hyphenated redirect to [[%(title)s]]',
-	},	# Author: Csisc
-	'aeb': {
-		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
-	},	# Author: Csisc
-	'aeb': {
-		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
-	},	# Author: Csisc
-	'aeb': {
-		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
-	},	# Author: Csisc
-	'aeb': {
-		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
-	},	# Author: Csisc
-	'aeb': {
-		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
-	},	# Author: Csisc
+	},	
+	# Author: Csisc
 	'aeb': {
 		'ndashredir-create': u'Bot: إنشاء واصلة إعادة توجيه إلى  [[%(title)s]]',
 	},
@@ -40,6 +24,14 @@ msg = {
 	# Author: Xuacu
 	'ast': {
 		'ndashredir-create': u'Robó: Creando redireición con guiones a [[%(title)s]]',
+	},
+	# Author: Amir a57
+	'azb': {
+		'ndashredir-create': u'روبوت: آ خت تیره دار [[%(title)s]] یؤنلن‌دیرن',
+	},
+	# Author: Haqmar
+	'ba': {
+		'ndashredir-create': u'Робот:  [[%(title)s]] битенә дефислы йүнәлтеү',
 	},
 	# Author: Jim-by
 	'be-tarask': {
@@ -75,6 +67,11 @@ msg = {
 	# Author: Erdemaslancan
 	'diq': {
 		'ndashredir-create': u'Boti [[%(title)s]] ra hetanayışi melumatê vıraşt',
+	},
+	# Author: Blahma
+	# Author: Objectivesea
+	'eo': {
+		'ndashredir-create': u'Roboto: Kreas dividstrekan alidirektilon al [[%(title)s]]',
 	},
 	# Author: Invadinado
 	# Author: Ryo567
@@ -129,9 +126,17 @@ msg = {
 	'it': {
 		'ndashredir-create': u'Bot: Creazione di un reindirizzo con trattino a [[%(title)s]]',
 	},
+	# Author: Shirayuki
+	'ja': {
+		'ndashredir-create': u'ロボットによる: ハイフンで連結されたリダイレクトの作成 [[%(title)s]]',
+	},
 	# Author: NoiX180
 	'jv': {
 		'ndashredir-create': u'Bot: Nggawé pangalihan mawa tandha pangubung nèng [[%(title)s]]',
+	},
+	# Author: 아라
+	'ko': {
+		'ndashredir-create': u'봇: [[%(title)s]](으)로 하이픈으로 연결한 넘겨주기 만듦',
 	},
 	# Author: Purodha
 	'ksh': {
@@ -140,6 +145,10 @@ msg = {
 	# Author: Robby
 	'lb': {
 		'ndashredir-create': u'Bot: Viruleedunge mat \'trait-d\'union\' op [[%(title)s]] uleeën',
+	},
+	# Author: StefanusRA
+	'map-bms': {
+		'ndashredir-create': u'Bot: Nggawé pangalihan mawa tandha pangubung nèng [[%(title)s]]',
 	},
 	# Author: Jagwar
 	'mg': {
@@ -153,6 +162,10 @@ msg = {
 	'mk': {
 		'ndashredir-create': u'Бот: Создава пренасочување на поим со цртичка кон [[%(title)s]]',
 	},
+	# Author: Praveenp
+	'ml': {
+		'ndashredir-create': u'യന്ത്രം: ഹൈഫൻ ചേർത്തുള്ള ഒരു തിരിച്ചുവിടൽ [[%(title)s]] എന്നതിലേക്ക് സൃഷ്ടിക്കുന്നു',
+	},
 	# Author: Anakmalaysia
 	'ms': {
 		'ndashredir-create': u'Bot: Membuat lencongan bertanda sempang ke [[%(title)s]]',
@@ -164,6 +177,10 @@ msg = {
 	# Author: Servien
 	'nds-nl': {
 		'ndashredir-create': u'Bot: deurverwiezing mit aofbreekteken naor [[%(title)s]] an-emaakt',
+	},
+	# Author: Eukesh
+	'new': {
+		'ndashredir-create': u'बोट:[[%(title)s]]य्‌ हाइफनेतेद पुनर्निर्देश दयेकाच्वँगु',
 	},
 	# Author: Siebrand
 	'nl': {
@@ -206,6 +223,10 @@ msg = {
 	# Author: Dbc334
 	'sl': {
 		'ndashredir-create': u'Bot: Ustvarjanje preusmeritve z vezajem na [[%(title)s]]',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'ndashredir-create': u'Bot: samayn xiriir ah dib u eegis [[%(title)s]]',
 	},
 	# Author: Rancher
 	'sr': {

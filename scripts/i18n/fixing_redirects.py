@@ -1,25 +1,9 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'fixing_redirects-fixing': u'Bot: Fixing redirects',
-	},	# Author: Csisc
-	'aeb': {
-		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
-	},	# Author: Csisc
-	'aeb': {
-		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
-	},	# Author: Csisc
-	'aeb': {
-		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
-	},	# Author: Csisc
-	'aeb': {
-		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
-	},	# Author: Csisc
-	'aeb': {
-		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
-	},	# Author: Csisc
+	},	
+	# Author: Csisc
 	'aeb': {
 		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
 	},
@@ -34,6 +18,10 @@ msg = {
 	'ar': {
 		'fixing_redirects-fixing': u'بوت: إصلاح التحويلات',
 	},
+	# Author: Basharh
+	'arc': {
+		'fixing_redirects-fixing': u'ܪܘܒܘܛ: ܚܕܬܘܬܐ ܕܨܘ̈ܝܒܐ',
+	},
 	# Author: Esbardu
 	# Author: Xuacu
 	'ast': {
@@ -42,6 +30,10 @@ msg = {
 	# Author: E THP
 	'azb': {
 		'fixing_redirects-fixing': u'بوت: ایستیقامت‌لندیرمه‌لر دوزلدیلدی',
+	},
+	# Author: Sagan
+	'ba': {
+		'fixing_redirects-fixing': u'Робот: йүнәлтеүҙәрҙе төҙәтеү',
 	},
 	# Author: Jim-by
 	'be-tarask': {
@@ -88,13 +80,15 @@ msg = {
 	'el': {
 		'fixing_redirects-fixing': u'Ρομπότ: Διόρθωση ανακατευθύνσεων',
 	},
+	# Author: Objectivesea
 	# Author: Remux
 	'eo': {
-		'fixing_redirects-fixing': u'Boto: Riparante redirektilojn',
+		'fixing_redirects-fixing': u'Boto: Riparas redirektilojn',
 	},
 	# Author: Armando-Martin
+	# Author: TheBITLINK
 	'es': {
-		'fixing_redirects-fixing': u'Bot: Arreglando redirecciones',
+		'fixing_redirects-fixing': u'Bot: Reparando redirecciones',
 	},
 	# Author: Pikne
 	'et': {
@@ -170,6 +164,14 @@ msg = {
 	'jv': {
 		'fixing_redirects-fixing': u'Bot: Mbeneraké pangalihan',
 	},
+	# Author: Akoppad
+	'kn': {
+		'fixing_redirects-fixing': u'ಬೋಟ್: ಸ್ಥಿರೀಕರಿಸುವ ಪುನರ್ನಿರ್ದೇಶನಗಳು',
+	},
+	# Author: 아라
+	'ko': {
+		'fixing_redirects-fixing': u'봇: 넘겨주기 고침',
+	},
 	# Author: Purodha
 	'ksh': {
 		'fixing_redirects-fixing': u'Bot: Ömleidong repareere.',
@@ -214,6 +216,10 @@ msg = {
 	'mk': {
 		'fixing_redirects-fixing': u'Бот: Поправа пренасочувања',
 	},
+	# Author: Praveenp
+	'ml': {
+		'fixing_redirects-fixing': u'യന്ത്രം: തിരിച്ചുവിടലുകൾ ശരിയാക്കുന്നു',
+	},
 	# Author: Anakmalaysia
 	'ms': {
 		'fixing_redirects-fixing': u'Bot: Membaiki lencongan',
@@ -228,6 +234,10 @@ msg = {
 	# Author: Servien
 	'nds-nl': {
 		'fixing_redirects-fixing': u'Bot: deurverwiezingen verbeterd',
+	},
+	# Author: Eukesh
+	'new': {
+		'fixing_redirects-fixing': u'बट: पुनर्निदेश मिलय्‌यानाच्वँगु',
 	},
 	# Author: Siebrand
 	'nl': {
@@ -264,6 +274,10 @@ msg = {
 	'ru': {
 		'fixing_redirects-fixing': u'бот: исправление перенаправлений',
 	},
+	# Author: පසිඳු කාවින්ද
+	'si': {
+		'fixing_redirects-fixing': u'රොබෝ: යළියොමු සවි කරමින්',
+	},
 	# Author: Teslaton
 	'sk': {
 		'fixing_redirects-fixing': u'Robot opravil presmerovania',
@@ -271,6 +285,10 @@ msg = {
 	# Author: Dbc334
 	'sl': {
 		'fixing_redirects-fixing': u'Bot: Popravljanje preusmeritev',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'fixing_redirects-fixing': u'Bot: Hagaajinta rogeyaasha',
 	},
 	# Author: Euriditi
 	'sq': {
@@ -291,6 +309,10 @@ msg = {
 	'sv': {
 		'fixing_redirects-fixing': u'Bot: Rättar omdirigeringar',
 	},
+	# Author: Kwisha
+	'sw': {
+		'fixing_redirects-fixing': u'Boti: Inarekebisha uelekezaji',
+	},
 	# Author: Przemub
 	'szl': {
 		'fixing_redirects-fixing': u'Bot: Naprawianiy pukniyńć',
@@ -302,6 +324,10 @@ msg = {
 	# Author: Veeven
 	'te': {
 		'fixing_redirects-fixing': u'బాటు: దారిమార్పులను సరిచేసింది',
+	},
+	# Author: Nullzero
+	'th': {
+		'fixing_redirects-fixing': u'โรบอต: แก้หน้าเปลี่ยนทาง',
 	},
 	# Author: AnakngAraw
 	'tl': {
@@ -319,12 +345,17 @@ msg = {
 	'uk': {
 		'fixing_redirects-fixing': u'Бот: Виправлення перенаправлень',
 	},
+	# Author: CoderSI
+	'uz': {
+		'fixing_redirects-fixing': u'Bot: Qayta yo‘naltirishlar to‘g‘rilanishi',
+	},
 	# Author: Alunardon90
 	'vec': {
 		'fixing_redirects-fixing': u'Robot: Coresion rindirisamenti',
 	},
+	# Author: Minh Nguyen
 	'vi': {
-		'fixing_redirects-fixing': u'Robot: Sửa đổi hướng',
+		'fixing_redirects-fixing': u'Bot: Sửa trang đổi hướng',
 	},
 	# Author: Srtxg
 	'wa': {

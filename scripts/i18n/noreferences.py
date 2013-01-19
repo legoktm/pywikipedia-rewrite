@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'noreferences-add-tag': u'Robot: Adding missing <references /> tag',
 	},
@@ -9,7 +7,8 @@ msg = {
 	# Author: Xqt
 	'qqq': {
 		'noreferences-add-tag': u'Edit summary when the bot adds a missing <code><references /></code> tag to the references section and if needed the section itself.\n\nDo not translate <code><references /></code>.',
-	},	# Author: Csisc
+	},
+	# Author: Csisc
 	'aeb': {
 		'noreferences-add-tag': u'روبوت: إضافة وسم <references /> مفقود',
 	},
@@ -36,6 +35,10 @@ msg = {
 	# Author: E THP
 	'azb': {
 		'noreferences-add-tag': u'بوت: اونودولموش <references /> ائتیکئتی علاوه اولونور',
+	},
+	# Author: Haqmar
+	'ba': {
+		'noreferences-add-tag': u'Робот: булмаған <references /> тегы өҫтәлде',
 	},
 	'be': {
 		'noreferences-add-tag': u'Robot: дабаўлены адсутнічаючы тэг <references />',
@@ -173,8 +176,9 @@ msg = {
 	'jv': {
 		'noreferences-add-tag': u'Bot: Nambahaké tag <references /> sing ilang',
 	},
+	# Author: 아라
 	'ko': {
-		'noreferences-add-tag': u'봇: 이전에 없던 <references /> 추가',
+		'noreferences-add-tag': u'로봇: 없던 <references /> 태그 추가',
 	},
 	# Author: Purodha
 	'ksh': {
@@ -195,6 +199,10 @@ msg = {
 	'lus': {
 		'noreferences-add-tag': u'Khawlmi: <thlulâkna /> kim lo belh',
 	},
+	# Author: Papuass
+	'lv': {
+		'noreferences-add-tag': u'Robots: Pievieno trūkstošo <references/> tagu',
+	},
 	# Author: StefanusRA
 	'map-bms': {
 		'noreferences-add-tag': u'Bot: Nambahna tag <references /> sing ilang',
@@ -211,6 +219,10 @@ msg = {
 	'mk': {
 		'noreferences-add-tag': u'Робот: Додава отсутна ознака <references />',
 	},
+	# Author: Praveenp
+	'ml': {
+		'noreferences-add-tag': u'യന്ത്രം: ഇല്ലാതെ പോയ <references /> ടാഗ് ചേർക്കുന്നു',
+	},
 	# Author: Diagramma Della Verita
 	'ms': {
 		'noreferences-add-tag': u'Robot: Menambah tag  <references /> yang hilang',
@@ -222,6 +234,10 @@ msg = {
 	# Author: Servien
 	'nds-nl': {
 		'noreferences-add-tag': u'Bot: ontbrekende <references />-kode derbie ezet',
+	},
+	# Author: Eukesh
+	'new': {
+		'noreferences-add-tag': u'रोबट: मदूगु <references /> ट्याग तनाच्वँगु',
 	},
 	# Author: Siebrand
 	'nl': {
@@ -273,6 +289,10 @@ msg = {
 	'sl': {
 		'noreferences-add-tag': u'Robot: Dodajanje manjkajoče oznake <references />',
 	},
+	# Author: Abshirdheere
+	'so': {
+		'noreferences-add-tag': u'Bot: Ku daris wixii <references /> lumay',
+	},
 	# Author: Euriditi
 	'sq': {
 		'noreferences-add-tag': u'Roboti: Duke shtuar etiketën <references /> që mungon',
@@ -293,12 +313,20 @@ msg = {
 	'sv': {
 		'noreferences-add-tag': u'Robot: Lägger till saknad <references />-tagg',
 	},
+	# Author: Kwisha
+	'sw': {
+		'noreferences-add-tag': u'Boti: Inaongeza tagi inayokosa ya <references />',
+	},
 	'szl': {
 		'noreferences-add-tag': u'Bot dodowo szablon {{Przipisy}}',
 	},
 	# Author: Aswn
 	'ta': {
 		'noreferences-add-tag': u'தானியங்கி: <references /> குறியீடினை இணைத்தல்',
+	},
+	# Author: Nullzero
+	'th': {
+		'noreferences-add-tag': u'โรบอต: เพิ่มแท็ก <references /> ที่หายไป',
 	},
 	# Author: AnakngAraw
 	'tl': {

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'isbn-formatting': u'Robot: Formatting ISBN',
 	},
@@ -10,7 +8,8 @@ msg = {
 	# Author: Xqt
 	'qqq': {
 		'isbn-formatting': u'Edit summary when the bot fixes [http://en.wikipedia.org/wiki/International_Standard_Book_Number ISBN] number formatting.',
-	},	# Author: Csisc
+	},
+	# Author: Csisc
 	'aeb': {
 		'isbn-formatting': u'روبوت: تنسيق ISBN',
 	},
@@ -39,6 +38,10 @@ msg = {
 	# Author: E THP
 	'azb': {
 		'isbn-formatting': u'بوت:شابک‌لری ایستاندارد ائتمک',
+	},
+	# Author: Sagan
+	'ba': {
+		'isbn-formatting': u'Робот: ISBN үҙгәртеү',
 	},
 	# Author: Mucalexx
 	'bar': {
@@ -90,6 +93,10 @@ msg = {
 	'cs': {
 		'isbn-formatting': u'Robot: Formátování ISBN',
 	},
+	# Author: Salam
+	'cv': {
+		'isbn-formatting': u'робот: ISBN улӑштарни',
+	},
 	# Author: Lloffiwr
 	# Author: Xxglennxx
 	'cy': {
@@ -111,8 +118,9 @@ msg = {
 		'isbn-formatting': u'Ρομπότ: Μορφοποίηση ISBN',
 	},
 	# Author: Mihxil
+	# Author: Objectivesea
 	'eo': {
-		'isbn-formatting': u'Roboto: Aranĝis ISBN',
+		'isbn-formatting': u'Roboto: Aranĝas la ISBN',
 	},
 	# Author: Dferg
 	# Author: Invadinado
@@ -218,6 +226,10 @@ msg = {
 	'jv': {
 		'isbn-formatting': u'Bot: Mormat ISBN',
 	},
+	# Author: 아라
+	'ko': {
+		'isbn-formatting': u'로봇: ISBN 형식 지정',
+	},
 	# Author: Purodha
 	'ksh': {
 		'isbn-formatting': u'Bot: ISBN zerääsch jemaat.',
@@ -261,6 +273,10 @@ msg = {
 	# Author: Bjankuloski06
 	'mk': {
 		'isbn-formatting': u'Робот: Форматирам ISBN',
+	},
+	# Author: Praveenp
+	'ml': {
+		'isbn-formatting': u'യന്ത്രം: ഐ.എസ്.ബി.എൻ. ശൈലി ശരിയാക്കുന്നു',
 	},
 	# Author: Htt
 	'mr': {
@@ -355,6 +371,10 @@ msg = {
 	'sl': {
 		'isbn-formatting': u'Robot: Oblikovanje ISBN',
 	},
+	# Author: Abshirdheere
+	'so': {
+		'isbn-formatting': u'Bot: Habayn ISBN',
+	},
 	# Author: Vinie007
 	'sq': {
 		'isbn-formatting': u'Robot: ISBN Formatimi',
@@ -384,8 +404,9 @@ msg = {
 		'isbn-formatting': u'தானியங்கி: ISBN ஐ வடிவமைத்தல்',
 	},
 	# Author: Horus
+	# Author: Nullzero
 	'th': {
-		'isbn-formatting': u'บอต: การจัดรูปแบบเลขมาตรฐานสากลประจำหนังสือ',
+		'isbn-formatting': u'โรบอต: การจัดรูปแบบเลขมาตรฐานสากลประจำหนังสือ',
 	},
 	# Author: AnakngAraw
 	'tl': {
@@ -414,6 +435,10 @@ msg = {
 	'uk': {
 		'isbn-formatting': u'Робот: Форматування ISBN',
 	},
+	# Author: CoderSI
+	'uz': {
+		'isbn-formatting': u'Bot: ISBNni formatlash',
+	},
 	# Author: Alunardon90
 	# Author: GatoSelvadego
 	'vec': {
@@ -440,8 +465,9 @@ msg = {
 		'isbn-formatting': u'机器人：ISBN格式化',
 	},
 	# Author: Andrew971218
+	# Author: Simon Shek
 	'zh-hant': {
-		'isbn-formatting': u'機器人：格式化ISBN',
+		'isbn-formatting': u'機械人：格式化ISBN',
 	},
 	# Author: Justincheng12345
 	'zh-hk': {

@@ -1,25 +1,9 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'movepages-moving': u'Robot: Moved page',
-	},	# Author: Csisc
-	'aeb': {
-		'movepages-moving': u'روبوت: نقل الصفحة',
-	},	# Author: Csisc
-	'aeb': {
-		'movepages-moving': u'روبوت: نقل الصفحة',
-	},	# Author: Csisc
-	'aeb': {
-		'movepages-moving': u'روبوت: نقل الصفحة',
-	},	# Author: Csisc
-	'aeb': {
-		'movepages-moving': u'روبوت: نقل الصفحة',
-	},	# Author: Csisc
-	'aeb': {
-		'movepages-moving': u'روبوت: نقل الصفحة',
-	},	# Author: Csisc
+	},	
+	# Author: Csisc
 	'aeb': {
 		'movepages-moving': u'روبوت: نقل الصفحة',
 	},
@@ -39,9 +23,17 @@ msg = {
 	'ast': {
 		'movepages-moving': u'Robó: Páxina treslladada',
 	},
+	# Author: AZISS
+	'az': {
+		'movepages-moving': u'Robot: Yeri dəyişilmiş səhifə',
+	},
 	# Author: E THP
 	'azb': {
 		'movepages-moving': u'بوت:صحیفه داشیندی',
+	},
+	# Author: Sagan
+	'ba': {
+		'movepages-moving': u'Робот: биттең исемен үҙгәртеү',
 	},
 	# Author: EugeneZelenko
 	'be-tarask': {
@@ -88,9 +80,10 @@ msg = {
 	'eo': {
 		'movepages-moving': u'Roboto: Paĝon moviĝis',
 	},
+	# Author: TheBITLINK
 	# Author: Vivaelcelta
 	'es': {
-		'movepages-moving': u'Bot: Página trasladada',
+		'movepages-moving': u'Bot: Página movida',
 	},
 	# Author: Pikne
 	'et': {
@@ -166,6 +159,14 @@ msg = {
 	'jv': {
 		'movepages-moving': u'Bot: Mindhahaké kaca',
 	},
+	# Author: Akoppad
+	'kn': {
+		'movepages-moving': u'ರೋಬೋಟ್: ಸರಿಸಲಾದ ಪುಟ',
+	},
+	# Author: 아라
+	'ko': {
+		'movepages-moving': u'로봇: 문서 이동함',
+	},
 	# Author: Purodha
 	'ksh': {
 		'movepages-moving': u'Bot: di Sigg wood ömjenannt',
@@ -202,6 +203,10 @@ msg = {
 	'mk': {
 		'movepages-moving': u'Робот: Преместена страницата',
 	},
+	# Author: Praveenp
+	'ml': {
+		'movepages-moving': u'യന്ത്രം: താൾ മാറ്റി',
+	},
 	# Author: Anakmalaysia
 	'ms': {
 		'movepages-moving': u'Robot: Memindahkah laman',
@@ -217,6 +222,10 @@ msg = {
 	# Author: Servien
 	'nds-nl': {
 		'movepages-moving': u'Bot: paginanaam ewiezigd',
+	},
+	# Author: Eukesh
+	'new': {
+		'movepages-moving': u'रोबट: पौ संकाछ्वल',
 	},
 	'nl': {
 		'movepages-moving': u'Robot: paginanaam gewijzigd',
@@ -256,6 +265,10 @@ msg = {
 	'ru': {
 		'movepages-moving': u'переименование страницы при помощи бота',
 	},
+	# Author: පසිඳු කාවින්ද
+	'si': {
+		'movepages-moving': u'රොබෝ: පිටුව ගෙනයන ලදී',
+	},
 	# Author: Wizzard
 	'sk': {
 		'movepages-moving': u'Robot presunul stránku',
@@ -263,6 +276,10 @@ msg = {
 	# Author: Dbc334
 	'sl': {
 		'movepages-moving': u'Robot: Prestavil stran',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'movepages-moving': u'Bot: Bog la wareejiyey',
 	},
 	# Author: Euriditi
 	'sq': {
@@ -299,6 +316,10 @@ msg = {
 	# Author: Veeven
 	'te': {
 		'movepages-moving': u'బాటు: పేజీని తరలించింది',
+	},
+	# Author: Nullzero
+	'th': {
+		'movepages-moving': u'โรบอต: ย้ายหน้า',
 	},
 	# Author: AnakngAraw
 	'tl': {

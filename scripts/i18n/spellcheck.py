@@ -1,30 +1,34 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'spellcheck-checking': u'Bot-aided spell checker',
-	},	# Author: Als-Holder
+	},	
+# Author: Als-Holder
 	'als': {
 		'spellcheck-checking': u'Bot-unterstitzti Rächtschrybkorrektur',
-	},	'ar': {
-		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
-	},	'ar': {
-		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
-	},	'ar': {
-		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
-	},	'ar': {
-		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
-	},	'ar': {
+	},	
+	'ar': {
 		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
 	},
 	# Author: Xuacu
 	'ast': {
 		'spellcheck-checking': u'Correición ortográfica asistida por robot',
 	},
+	# Author: AZISS
+	'az': {
+		'spellcheck-checking': u'Bot-orfoqrafiyanın avtomatlaşdırılmış yoxlaması',
+	},
 	# Author: E THP
 	'azb': {
 		'spellcheck-checking': u'یازی یانلیشی اوچون روبات یاردیم‌جی',
+	},
+	# Author: Sagan
+	'ba': {
+		'spellcheck-checking': u'робот ярҙамында орфография',
+	},
+	# Author: Wizardist
+	'be-tarask': {
+		'spellcheck-checking': u'Выпраўленьне артаграфіі ботам',
 	},
 	# Author: Gwenn-Ael
 	'br': {
@@ -54,19 +58,33 @@ msg = {
 	'diq': {
 		'spellcheck-checking': u'Cerebnayoğê nuşteyanê bot-destegıni',
 	},
+	# Author: Glavkos
+	'el': {
+		'spellcheck-checking': u'Ορθογραφικός έλεγχος βοηθούμενος από Bot',
+	},
+	# Author: Blahma
+	'eo': {
+		'spellcheck-checking': u'Robote asistata literumkontrolo',
+	},
 	'es': {
 		'spellcheck-checking': u'Bot asistido de correción ortográfica',
 	},
+	# Author: Huji
 	# Author: Reza1615
 	'fa': {
-		'spellcheck-checking': u'ربات کمک کنندهٔ اشتباهات املایی',
+		'spellcheck-checking': u'غلط‌گیری به کمک ربات',
 	},
 	# Author: Nedergard
+	# Author: Nike
 	'fi': {
-		'spellcheck-checking': u'Botti-avusteinen oikeinkirjoituksen tarkistus',
+		'spellcheck-checking': u'Koneavusteinen oikeinkirjoituksen tarkistus',
 	},
 	'fr': {
 		'spellcheck-checking': u'Correction orthographique par robot',
+	},
+	# Author: Murma174
+	'frr': {
+		'spellcheck-checking': u'Halep faan en bot bi\'t rochtskriiwang',
 	},
 	# Author: Toliño
 	'gl': {
@@ -90,6 +108,14 @@ msg = {
 	'it': {
 		'spellcheck-checking': u'Correttore ortografico semi-automatico',
 	},
+	# Author: Shirayuki
+	'ja': {
+		'spellcheck-checking': u'ロボット支援によるスペルチェック',
+	},
+	# Author: 아라
+	'ko': {
+		'spellcheck-checking': u'로봇 지원에 의한 맞춤법 검사기',
+	},
 	# Author: Purodha
 	'ksh': {
 		'spellcheck-checking': u'Tippfähler repareere med enem Bot singe Hölp',
@@ -97,6 +123,10 @@ msg = {
 	# Author: Robby
 	'lb': {
 		'spellcheck-checking': u'Bot-ënnerstëtzte Spellchecker',
+	},
+	# Author: StefanusRA
+	'map-bms': {
+		'spellcheck-checking': u'Bot-nulungi mriksa ejaan',
 	},
 	# Author: Jagwar
 	'mg': {
@@ -106,12 +136,20 @@ msg = {
 	'mk': {
 		'spellcheck-checking': u'Ботовска проверка на правопис',
 	},
+	# Author: Praveenp
+	'ml': {
+		'spellcheck-checking': u'യന്ത്രസഹായത്തോടെയുള്ള അക്ഷരത്തെറ്റ് പരിശോധന',
+	},
 	# Author: Anakmalaysia
 	'ms': {
 		'spellcheck-checking': u'Penyemak ejaan dibantu bot',
 	},
 	'nb': {
 		'spellcheck-checking': u'Robothjulpet stavekontroll',
+	},
+	# Author: Eukesh
+	'new': {
+		'spellcheck-checking': u'बट-ग्वहालिया हिज्जे निरिक्षक',
 	},
 	'nl': {
 		'spellcheck-checking': u'Spellingscontrole',
@@ -124,8 +162,13 @@ msg = {
 	'pms': {
 		'spellcheck-checking': u'Coretor d\'ortografìa për mojen d\'un trigomiro',
 	},
+	# Author: 555
 	'pt': {
-		'spellcheck-checking': u'Bot de correção ortográfica',
+		'spellcheck-checking': u'Correção ortográfica assistida por bot',
+	},
+	# Author: 555
+	'pt-br': {
+		'spellcheck-checking': u'Correção ortográfica assistida por bot',
 	},
 	# Author: Minisarm
 	'ro': {
@@ -139,6 +182,10 @@ msg = {
 	# Author: Irena Plahuta
 	'sl': {
 		'spellcheck-checking': u'Z botom dodan črkovalnik.',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'spellcheck-checking': u'Sixid yeeris ah ee caawiye Bot',
 	},
 	# Author: Rancher
 	'sr': {
@@ -155,6 +202,10 @@ msg = {
 	# Author: Lokal Profil
 	'sv': {
 		'spellcheck-checking': u'Robot-assisterad stavningskontroll',
+	},
+	# Author: Гусейн
+	'tly': {
+		'spellcheck-checking': u'Де боти комәги орфогрәфијә',
 	},
 	# Author: Base
 	'uk': {

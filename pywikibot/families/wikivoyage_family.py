@@ -9,15 +9,14 @@ from pywikibot import family
 class Family(family.Family):
     def __init__(self):
         family.Family.__init__(self)
-        self.name = 'Wikivoyage'
-        self.langs = {
-            'de': u'de.wikivoyage.org',
-            'en': u'en.wikivoyage.org',
-            'fr': u'fr.wikivoyage.org',
-            'it': u'it.wikivoyage.org',
-            'nl': u'nl.wikivoyage.org',
-            'ru': u'ru.wikivoyage.org',
-            'sv': u'sv.wikivoyage.org',
+        self.name = 'wikivoyage'
+        self.languages_by_size = [
+            'de', 'en', 'fr', 'it', 'nl', 'ru', 'sv', 'pt', 'es',
+        ]
+
+        self.langs = dict([(lang, '%s.wikivoyage.org' % lang)
+                           for lang in self.languages_by_size])
+
         }
 
     def scriptpath(self, code):

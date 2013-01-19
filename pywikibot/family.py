@@ -7,10 +7,10 @@
 #
 __version__ = '$Id$'
 
-import config2 as config
 import logging
 import re
 import urllib
+import config2 as config
 
 import pywikibot
 
@@ -547,6 +547,9 @@ class Family:
             '_default': []
         }
 
+        # A list of languages that use hard (instead of soft) category redirects
+        self.use_hard_category_redirects = []
+
         # A list of disambiguation template names in different languages
         self.disambiguationTemplates = {
             '_default': []
@@ -823,7 +826,7 @@ class Family:
         """Return MediaWiki version number as a string."""
         # Don't use this, use versionnumber() instead. This only exists
         # to not break family files.
-        return '1.21wmf5'
+        return '1.21wmf7'
 
     def versionnumber(self, code):
         """Return an int identifying MediaWiki version.
@@ -883,7 +886,7 @@ class Family:
         """Return the shared image repository, if any."""
         return (None, None)
 
-    def shared_data_repository(self, code):
+    def shared_data_repository(self, code, transcluded=False):
         """Return the shared wikidata repository, if any."""
         return (None, None)
 

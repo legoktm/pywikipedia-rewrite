@@ -143,8 +143,15 @@ class BaseSite(object):
                 raise NoSuchSite("Language %s does not exist in family %s"
                                  % (self.__code, self.__family.name))
 
-        self._username = [user, sysop]
         self.nocapitalize = self.code in self.family.nocapitalize
+        if not self.nocapitalize:
+            if user:
+                user = user[0].upper() + user[1:]
+            if sysop:
+                sysop = sysop[0].upper() + sysop[1:]
+        self._username = [user, sysop]
+        self.use_hard_category_redirects = \
+                self.code in self.family.use_hard_category_redirects
 
         # following are for use with lock_page and unlock_page methods
         self._pagemutex = threading.Lock()
@@ -527,9 +534,9 @@ class BaseSite(object):
         raise NotImplementedError
     def allpages_address(self, s, ns = 0):
         raise NotImplementedError
-    def log_address(self, n=50, mode = ''):
+    def log_address(self, n=50, mode='', user=''):
         raise NotImplementedError
-    def newpages_address(self, n=50):
+    def newpages_address(self, n=50, namespace=0):
         raise NotImplementedError
     def longpages_address(self, n=500):
         raise NotImplementedError
@@ -555,7 +562,11 @@ class BaseSite(object):
         raise NotImplementedError
     def uncategorizedpages_address(self, n=500):
         raise NotImplementedError
+    def uncategorizedtemplates_address(self, n=500):
+        raise NotImplementedError
     def unusedcategories_address(self, n=500):
+        raise NotImplementedError
+    def wantedcategories_address(self, n=500):
         raise NotImplementedError
     def withoutinterwiki_address(self, n=500):
         raise NotImplementedError
@@ -569,6 +580,10 @@ class BaseSite(object):
         raise NotImplementedError
     def broken_redirects_address(self, default_limit = True):
         raise NotImplementedError
+    def random_address(self):
+        raise NotImplementedError
+    def randomredirect_address(self):
+        raise NotImplementedError
     def login_address(self):
         raise NotImplementedError
     def captcha_image_address(self, id):
@@ -577,7 +592,8 @@ class BaseSite(object):
         raise NotImplementedError
     def contribs_address(self, target, limit=500, offset=''):
         raise NotImplementedError
-
+    def globalusers_address(self, target='', limit=500, offset='', group=''):
+        raise NotImplementedError
 
 def must_be(group=None,right=None):
     """ Decorator to require a certain user status. For now, only the values
@@ -955,10 +971,10 @@ class APISite(BaseSite):
         """Return list of localized PAGENAMEE tags for the site."""
         return self.getmagicwords("pagenamee")
 
-    def _getsiteinfo(self):
+    def _getsiteinfo(self, force=False):
         """Retrieve siteinfo and namespaces from site."""
         sirequest = api.CachedRequest(
-                            expiry=config.API_config_expiry,
+                            expiry=(0 if force else config.API_config_expiry),
                             site=self,
                             action="query",
                             meta="siteinfo",
@@ -1086,13 +1102,15 @@ class APISite(BaseSite):
             return self.namespaces()[num]
         return self.namespaces()[num][0]
 
-    def live_version(self):
+    def live_version(self, force=False):
         """Return the 'real' version number found on [[Special:Version]]
 
         Return value is a tuple (int, int, str) of the major and minor
         version numbers and any other text contained in the version.
 
         """
+        if force:
+            self._getsiteinfo(force=True)    # drop/expire cache and reload
         versionstring = self.siteinfo['generator']
         m = re.match(r"^MediaWiki ([0-9]+)\.([0-9]+)(.*)$", versionstring)
         if m:

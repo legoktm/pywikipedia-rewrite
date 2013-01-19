@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'cosmetic_changes-append': u'; cosmetic changes',
 		'cosmetic_changes-standalone': u'Robot: Cosmetic changes',
@@ -11,7 +9,8 @@ msg = {
 	'qqq': {
 		'cosmetic_changes-standalone': u'Summary message when the bot using cosmetic changes as a stand-alone script',
 		'cosmetic_changes-append': u'Summary message that will be appended to the normal edit summary when cosmetic changes are made on the fly.\n\n"Cosmetic changes" here means changes to the appearance of the page only, without any changes to the substance of the page.',
-	},	# Author: Csisc
+	},
+	# Author: Csisc
 	'aeb': {
 		'cosmetic_changes-standalone': u'روبوت: تغييرات تجميلية',
 		'cosmetic_changes-append': u'; تغييرات تجميلية',
@@ -30,6 +29,11 @@ msg = {
 		'cosmetic_changes-standalone': u'روبوت: تغييرات تجميلية',
 		'cosmetic_changes-append': u'; تغييرات تجميلية',
 	},
+	# Author: Basharh
+	'arc': {
+		'cosmetic_changes-standalone': u'ܪܘܒܘܛ: ܫܘܚܠܦ̈ܐ ܫܘܦܪ̈ܢܝܐ',
+		'cosmetic_changes-append': u'; ܫܘܚܠܦ̈ܐ ܫܘܦܪ̈ܢܝܐ',
+	},
 	# Author: Esbardu
 	# Author: Xuacu
 	'ast': {
@@ -46,6 +50,11 @@ msg = {
 	'azb': {
 		'cosmetic_changes-standalone': u'روبات:گوزلتمک',
 		'cosmetic_changes-append': u'؛ زنگینلشدیرمه',
+	},
+	# Author: Sagan
+	'ba': {
+		'cosmetic_changes-standalone': u'Робот: косметик үҙгәртеүҙәр',
+		'cosmetic_changes-append': u'; косметик үҙгәртеүҙәр',
 	},
 	# Author: Mucalexx
 	'bar': {
@@ -256,6 +265,11 @@ msg = {
 		'cosmetic_changes-standalone': u'Bot: Panggantèn kosmètik',
 		'cosmetic_changes-append': u'; panggantèn kosmètik',
 	},
+	# Author: Akoppad
+	'kn': {
+		'cosmetic_changes-standalone': u'ರೋಬೋಟ್: ಕಾಂತಿವರ್ಧಕ ಬದಲಾವಣೆಗಳು',
+		'cosmetic_changes-append': u'ಅಂದಗೊಳಿಸುವ ಬದಲಾವಣೆಗಳು',
+	},
 	'ko': {
 		'cosmetic_changes-standalone': u'로봇: 예쁘게 바꿈',
 		'cosmetic_changes-append': u'; 예쁘게 바꿈',
@@ -264,6 +278,11 @@ msg = {
 	'ksh': {
 		'cosmetic_changes-standalone': u'Bot: Änderonge för de Schönheit',
 		'cosmetic_changes-append': u'; Änderonge för de Schönheit',
+	},
+	# Author: Growingup
+	'ky': {
+		'cosmetic_changes-standalone': u'бот: косметикалык өзгөртүүлөр',
+		'cosmetic_changes-append': u'; косметикалык өзгөртүүлөр',
 	},
 	'la': {
 		'cosmetic_changes-standalone': u'automaton: mutationes minores',
@@ -333,6 +352,10 @@ msg = {
 		'cosmetic_changes-standalone': u'Bot: kosmetiese wiezigingen',
 		'cosmetic_changes-append': u'; kosmetiese wiezigingen',
 	},
+	# Author: Eukesh
+	'new': {
+		'cosmetic_changes-standalone': u'रोबोट:रुप हिलाछ्वगु',
+	},
 	# Author: Siebrand
 	'nl': {
 		'cosmetic_changes-standalone': u'Robot: cosmetische wijzigingen',
@@ -397,13 +420,24 @@ msg = {
 		'cosmetic_changes-standalone': u'Robot: Cosmetic chynges',
 		'cosmetic_changes-append': u'; cosmetic chynges',
 	},
+	# Author: පසිඳු කාවින්ද
+	'si': {
+		'cosmetic_changes-standalone': u'රොබෝ: අංගරාග වෙනස්කම්',
+		'cosmetic_changes-append': u'; අංගරාග වෙනස්කම්',
+	},
 	'sk': {
 		'cosmetic_changes-standalone': u'robot kozmetické zmeny',
 		'cosmetic_changes-append': u'; kozmetické zmeny',
 	},
+	# Author: Mateju
 	'sl': {
-		'cosmetic_changes-standalone': u'robot kozmetične spremembe',
-		'cosmetic_changes-append': u'; kozmetične spremembe',
+		'cosmetic_changes-standalone': u'Robot: oblikovne spremembe',
+		'cosmetic_changes-append': u'; oblikovne spremembe',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'cosmetic_changes-standalone': u'Bot: Badal qurxin ah',
+		'cosmetic_changes-append': u'; Badal qurxin ah',
 	},
 	# Author: Vinie007
 	'sq': {
@@ -444,8 +478,9 @@ msg = {
 		'cosmetic_changes-standalone': u'బాటు: పైపై మార్పులు',
 		'cosmetic_changes-append': u'; పైపై మార్పులు',
 	},
+	# Author: Nullzero
 	'th': {
-		'cosmetic_changes-standalone': u'บอต ปรับแต่งให้อ่านง่าย',
+		'cosmetic_changes-standalone': u'โรบอต ปรับแต่งให้อ่านง่าย',
 		'cosmetic_changes-append': u'; ปรับแต่งให้อ่านง่าย',
 	},
 	'tk': {
@@ -480,6 +515,11 @@ msg = {
 	'uk': {
 		'cosmetic_changes-standalone': u'робот косметичні зміни',
 		'cosmetic_changes-append': u'; косметичні зміни',
+	},
+	# Author: CoderSI
+	'uz': {
+		'cosmetic_changes-standalone': u'Bot: Kosmetik oʻzgarishlar',
+		'cosmetic_changes-append': u'; kosmetik oʻzgarishlar',
 	},
 	# Author: Alunardon90
 	# Author: Candalua

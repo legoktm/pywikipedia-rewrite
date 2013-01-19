@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	'en': {
 		'editarticle-edit': u'Manual edit with robot: %(description)s',
 	},
 	# Author: Csisc
 	'qqq': {
 		'editarticle-edit': u'Edit summary when the bot owner edits a text while the bot invoked an editor. <code>%(descriptions)s</code> gives further informations.',
-	},	# Author: Csisc
+	},
+	# Author: Csisc
 	'aeb': {
 		'editarticle-edit': u'تعديل يدوي: %(description)s',
 	},
@@ -27,6 +26,14 @@ msg = {
 	# Author: Ebrahimi-amir
 	'az': {
 		'editarticle-edit': u'Bot hesabından əllə tənzimləmə: %(description)s',
+	},
+	# Author: E THP
+	'azb': {
+		'editarticle-edit': u'بوت حسابیندان الله تنزیمله‌مه: %(description)s',
+	},
+	# Author: Sagan
+	'ba': {
+		'editarticle-edit': u'Робот ярҙамында ҡулдан мөхәррирләү: %(description)s',
 	},
 	# Author: Mucalexx
 	'bar': {
@@ -161,6 +168,10 @@ msg = {
 	'jv': {
 		'editarticle-edit': u'Sunting manual mawa bot: %(description)s',
 	},
+	# Author: 아라
+	'ko': {
+		'editarticle-edit': u'로봇으로 수동 편집: %(description)s',
+	},
 	# Author: Purodha
 	'ksh': {
 		'editarticle-edit': u'Vun Hand mem Botprojramm jeändert: %(description)s',
@@ -190,6 +201,10 @@ msg = {
 	'mk': {
 		'editarticle-edit': u'Рачно уредување со робот: %(description)s',
 	},
+	# Author: Praveenp
+	'ml': {
+		'editarticle-edit': u'യന്ത്രം ഉപയോഗിച്ച് ഉപയോക്താവ് ചെയ്ത തിരുത്തൽ:  %(description)s',
+	},
 	# Author: Anakmalaysia
 	'ms': {
 		'editarticle-edit': u'Suntingan manual dengan bot: %(description)s',
@@ -201,6 +216,10 @@ msg = {
 	# Author: Servien
 	'nds-nl': {
 		'editarticle-edit': u'Haandmaotige bewarking mit bot: %(description)s',
+	},
+	# Author: Eukesh
+	'new': {
+		'editarticle-edit': u'रोबटं याःगु म्यानुअल ज्या: %(description)s',
 	},
 	# Author: SPQRobin
 	# Author: Siebrand
@@ -257,6 +276,10 @@ msg = {
 	'sl': {
 		'editarticle-edit': u'Ročno urejanje z botom: %(description)s',
 	},
+	# Author: Abshirdheere
+	'so': {
+		'editarticle-edit': u'Gacan ku badal Bot ah: %(description)s',
+	},
 	# Author: Euriditi
 	'sq': {
 		'editarticle-edit': u'Redaktim manual me robot: %(description)s',
@@ -275,6 +298,10 @@ msg = {
 	},
 	'sv': {
 		'editarticle-edit': u'Manuell redigering: %(description)s',
+	},
+	# Author: Kwisha
+	'sw': {
+		'editarticle-edit': u'Hariri kwa mkono na boti: %(description)s',
 	},
 	# Author: Przemub
 	'szl': {
@@ -303,6 +330,10 @@ msg = {
 	# Author: Dim Grits
 	'uk': {
 		'editarticle-edit': u'Ручне редагування за допомогою бота: %(description)s',
+	},
+	# Author: CoderSI
+	'uz': {
+		'editarticle-edit': u'Bot yordamida qoʻlda tahrirlash: %(description)s',
 	},
 	# Author: Alunardon90
 	# Author: Candalua

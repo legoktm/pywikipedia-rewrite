@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 msg = {
-
-
 	# Author: Xqt
 	'en': {
 		'table2wiki-no-warning': u'User-controlled robot: Table syntax updated',
@@ -12,7 +10,8 @@ msg = {
 	# Author: Xqt
 	'qqq': {
 		'table2wiki-warnings': u'The message is used as an edit comment. Variables:\n* Variable "%(count)d" is probably a number.\n* You may use PLURAL tag like (<code><nowiki>{{PLURAL:%(count)d|1 entry|%(count)d entries}}</nowiki></code>)\n* You may also use PLURAL tag like (<code><nowiki>{{PLURAL:count|1 entry|%(count)d entries}}</nowiki></code>)',
-	},	# Author: Csisc
+	},
+	# Author: Csisc
 	'aeb': {
 		'table2wiki-warnings': u'بوت بواسطة مستخدم: تحديث تهيئة الجدول - {{PLURAL:count|1 تحذير|%(count)d تحذير}}!',
 		'table2wiki-no-warning': u'بوت بواسطة مستخدم: تحديث تهيئة الجدول',
@@ -40,9 +39,16 @@ msg = {
 		'table2wiki-warnings': u'İstifadəçi Kontrollü Bot: Cədvəl imlası yeniləndi - {{PLURAL:count|1|%(count)d}} xəbərdarlıq}}!',
 		'table2wiki-no-warning': u'İstifadəçi Kontrollü Bot: Cədvəl imlası yeniləndi.',
 	},
+	# Author: Amir a57
 	# Author: E THP
 	'azb': {
+		'table2wiki-warnings': u'ایستیفاده‌چی کونترول‌لو بوت: جدول ایملاسی یئنیلندی - {{PLURAL:count|1|%(count)d}} خبردارلیق}}!',
 		'table2wiki-no-warning': u'ایستیفاده‌چی کنتروللو بوت: جدول ایملاسی يئنیلندی .',
+	},
+	# Author: Sagan
+	'ba': {
+		'table2wiki-warnings': u'Ярым автомат робот: таблица синтаксисы яңыртылған - {{PLURAL:count|1 иҫкәртеү|иҫкәртеүҙәр: %(count)d}}!',
+		'table2wiki-no-warning': u'Ярым автомат робот: таблица синтаксисы яңыртылды',
 	},
 	# Author: EugeneZelenko
 	'be-tarask': {
@@ -97,6 +103,12 @@ msg = {
 	# Author: Glavkos
 	'el': {
 		'table2wiki-no-warning': u'Ρομπότ ελεγχόμενο από το χρήστη: Ο πίνακας σύνταξης ενημερώθηκε',
+	},
+	# Author: Blahma
+	# Author: Objectivesea
+	'eo': {
+		'table2wiki-warnings': u'Uzanto-regata roboto: Tabelsintakso ĝisdatiĝis - {{PLURAL:count|1 atentigo|%(count)d atentigoj}}!',
+		'table2wiki-no-warning': u'Uzanto-regata roboto: Tabelsintakso ĝisdatiĝis',
 	},
 	# Author: Xqt
 	'es': {
@@ -178,8 +190,8 @@ msg = {
 	# Author: Shirayuki
 	# Author: Xqt
 	'ja': {
-		'table2wiki-warnings': u'ロボットによる: 表をHTMLからウィキ文法に更新 - 警告 {{PLURAL:count|1|%(count)d}}',
-		'table2wiki-no-warning': u'ロボットによる: 表をHTMLからウィキ文法に更新',
+		'table2wiki-warnings': u'ロボットによる: 表をHTMLからウィキ構文に更新 - 警告 {{PLURAL:count|1|%(count)d}}',
+		'table2wiki-no-warning': u'ロボットによる: 表をHTMLからウィキ構文に更新',
 	},
 	# Author: NoiX180
 	'jv': {
@@ -193,6 +205,11 @@ msg = {
 	'kk-cyrl': {
 		'table2wiki-warnings': u'Басқарылмалы бот: Кесте пішімі түзетілді - {{PLURAL:count|1|%(count)d}} құлақтандыру!',
 		'table2wiki-no-warning': u'Басқарылмалы бот: Кесте пішімі түзетілді',
+	},
+	# Author: 아라
+	'ko': {
+		'table2wiki-warnings': u'사용자가 제어한 로봇: 테이블 구문을 업데이트했습니다! - {{PLURAL:count|경고 1개|경고 %(count)d개}}',
+		'table2wiki-no-warning': u'사용자가 제어한 로봇: 테이블 구문을 업데이트함',
 	},
 	# Author: Purodha
 	# Author: Xqt
@@ -226,6 +243,11 @@ msg = {
 	'mk': {
 		'table2wiki-warnings': u'Кориснички-управуван бот: подновена синтаксата за табели - {{PLURAL:count|1 предупредување|%(count)d предупредувања}}!',
 		'table2wiki-no-warning': u'Кориснички-управуван робот: подновена синтаксата за табели',
+	},
+	# Author: Praveenp
+	'ml': {
+		'table2wiki-warnings': u'ഉപയോക്തൃ-നിയന്ത്രിത യന്ത്രം: പട്ടികയുടെ എഴുത്തുരീതി പുതുക്കി  - {{PLURAL:count|ഒരു മുന്നറിയിപ്പ്|%(count)d മുന്നറിയിപ്പുകൾ}}!',
+		'table2wiki-no-warning': u'ഉപയോക്തൃ-നിയന്ത്രിത യന്ത്രം: പട്ടികയുടെ എഴുത്തുരീതി പുതുക്കി',
 	},
 	# Author: Diagramma Della Verita
 	# Author: Xqt
@@ -295,6 +317,11 @@ msg = {
 	'sl': {
 		'table2wiki-warnings': u'Uporabniško nadzorovan Bot: sintaksa tabele je posodobljena - {{PLURAL:count|1 opozorilo|%(count)d opozoril}}!',
 		'table2wiki-no-warning': u'Uporabniško nadzorovan Bot: sintaksa tabele je posodobljena',
+	},
+	# Author: Abshirdheere
+	'so': {
+		'table2wiki-warnings': u'Bot La adeegsaday: dib u habayn qaab jadwal - {{PLURAL:count|1 digniin|%(count)d digniin}}!',
+		'table2wiki-no-warning': u'Bot La adeegsaday: dib u habayn qaab jadwal',
 	},
 	# Author: Rancher
 	'sr': {
@@ -370,9 +397,10 @@ msg = {
 	},
 	# Author: Breawycker
 	# Author: Justincheng12345
+	# Author: Simon Shek
 	'zh-hant': {
 		'table2wiki-warnings': u'手動控制機械人進行表語法更新-出現%(count)d個警告！',
-		'table2wiki-no-warning': u'使用者控制的機器人： 表更新的語法',
+		'table2wiki-no-warning': u'使用者控制的機械人： 表更新的語法',
 	},
 	# Author: Justincheng12345
 	'zh-hk': {
