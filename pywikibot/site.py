@@ -3272,6 +3272,11 @@ class DataSite (APISite):
         else:
             # not implemented yet
             raise NotImplementedError
+    def set_sitelinks(self, **params):
+        token = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
+        req = api.Request(site=self, action='wbsetsitelink', token=token, **params)
+        data = req.submit()
+        print data
 
     # deprecated BaseSite methods
     def fam(self):
