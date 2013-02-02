@@ -5,14 +5,14 @@ __version__ = '$Id$'
 
 # The Wikimedia family that is known as Wikiquote
 
-class Family(family.Family):
+class Family(family.WikimediaFamily):
     def __init__(self):
-        family.Family.__init__(self)
+        super(Family, self).__init__()
         self.name = 'wikiquote'
 
         self.languages_by_size = [
             'en', 'pl', 'it', 'ru', 'fr', 'de', 'pt', 'es', 'sk', 'cs', 'bg',
-            'bs', 'tr', 'sl', 'he', 'lt', 'eo', 'el', 'uk', 'zh', 'id', 'fa',
+            'bs', 'tr', 'sl', 'he', 'lt', 'eo', 'uk', 'el', 'zh', 'id', 'fa',
             'hu', 'fi', 'sv', 'li', 'nl', 'ca', 'no', 'nn', 'hr', 'ja', 'az',
             'hy', 'ar', 'et', 'ko', 'ml', 'cy', 'ka', 'gl', 'sr', 'ro', 'ku',
             'th', 'te', 'is', 'eu', 'da', 'af', 'vi', 'sq', 'ta', 'hi', 'la',
@@ -20,7 +20,9 @@ class Family(family.Family):
             'ky', 'am',
         ]
 
-        self.langs = dict([(lang, '%s.wikiquote.org' % lang) for lang in self.languages_by_size])
+        self.langs = dict([(lang, '%s.wikiquote.org' % lang)
+                           for lang in self.languages_by_size])
+
 
         # attop is a list of languages that prefer to have the interwiki
         # links at the top of the page.
@@ -43,13 +45,6 @@ class Family(family.Family):
             'hu', 'hy', 'id', 'is', 'it', 'ja', 'ka', 'kn', 'ku', 'la', 'li',
             'lt', 'ml', 'nl', 'nn', 'no', 'pt', 'ro', 'ru', 'sk', 'sl', 'sq',
             'sr', 'su', 'sv', 'te', 'tr', 'uk', 'uz', 'vi', 'zh', 'zh-min-nan',
-        ]
-
-        # CentralAuth cross avaliable projects.
-        self.cross_projects = [
-            'wiktionary', 'wikibooks', 'wikiquote', 'wikisource', 'wikinews',
-            'wikiversity', 'meta', 'mediawiki', 'test', 'incubator', 'commons',
-            'species',
         ]
 
         # Which languages have a special order for putting interlanguage links,
@@ -110,6 +105,3 @@ class Family(family.Family):
         if code == 'ru':
             return 'utf-8', 'iso8859-5'
         return self.code2encoding(code),
-
-    def shared_image_repository(self, code):
-        return ('commons', 'commons')

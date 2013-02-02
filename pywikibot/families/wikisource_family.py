@@ -5,31 +5,23 @@ __version__ = '$Id$'
 
 # The Wikimedia family that is known as Wikisource
 
-class Family(family.Family):
+class Family(family.WikimediaFamily):
     def __init__(self):
-        family.Family.__init__(self)
+        super(Family, self).__init__()
         self.name = 'wikisource'
 
         self.languages_by_size = [
             'fr', 'en', 'de', 'ru', 'it', 'zh', 'pl', 'pt', 'he', 'es', 'sv',
             'fa', 'hu', 'ar', 'cs', 'ca', 'ko', 'sl', 'ro', 'fi', 'vi', 'te',
             'sa', 'el', 'sr', 'bn', 'hr', 'th', 'no', 'hy', 'nl', 'ml', 'la',
-            'vec', 'ja', 'tr', 'eo', 'br', 'yi', 'mk', 'uk', 'ta', 'gu', 'id',
+            'vec', 'ja', 'tr', 'eo', 'br', 'yi', 'mk', 'uk', 'gu', 'ta', 'id',
             'is', 'da', 'be', 'li', 'et', 'mr', 'bg', 'bs', 'sah', 'az', 'gl',
             'lt', 'kn', 'cy', 'sk', 'zh-min-nan', 'fo',
         ]
 
-        for lang in self.languages_by_size:
-            self.langs[lang] = '%s.wikisource.org' % lang
+        self.langs = dict([(lang, '%s.wikisource.org' % lang)
+                           for lang in self.languages_by_size])
         self.langs['-'] = 'wikisource.org'
-
-
-        # CentralAuth cross avaliable projects.
-        self.cross_projects = [
-            'wiktionary', 'wikibooks', 'wikiquote', 'wikisource', 'wikinews',
-            'wikiversity', 'meta', 'mediawiki', 'test', 'incubator', 'commons',
-            'species',
-        ]
 
         # Global bot allowed languages on http://meta.wikimedia.org/wiki/Bot_policy/Implementation#Current_implementation
         self.cross_allowed = [
@@ -124,6 +116,3 @@ class Family(family.Family):
         self.crossnamespace[106] = {
             'sv': self.authornamespaces,
         }
-
-    def shared_image_repository(self, code):
-        return ('commons', 'commons')
