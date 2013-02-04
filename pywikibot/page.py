@@ -324,14 +324,18 @@ class Page(object):
         # TODO: what about redirects, errors?
         return self._revisions[oldid].text
 
-    def permalink(self):
-        """Return the permalink URL for current revision of this page."""
-        return "%s://%s%s/index.php?title=%s&oldid=%s" \
+    def permalink(self, oldid=None):
+        """Return the permalink URL of an old revision of this page.
+
+        @param oldid: The revid of the revision desired.
+
+        """
+        return "%s://%s/%sindex.php?title=%s&oldid=%s" \
                % (self.site.protocol(),
                   self.site.hostname(),
                   self.site.scriptpath(),
                   self.title(asUrl=True),
-                  self.latestRevision())
+                  (oldid if oldid is not None else self.latestRevision()))
 
     def latestRevision(self):
         """Return the current revision id for this page."""
@@ -725,8 +729,7 @@ class Page(object):
         return True
 
     def save(self, comment=None, watch=None, minor=True, botflag=None,
-             force=False, async=False, callback=None, recreate=True, createonly=False, nocreate=False,
-             newsection=False):
+             force=False, async=False, callback=None):
         """Save the current contents of page's text to the wiki.
 
         @param comment: The edit summary for the modification (optional, but
@@ -769,24 +772,19 @@ class Page(object):
         if async:
             pywikibot.async_request(self._save, comment=comment, minor=minor,
                                     watchval=watchval, botflag=botflag,
-                                    async=async, callback=callback,
-                                    recreate=recreate, createonly=createonly,
-                                    nocreate=nocreate, newsection=newsection)
+                                    async=async, callback=callback)
         else:
             self._save(comment=comment, minor=minor, watchval=watchval,
-                       botflag=botflag, async=async, callback=callback,
-                       recreate=recreate, createonly=createonly, nocreate=nocreate,
-                       newsection=newsection)
+                       botflag=botflag, async=async, callback=callback)
 
-    def _save(self, comment, minor, watchval, botflag, async, callback, recreate, createonly, nocreate, newsection):
+    def _save(self, comment, minor, watchval, botflag, async, callback):
         err = None
         link = self.title(asLink=True)
         if config.cosmetic_changes:
             comment = self._cosmetic_changes_hook(comment) or comment
         try:
             done = self.site.editpage(self, summary=comment, minor=minor,
-                                      watch=watchval, bot=botflag, recreate=recreate,
-                                      createonly=createonly, nocreate=nocreate, newsection=newsection)
+                                      watch=watchval, bot=botflag)
             if not done:
                 pywikibot.warning(u"Page %s not saved" % link)
                 raise pywikibot.PageNotSaved(link)
@@ -840,9 +838,7 @@ class Page(object):
             return comment
 
     def put(self, newtext, comment=u'', watchArticle=None, minorEdit=True,
-            botflag=None, force=False, async=False, callback=None,
-            recreate=True, createonly=False, nocreate=False,
-            newsection=False):
+            botflag=None, force=False, async=False, callback=None):
         """Save the page with the contents of the first argument as the text.
 
         This method is maintained primarily for backwards-compatibility.
@@ -855,10 +851,8 @@ class Page(object):
         """
         self.text = newtext
         return self.save(comment=comment, watch=watchArticle,
-                        minor=minorEdit, botflag=botflag, force=force,
-                        async=async, callback=callback, recreate=recreate,
-                        createonly=createonly, nocreate=nocreate,
-                        newsection=newsection)
+                         minor=minorEdit, botflag=botflag, force=force,
+                         async=async, callback=callback)
 
     def put_async(self, newtext, comment=u'', watchArticle=None,
                   minorEdit=True, botflag=None, force=False, callback=None):
@@ -1127,11 +1121,7 @@ class Page(object):
                  ) for rev in sorted(self._revisions,
                                      reverse=not reverseOrder)
                ]
-    
-    def getCreator(self):
-        """Return the username of the creator of the page"""
-        return self.getVersionHistory(reverseOrder=True, total=1)[0][2]
-    
+
     def getVersionHistoryTable(self, forceReload=False, reverseOrder=False,
                                step=None, total=None):
         """Return the version history as a wiki table."""
@@ -1149,7 +1139,7 @@ class Page(object):
         return result
 
     def fullVersionHistory(self, reverseOrder=False, step=None,
-                          total=None, startid=None):
+                          total=None):
         """Iterate previous versions including wikitext.
 
         Takes same arguments as getVersionHistory.
@@ -1160,8 +1150,7 @@ class Page(object):
         """
         self.site.loadrevisions(self, getText=True,
                                 rvdir=reverseOrder,
-                                step=step, total=total,
-                                startid=startid)
+                                step=step, total=total)
         return [( self._revisions[rev].revid,
                   self._revisions[rev].timestamp,
                   self._revisions[rev].user,
@@ -2424,7 +2413,7 @@ not supported by PyWikiBot!"""
         m = Link.illegal_titles_pattern.search(t)
         if m:
             raise pywikibot.InvalidTitle(
-                  u"%s contains illegal char(s) '%s'" % (t, m.group(0)))
+                  u"contains illegal char(s) '%s'" % m.group(0))
 
         # Pages with "/./" or "/../" appearing in the URLs will
         # often be unreachable due to the way web browsers deal
