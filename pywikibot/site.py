@@ -3281,6 +3281,9 @@ class DataSite (APISite):
     def set_sitelinks(self, **params):
         token = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
         req = api.Request(site=self, action='wbsetsitelink', token=token, **params)
+        print '----'
+        print req.params
+        print '----'
         data = req.submit()
         print data
 
