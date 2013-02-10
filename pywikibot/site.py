@@ -3269,8 +3269,7 @@ class DataSite (APISite):
                 ids = None
             else:
                 params['ids'] = source
-                ids = source
-            ids = str(source).lower()
+                ids = str(source).lower()
             wbrequest = api.Request(site=self, action="wbgetentities", **params)
             wbdata = wbrequest.submit()
             assert 'success' in wbdata,  \
