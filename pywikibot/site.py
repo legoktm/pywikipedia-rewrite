@@ -3260,32 +3260,47 @@ class DataSite (APISite):
 
     def get_item(self, source, **params):
         """get the data for multiple Wikibase items"""
-        if type(source) == int or \
-           isinstance(source, basestring) and source.isdigit():
-            ids = str(source)
-            wbrequest = api.Request(site=self, action="wbgetitems", ids=ids,
-                                    **params)
+        #if type(source) == int or \
+        #   isinstance(source, basestring) and source.isdigit():
+        if True:
+            if type(source) == dict:
+                params['sites'] = source['sites']
+                params['titles'] = source['titles']
+                ids = None
+            else:
+                params['ids'] = source
+                ids = source
+            ids = str(source).lower()
+            wbrequest = api.Request(site=self, action="wbgetentities", **params)
             wbdata = wbrequest.submit()
             assert 'success' in wbdata,  \
-                   "API wbgetitems response lacks 'success' key"
+                   "API wbgetentities response lacks 'success' key"
             assert wbdata['success'] == 1, \
                    "API 'success' key ist not 1"
-            assert 'items' in wbdata,  \
-                   "API wbgetitems response lacks 'items' key"
-            assert ids in wbdata['items'], \
-                   "API  wbgetitems response lacks %s key" % ids
-            return wbdata['items'][ids]
+            assert 'entities' in wbdata,  \
+                   "API wbgetentities response lacks 'items' key"
+            if ids:
+                return wbdata['entities'][ids]
+            return wbdata['entities'].values()[0]
         else:
             # not implemented yet
             raise NotImplementedError
+
+    def get_id(self, site, title):
+        params = {'action':'wbgetentities',
+                  'sites':site,
+                  'titles':title,
+                  'props':'info'
+        }
+        req = api.Request(site=self, **params)
+        data = req.submit()
+        return data['entities'].keys()[0]
+
     def set_sitelinks(self, **params):
         token = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
         req = api.Request(site=self, action='wbsetsitelink', token=token, **params)
-        print '----'
-        print req.params
-        print '----'
         data = req.submit()
-        print data
+        return data
 
     # deprecated BaseSite methods
     def fam(self):
