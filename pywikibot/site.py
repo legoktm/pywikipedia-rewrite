@@ -3295,9 +3295,21 @@ class DataSite (APISite):
         data = req.submit()
         return data['entities'].keys()[0]
 
+    def raw(self, **params):
+        req= api.Request(site=self, **params)
+        data=req.submit()
+        return data
+
     def set_sitelinks(self, **params):
         token = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
         req = api.Request(site=self, action='wbsetsitelink', token=token, **params)
+        data = req.submit()
+        return data
+
+    def set_claim(self, **params):
+        if not 'token' in params:
+            params['token'] = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
+        req = api.Request(site=self, action='wbcreateclaim', **params)
         data = req.submit()
         return data
 
