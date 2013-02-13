@@ -3313,6 +3313,17 @@ class DataSite (APISite):
         data = req.submit()
         return data
 
+    def get_claims(self, qid):
+        qid = qid.lower()
+        params = {'actiom':'wbgetentities',
+                  'ids':qid,
+                  'props':'claims'
+        }
+        req = api.Request(site=self, **params)
+        data =req.submit()
+        return data['entities'][qid]['claims']
+
+
     # deprecated BaseSite methods
     def fam(self):
         raise NotImplementedError
