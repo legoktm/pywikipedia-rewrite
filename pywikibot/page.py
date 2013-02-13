@@ -729,7 +729,7 @@ class Page(object):
         return True
 
     def save(self, comment=None, watch=None, minor=True, botflag=None,
-             force=False, async=False, callback=None):
+             force=False, async=False, callback=None, newsection=False):
         """Save the current contents of page's text to the wiki.
 
         @param comment: The edit summary for the modification (optional, but
@@ -772,19 +772,20 @@ class Page(object):
         if async:
             pywikibot.async_request(self._save, comment=comment, minor=minor,
                                     watchval=watchval, botflag=botflag,
-                                    async=async, callback=callback)
+                                    async=async, callback=callback,newsection=newsection)
         else:
             self._save(comment=comment, minor=minor, watchval=watchval,
-                       botflag=botflag, async=async, callback=callback)
+                       botflag=botflag, async=async, callback=callback,
+                       newsection=newsection)
 
-    def _save(self, comment, minor, watchval, botflag, async, callback):
+    def _save(self, comment, minor, watchval, botflag, async, callback,newsection):
         err = None
         link = self.title(asLink=True)
         if config.cosmetic_changes:
             comment = self._cosmetic_changes_hook(comment) or comment
         try:
             done = self.site.editpage(self, summary=comment, minor=minor,
-                                      watch=watchval, bot=botflag)
+                                      watch=watchval, bot=botflag,newsection=newsection)
             if not done:
                 pywikibot.warning(u"Page %s not saved" % link)
                 raise pywikibot.PageNotSaved(link)
@@ -838,7 +839,7 @@ class Page(object):
             return comment
 
     def put(self, newtext, comment=u'', watchArticle=None, minorEdit=True,
-            botflag=None, force=False, async=False, callback=None):
+            botflag=None, force=False, async=False, callback=None,newsection=False):
         """Save the page with the contents of the first argument as the text.
 
         This method is maintained primarily for backwards-compatibility.
@@ -852,7 +853,7 @@ class Page(object):
         self.text = newtext
         return self.save(comment=comment, watch=watchArticle,
                          minor=minorEdit, botflag=botflag, force=force,
-                         async=async, callback=callback)
+                         async=async, callback=callback,newsection=newsection)
 
     def put_async(self, newtext, comment=u'', watchArticle=None,
                   minorEdit=True, botflag=None, force=False, callback=None):
