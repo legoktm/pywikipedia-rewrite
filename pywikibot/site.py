@@ -3315,7 +3315,7 @@ class DataSite (APISite):
 
     def get_claims(self, qid):
         qid = qid.lower()
-        params = {'actiom':'wbgetentities',
+        params = {'action':'wbgetentities',
                   'ids':qid,
                   'props':'claims'
         }
