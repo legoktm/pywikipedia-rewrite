@@ -367,7 +367,8 @@ def getLanguageLinks(text, insite=None, pageLink="[[]]", template_subpage=False)
             # we want the actual page objects rather than the titles
             site = pywikibot.getSite(code=lang, fam=fam)
             try:
-                result[lang+'wiki'] = pywikibot.Page(site, pagetitle, insite=insite)
+                #result[site] = pywikibot.Page(site, pagetitle, insite=insite)
+                result[lang+'wiki'] = pagetitle
             except pywikibot.InvalidTitle:
                 pywikibot.output(
         u"[getLanguageLinks] Text contains invalid interwiki link [[%s:%s]]."
