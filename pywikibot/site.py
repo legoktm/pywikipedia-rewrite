@@ -2470,7 +2470,7 @@ redirects on %(site)s wiki""",
 
     def editpage(self, page, summary, minor=True, notminor=False,
                  bot=True, recreate=True, createonly=False, nocreate=False, watch=None,
-                 newsection=False, append=False):
+                 newsection=False, append=False, lastrev=None, token=None, skipec=False):
         """Submit an edited Page object to be saved to the wiki.
 
         @param page: The Page to be saved; its .text property will be used
@@ -2498,12 +2498,14 @@ redirects on %(site)s wiki""",
         if not text:
             raise Error("editpage: no text to be saved")
         try:
-            lastrev = page.latestRevision()
+            if not lastrev:
+                lastrev = page.latestRevision()
         except NoPage:
             lastrev = None
             if not recreate:
                 raise
-        token = self.token(page, "edit")
+        if not token:
+            token = self.token(page, "edit")
         # getting token also updates the 'lastrevid' value, which allows us to
         # detect if page has been changed since last time text was retrieved.
 
@@ -2511,9 +2513,10 @@ redirects on %(site)s wiki""",
         # if the page is updated after the token is retrieved but
         # before the page is saved.
         self.lock_page(page)
-        if lastrev is not None and page.latestRevision() != lastrev:
-            raise EditConflict(
-                "editpage: Edit conflict detected; saving aborted.")
+        if not skipec:
+            if lastrev is not None and page.latestRevision() != lastrev:
+                raise EditConflict(
+                    "editpage: Edit conflict detected; saving aborted.")
         params = dict(action="edit",
                       title=page.title(withSection=False),
                       token=token, summary=summary)
