@@ -3321,7 +3321,10 @@ class DataSite (APISite):
         }
         req = api.Request(site=self, **params)
         data =req.submit()
-        return data['entities'][qid]['claims']
+        if 'claims' in data['entities'][qid]:
+            return data['entities'][qid]['claims']
+        else:
+            return {}
 
 
     # deprecated BaseSite methods
