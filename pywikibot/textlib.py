@@ -365,7 +365,7 @@ def getLanguageLinks(text, insite=None, pageLink="[[]]", template_subpage=False)
                 # ignore text after the pipe
                 pagetitle = pagetitle[:pagetitle.index('|')]
             # we want the actual page objects rather than the titles
-            site = pywikibot.getSite(code=lang, fam=fam)
+            #site = pywikibot.getSite(code=lang, fam=fam)
             try:
                 #result[site] = pywikibot.Page(site, pagetitle, insite=insite)
                 result[lang+'wiki'] = pagetitle

@@ -2526,7 +2526,7 @@ redirects on %(site)s wiki""",
             params["text"] = text
         if bot:
             params["bot"] = ""
-        if lastrev is not None:
+        if (lastrev is not None) and (not skipec):
             params["basetimestamp"] = page._revisions[lastrev].timestamp
         if minor:
             params['minor'] = ""
