@@ -3271,12 +3271,17 @@ class DataSite (APISite):
         #   isinstance(source, basestring) and source.isdigit():
         if True:
             if type(source) == dict:
-                params['sites'] = source['sites']
+                params['sites'] = source['sites'].replace('-','_')
                 params['titles'] = source['titles']
+                ids = None
+            elif type(source) == pywikibot.page.Page:
+                params['titles'] = source.title()
+                params['sites'] = source.site.language().replace('-','_')+'wiki'
                 ids = None
             else:
                 params['ids'] = source
                 ids = str(source).lower()
+            print params
             wbrequest = api.Request(site=self, action="wbgetentities", **params)
             wbdata = wbrequest.submit()
             assert 'success' in wbdata,  \
