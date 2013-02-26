@@ -3325,6 +3325,13 @@ class DataSite (APISite):
         data = req.submit()
         return data
 
+    def set_reference(self, **params):
+        if not 'token' in params:
+            params['token'] = self.token(pywikibot.Page(self, 'Main Page'), 'edit')
+        req = api.Request(site=self, action='wbsetreference', **params)
+        data = req.submit()
+        return data
+
     def get_claims(self, qid):
         qid = qid.lower()
         params = {'action':'wbgetentities',
