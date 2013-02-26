@@ -2470,7 +2470,7 @@ redirects on %(site)s wiki""",
 
     def editpage(self, page, summary, minor=True, notminor=False,
                  bot=True, recreate=True, createonly=False, nocreate=False, watch=None,
-                 newsection=False, append=False, lastrev=None, token=None, skipec=False):
+                 newsection=False, append=False, lastrev=None, token=None, skipec=False,useid=False):
         """Submit an edited Page object to be saved to the wiki.
 
         @param page: The Page to be saved; its .text property will be used
@@ -2518,8 +2518,11 @@ redirects on %(site)s wiki""",
                 raise EditConflict(
                     "editpage: Edit conflict detected; saving aborted.")
         params = dict(action="edit",
-                      title=page.title(withSection=False),
                       token=token, summary=summary)
+        if useid:
+            params['pageid'] = useid
+        else:
+            params['title']=page.title(withSection=False)
         if append:
             params["appendtext"] = text
         else:
