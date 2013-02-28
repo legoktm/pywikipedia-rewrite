@@ -2597,7 +2597,8 @@ u"editpage: received '%s' even though bot is logged in" % err.code,
                 page._revid = result["edit"]["newrevid"]
                 # see http://www.mediawiki.org/wiki/API:Wikimania_2006_API_discussion#Notes
                 # not safe to assume that saved text is the same as sent
-                self.loadrevisions(page, getText=True)
+                if not skipec:
+                    self.loadrevisions(page, getText=True)
                 return True
             elif result["edit"]["result"] == "Failure":
                 if "captcha" in result["edit"]:
