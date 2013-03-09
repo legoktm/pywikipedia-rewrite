@@ -2,7 +2,7 @@
 msg = {
 	'en': {
 		'catall-changing': u'Robot: Changing categories',
-	},	
+	},
 	# Author: Csisc
 	'aeb': {
 		'catall-changing': u'بوت: تغيير التصنيفات',
@@ -40,10 +40,6 @@ msg = {
 		'catall-changing': u'Робот: категория үҙгәртеү',
 	},
 	# Author: Jim-by
-	'be-tarask': {
-		'catall-changing': u'Робат: Зьмена катэгорыяў',
-	},
-	# Author: Jim-by
 	'be-x-old': {
 		'catall-changing': u'Робат: Зьмена катэгорыяў',
 	},
@@ -78,6 +74,10 @@ msg = {
 	},
 	'de': {
 		'catall-changing': u'Bot: Wechsele Kategorien',
+	},
+	# Author: Eruedin
+	'de-ch': {
+		'catall-changing': u'Bot: Ändern von Kategorien',
 	},
 	# Author: Erdemaslancan
 	'diq': {
@@ -126,10 +126,6 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'catall-changing': u'Bot: Cambio algunhas categorías',
-	},
-	# Author: Xqt
-	'gsw': {
-		'catall-changing': u'Bötli: Ändere Kategorie',
 	},
 	'he': {
 		'catall-changing': u'בוט: משנה קטגוריות',
@@ -220,10 +216,6 @@ msg = {
 	'ms': {
 		'catall-changing': u'Robot: Menukar kategori',
 	},
-	# Author: Nghtwlkr
-	'nb': {
-		'catall-changing': u'Robot: Endrer kategorier',
-	},
 	# Author: Servien
 	'nds-nl': {
 		'catall-changing': u'Bot: wieziging van kategorieën',
@@ -311,10 +303,6 @@ msg = {
 		'catall-changing': u'Робот: промењене категорије',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'catall-changing': u'Робот: промењене категорије',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'catall-changing': u'Robot: promenjene kategorije',
 	},
@@ -357,10 +345,6 @@ msg = {
 	'ug': {
 		'catall-changing': u'ماشىنا ئادەم: كاتېگورىيە ئۆزگەرتىۋاتىدۇ',
 	},
-	# Author: Sahran
-	'ug-arab': {
-		'catall-changing': u'ماشىنا ئادەم: كاتېگورىيە ئۆزگەرتىۋاتىدۇ',
-	},
 	# Author: A1
 	'uk': {
 		'catall-changing': u'Бот: Зміна категорій',
@@ -399,10 +383,6 @@ msg = {
 	},
 	# Author: Yfdyh000
 	'zh': {
-		'catall-changing': u'机器人：修改分类',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
 		'catall-changing': u'机器人：修改分类',
 	},
 	# Author: Breawycker

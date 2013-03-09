@@ -37,10 +37,6 @@ msg = {
 		'djvutext-creating': u'Робот: DjVu-нан алынған текст булған бит төҙөү',
 	},
 	# Author: Jim-by
-	'be-tarask': {
-		'djvutext-creating': u'Робат: Стварэньне старонкі з тэкстам, узятым з DjVu',
-	},
-	# Author: Jim-by
 	'be-x-old': {
 		'djvutext-creating': u'Робат: Стварэньне старонкі з тэкстам, узятым з DjVu',
 	},
@@ -69,6 +65,10 @@ msg = {
 	# Author: Purodha
 	'de': {
 		'djvutext-creating': u'Bot: Erstelle eine Seite mit aus DjVu extrahiertem Text',
+	},
+	# Author: Eruedin
+	'de-ch': {
+		'djvutext-creating': u'Bot: Seite mit Text aus dem DjVu erstellen',
 	},
 	# Author: Erdemaslancan
 	'diq': {
@@ -120,10 +120,6 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'djvutext-creating': u'Bot: Creo a páxina co texto extraído do DjVu',
-	},
-	# Author: Als-Holder
-	'gsw': {
-		'djvutext-creating': u'Robot: e Syte mit us DjVu extrahiertem Text aagleit',
 	},
 	# Author: Ofekalef
 	'he': {
@@ -205,10 +201,6 @@ msg = {
 	'ms': {
 		'djvutext-creating': u'Robot: Mewujudkan laman dengan teks yang diambil dari DjVu',
 	},
-	# Author: Nghtwlkr
-	'nb': {
-		'djvutext-creating': u'Robot: Oppretter side med tekst som er trukket ut fra DjVu',
-	},
 	# Author: Servien
 	'nds-nl': {
 		'djvutext-creating': u'Bot: pagina an-emaakt mit tekste uut n DjVu-bestaand',
@@ -275,10 +267,6 @@ msg = {
 		'djvutext-creating': u'Робот: направљена страница с текстом изведеним из DjVu-а',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'djvutext-creating': u'Робот: направљена страница с текстом изведеним из DjVu-а',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'djvutext-creating': u'Robot: napravljena stranica s tekstom izvedenim iz DjVu-a',
 	},
@@ -328,10 +316,6 @@ msg = {
 	},
 	# Author: Anakmalaysia
 	'zh': {
-		'djvutext-creating': u'机器人：创建文本由DjVu提取的页面',
-	},
-	# Author: Anakmalaysia
-	'zh-hans': {
 		'djvutext-creating': u'机器人：创建文本由DjVu提取的页面',
 	},
 	# Author: Breawycker

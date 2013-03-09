@@ -19,8 +19,8 @@ msg = {
 	# Author: Als-Chlämens
 	# Author: Xqt
 	'als': {
-		'table2wiki-no-warning': u'Bötli: Tabellesyntax aktualisiert',
 		'table2wiki-warnings': u'Bötli: Tabellesyntax aktualisiert - {{PLURAL:count|ei Warnig|%(count)d Warnige}}!',
+		'table2wiki-no-warning': u'Bötli: Tabellesyntax aktualisiert',
 	},
 	# Author: Xqt
 	'ar': {
@@ -51,14 +51,9 @@ msg = {
 		'table2wiki-no-warning': u'Ярым автомат робот: таблица синтаксисы яңыртылды',
 	},
 	# Author: EugeneZelenko
-	'be-tarask': {
-		'table2wiki-warnings': u'Кіраваны ўдзельнікам робат: сынтаксіс табліцы абноўлены: {{PLURAL:count|1 папярэджаньне|%(count)d папярэджаньне/і/яў}}!',
-		'table2wiki-no-warning': u'Кіраваны ўдзельнікам робат: сынтаксіс табліцы абноўлены',
-	},
-	# Author: EugeneZelenko
 	'be-x-old': {
-		'table2wiki-no-warning': u'Кіраваны ўдзельнікам робат: сынтаксіс табліцы абноўлены',
 		'table2wiki-warnings': u'Кіраваны ўдзельнікам робат: сынтаксіс табліцы абноўлены: {{PLURAL:count|1 папярэджаньне|%(count)d папярэджаньне/і/яў}}!',
+		'table2wiki-no-warning': u'Кіраваны ўдзельнікам робат: сынтаксіс табліцы абноўлены',
 	},
 	# Author: Fulup
 	'br': {
@@ -92,6 +87,11 @@ msg = {
 	},
 	# Author: Xqt
 	'de': {
+		'table2wiki-warnings': u'Bot: Tabellensyntax konvertiert - {{PLURAL:count|1 Warnung|%(count)d Warnungen}}!',
+		'table2wiki-no-warning': u'Bot: Tabellensyntax konvertiert',
+	},
+	# Author: Eruedin
+	'de-ch': {
 		'table2wiki-warnings': u'Bot: Tabellensyntax konvertiert - {{PLURAL:count|1 Warnung|%(count)d Warnungen}}!',
 		'table2wiki-no-warning': u'Bot: Tabellensyntax konvertiert',
 	},
@@ -145,12 +145,6 @@ msg = {
 		'table2wiki-warnings': u'Bot: Actualizo a sintaxe da táboa; {{PLURAL:count|1 aviso|%(count)d avisos}}!',
 		'table2wiki-no-warning': u'Bot: Actualizo a sintaxe da táboa',
 	},
-	# Author: Als-Chlämens
-	# Author: Xqt
-	'gsw': {
-		'table2wiki-warnings': u'Bötli: Tabellesyntax aktualisiert - {{PLURAL:count|ei Warnig|%(count)d Warnige}}!',
-		'table2wiki-no-warning': u'Bötli: Tabellesyntax aktualisiert',
-	},
 	# Author: Xqt
 	'he': {
 		'table2wiki-warnings': u'בוט בפיקוח משתמש: עדכון תחביר הטבלה - {{PLURAL:count|אזהרה אחת|%(count)d אזהרות}}!',
@@ -199,10 +193,6 @@ msg = {
 		'table2wiki-no-warning': u'Boté panganggo: sintaks tabèl dianyari',
 	},
 	'kk': {
-		'table2wiki-no-warning': u'Басқарылмалы бот: Кесте пішімі түзетілді',
-		'table2wiki-warnings': u'Басқарылмалы бот: Кесте пішімі түзетілді - {{PLURAL:count|1|%(count)d}} құлақтандыру!',
-	},
-	'kk-cyrl': {
 		'table2wiki-warnings': u'Басқарылмалы бот: Кесте пішімі түзетілді - {{PLURAL:count|1|%(count)d}} құлақтандыру!',
 		'table2wiki-no-warning': u'Басқарылмалы бот: Кесте пішімі түзетілді',
 	},
@@ -255,11 +245,6 @@ msg = {
 		'table2wiki-warnings': u'Bot kawalan pengguna: jadual syntax dikemaskinikan -{{PLURAL:count|1|%(count)d}} amaran!',
 		'table2wiki-no-warning': u'Bot kawalan pengguna: jadual syntax dikemaskinikan',
 	},
-	# Author: Xqt
-	'nb': {
-		'table2wiki-warnings': u'bot: Konverterer tabellsyntaks – {{PLURAL:count|1 advarsel|%(count)d advarsler}}!',
-		'table2wiki-no-warning': u'bot: Konverter tabellsyntaks',
-	},
 	# Author: Servien
 	'nds-nl': {
 		'table2wiki-warnings': u'Tabel ewiezigd van HTML- naor Wikisyntax - {{PLURAL:count|1 waorschuwing|%(count)d waorschuwingen}}!',
@@ -272,8 +257,8 @@ msg = {
 	},
 	# Author: Xqt
 	'no': {
-		'table2wiki-no-warning': u'bot: Konverter tabellsyntaks',
 		'table2wiki-warnings': u'bot: Konverterer tabellsyntaks – {{PLURAL:count|1 advarsel|%(count)d advarsler}}!',
+		'table2wiki-no-warning': u'bot: Konverter tabellsyntaks',
 	},
 	# Author: Sp5uhe
 	'pl': {
@@ -325,11 +310,6 @@ msg = {
 	},
 	# Author: Rancher
 	'sr': {
-		'table2wiki-no-warning': u'Робот којим управља корисник: синтакса табеле је ажурирана',
-		'table2wiki-warnings': u'Бот којим управља корисник: синтакса табеле је ажурирана ({{PLURAL:count|1 упозорење|%(count)d упозорења|%(count)d упозорења}})',
-	},
-	# Author: Rancher
-	'sr-ec': {
 		'table2wiki-warnings': u'Бот којим управља корисник: синтакса табеле је ажурирана ({{PLURAL:count|1 упозорење|%(count)d упозорења|%(count)d упозорења}})',
 		'table2wiki-no-warning': u'Робот којим управља корисник: синтакса табеле је ажурирана',
 	},
@@ -361,11 +341,6 @@ msg = {
 	},
 	# Author: Ajdar
 	'tt': {
-		'table2wiki-no-warning': u'Ярым-автоматик робот: җәдвәл синтаксисы яңартылган',
-		'table2wiki-warnings': u'Ярым-автоматик робот: җәдвәл синтаксисы яңартылган - {{PLURAL:count|1|%(count)d}} кисәтү!',
-	},
-	# Author: Ajdar
-	'tt-cyrl': {
 		'table2wiki-warnings': u'Ярым-автоматик робот: җәдвәл синтаксисы яңартылган - {{PLURAL:count|1|%(count)d}} кисәтү!',
 		'table2wiki-no-warning': u'Ярым-автоматик робот: җәдвәл синтаксисы яңартылган',
 	},
@@ -387,11 +362,6 @@ msg = {
 	},
 	# Author: Yfdyh000
 	'zh': {
-		'table2wiki-no-warning': u'用户控制的机器人：更新表语法',
-		'table2wiki-warnings': u'用户控制的机器人：更新表语法——但有%(count)d个警告！',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
 		'table2wiki-warnings': u'用户控制的机器人：更新表语法——但有%(count)d个警告！',
 		'table2wiki-no-warning': u'用户控制的机器人：更新表语法',
 	},

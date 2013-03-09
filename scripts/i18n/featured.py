@@ -5,7 +5,7 @@ msg = {
 		'featured-former': u'Robot: %(page)s is a former featured article',
 		'featured-good': u'Robot: %(page)s is a good article',
 		'featured-list': u'Robot: %(page)s is a featured list',
-	},	
+	},
 	# Author: Csisc
 	'aeb': {
 		'featured-good': u'بوت: %(page)s هي مقالة جيدة',
@@ -20,10 +20,10 @@ msg = {
 	},
 	# Author: Als-Chlämens
 	'als': {
-		'featured-featured': u'Bötli: %(page)s isch e bsundersch glungener Artikel',
-		'featured-former': u'Bötli: %(page)s isch friener emool en bsundersch glungener Artikel gsi',
 		'featured-good': u'Bötli: %(page)s isch e läsige Artikel',
 		'featured-list': u'Bötli: %(page)s isch e bsunders glungeni Lischt',
+		'featured-featured': u'Bötli: %(page)s isch e bsundersch glungener Artikel',
+		'featured-former': u'Bötli: %(page)s isch friener emool en bsundersch glungener Artikel gsi',
 	},
 	'ar': {
 		'featured-good': u'بوت: %(page)s هي مقالة جيدة',
@@ -66,19 +66,11 @@ msg = {
 	},
 	# Author: EugeneZelenko
 	# Author: Jim-by
-	'be-tarask': {
-		'featured-good': u'Робат: %(page)s зьяўляецца добрым артыкулам',
-		'featured-list': u'Робат: %(page)s зьяўляецца абраных сьпісам',
-		'featured-featured': u'Робат: %(page)s зьяўляецца абраным артыкулам',
-		'featured-former': u'Робат: %(page)s зьяўляўся абраным артыкулам у мінулым',
-	},
-	# Author: EugeneZelenko
-	# Author: Jim-by
 	'be-x-old': {
-		'featured-featured': u'Робат: %(page)s зьяўляецца абраным артыкулам',
-		'featured-former': u'Робат: %(page)s зьяўляўся абраным артыкулам у мінулым',
 		'featured-good': u'Робат: %(page)s зьяўляецца добрым артыкулам',
 		'featured-list': u'Робат: %(page)s зьяўляецца абраных сьпісам',
+		'featured-featured': u'Робат: %(page)s — абраны артыкул',
+		'featured-former': u'Робат: %(page)s зьяўляўся абраным артыкулам у мінулым',
 	},
 	# Author: Riemogerz
 	'bjn': {
@@ -138,6 +130,13 @@ msg = {
 	'de': {
 		'featured-good': u'Bot: %(page)s ist ein lesenswerter Artikel',
 		'featured-list': u'Bot: %(page)s ist eine informative Liste',
+		'featured-featured': u'Bot: %(page)s ist ein ausgezeichneter Artikel',
+		'featured-former': u'Bot: %(page)s ist ein ehemaliger ausgezeichneter Artikel',
+	},
+	# Author: Eruedin
+	'de-ch': {
+		'featured-good': u'Bot: %(page)s ist ein lesenswerter Artikel',
+		'featured-list': u'Bot: %(page)s ist eine ausgezeichnete Liste',
 		'featured-featured': u'Bot: %(page)s ist ein ausgezeichneter Artikel',
 		'featured-former': u'Bot: %(page)s ist ein ehemaliger ausgezeichneter Artikel',
 	},
@@ -218,13 +217,6 @@ msg = {
 		'featured-list': u'Bot: "%(page)s" é unha lista destacada',
 		'featured-featured': u'Bot: "%(page)s" é un artigo destacado',
 		'featured-former': u'Bot: "%(page)s" é un antigo artigo destacado',
-	},
-	# Author: Als-Chlämens
-	'gsw': {
-		'featured-good': u'Bötli: %(page)s isch e läsige Artikel',
-		'featured-list': u'Bötli: %(page)s isch e bsunders glungeni Lischt',
-		'featured-featured': u'Bötli: %(page)s isch e bsundersch glungener Artikel',
-		'featured-former': u'Bötli: %(page)s isch friener emool en bsundersch glungener Artikel gsi',
 	},
 	# Author: Amire80
 	'he': {
@@ -372,13 +364,6 @@ msg = {
 		'featured-featured': u'Bot: %(page)s merupakan rencana pilihan',
 		'featured-former': u'Bot: %(page)s merupakan rencana pilihan arkib',
 	},
-	# Author: Nghtwlkr
-	'nb': {
-		'featured-good': u'bot: %(page)s er en anbefalt artikkel',
-		'featured-list': u'Bot: %(page)s er en utmerket liste',
-		'featured-featured': u'bot: %(page)s er en utmerka artikkel',
-		'featured-former': u'Bot: %(page)s er en tidligere utmerket artikkel',
-	},
 	# Author: Servien
 	'nds-nl': {
 		'featured-good': u'Bot: %(page)s is n goed artikel',
@@ -407,10 +392,10 @@ msg = {
 	},
 	# Author: Nghtwlkr
 	'no': {
-		'featured-featured': u'bot: %(page)s er en utmerka artikkel',
-		'featured-former': u'Bot: %(page)s er en tidligere utmerket artikkel',
 		'featured-good': u'bot: %(page)s er en anbefalt artikkel',
 		'featured-list': u'Bot: %(page)s er en utmerket liste',
+		'featured-featured': u'bot: %(page)s er en utmerka artikkel',
+		'featured-former': u'Bot: %(page)s er en tidligere utmerket artikkel',
 	},
 	'nv': {
 		'featured-featured': u'Naaltsoos %(page)s kʼad nizhónígo ályaa',
@@ -499,13 +484,6 @@ msg = {
 	},
 	# Author: Rancher
 	'sr': {
-		'featured-featured': u'Робот: %(page)s је сјајан чланак',
-		'featured-former': u'Робот: %(page)s је био сјајан чланак',
-		'featured-good': u'Робот: %(page)s је добар чланак',
-		'featured-list': u'Робот: %(page)s је сјајан списак',
-	},
-	# Author: Rancher
-	'sr-ec': {
 		'featured-good': u'Робот: %(page)s је добар чланак',
 		'featured-list': u'Робот: %(page)s је сјајан списак',
 		'featured-featured': u'Робот: %(page)s је сјајан чланак',
@@ -568,13 +546,6 @@ msg = {
 	},
 	# Author: Ajdar
 	'tt': {
-		'featured-featured': u'Робот: %(page)s сайланган мәкалә',
-		'featured-former': u'Робот:%(page)s элеккеге сайланган мәкалә',
-		'featured-good': u'Робот:%(page)s яхшы мәкалә',
-		'featured-list': u'Робот: %(page)s сайланган исемлек',
-	},
-	# Author: Ajdar
-	'tt-cyrl': {
 		'featured-good': u'Робот:%(page)s яхшы мәкалә',
 		'featured-list': u'Робот: %(page)s сайланган исемлек',
 		'featured-featured': u'Робот: %(page)s сайланган мәкалә',
@@ -617,13 +588,6 @@ msg = {
 	},
 	# Author: Yfdyh000
 	'zh': {
-		'featured-featured': u'机器人：%(page)s是一篇特色条目',
-		'featured-former': u'机器人：%(page)s曾经是一篇特色条目',
-		'featured-good': u'机器人：%(page)s是一篇优良条目',
-		'featured-list': u'机器人：%(page)s是一篇特色列表',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
 		'featured-good': u'机器人：%(page)s是一篇优良条目',
 		'featured-list': u'机器人：%(page)s是一篇特色列表',
 		'featured-featured': u'机器人：%(page)s是一篇特色条目',
