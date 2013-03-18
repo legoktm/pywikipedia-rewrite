@@ -2194,6 +2194,7 @@ class WikibasePage(Page):
         Page.__init__(self, site, title)
         if isinstance(self.site, pywikibot.site.DataSite):
             self.repo = self.site
+            self.id = title.lower()
         else:
             self.repo = self.site.data_repository()
 
@@ -2228,18 +2229,13 @@ class WikibasePage(Page):
         args can be used to specify custom props.
         """
         if force or not hasattr(self, '_content'):
-            params = dict(**self.__defined_by())
-            params['action'] = 'wbgetentities'
-            if args:
-                params['props'] = '|'.join(args)
-                #print params
-            req = pywikibot.data.api.Request(site=self.repo, **params)
-            data = req.submit()
-            if not 'success' in data:
-                raise pywikibot.data.api.APIError, data['errors']
-            self.id = data['entities'].keys()[0]
-            self._content = data['entities'][self.id]
-            self.lastrevid = self._content['lastrevid']
+            data = self.repo.loadcontent(self.__defined_by(), *args)
+            self.id = data.keys()[0]
+            self._content = data[self.id]
+            if 'lastrevid' in self._content:
+                self.lastrevid = self._content['lastrevid']
+            else:
+                raise pywikibot.NoPage
         #aliases
         self.aliases = {}
         if 'aliases' in self._content:
@@ -2264,6 +2260,19 @@ class WikibasePage(Page):
                 'labels':self.labels,
                 'descriptions':self.descriptions,
                 }
+
+    def getID(self, numeric=False, force=False):
+        """
+        @param numeric Strip the first letter and return an int
+        @type numeric bool
+        @param force Force an update of new data
+        @type force bool
+        """
+        if not hasattr(self, 'id') or force:
+            self.get(force=force)
+        if numeric:
+            return int(self.id[1:])
+        return self.id
 
     def latestRevision(self):
         if not hasattr(self, 'lastrevid'):
@@ -2337,7 +2346,7 @@ class ItemPage(WikibasePage):
                 'claims': self.claims
         }
 
-    def get_sitelink(self, site, force=False):
+    def getSitelink(self, site, force=False):
         """
         Returns a page object for the specific site
         site is a pywikibot.Site
@@ -2352,6 +2361,16 @@ class ItemPage(WikibasePage):
         else:
             return self.sitelinks[dbname]
 
+    def addClaim(self, claim, bot=True):
+        """
+        Adds the claim to the item
+        @param claim The claim to add
+        @type claim Claim
+        @param bot Whether to flag as bot (if possible)
+        @type bot bool
+        """
+        self.repo.addClaim(self, claim, bot=bot)
+
 
 class PropertyPage(WikibasePage):
     """
@@ -2365,12 +2384,21 @@ class PropertyPage(WikibasePage):
         if not self.id.startswith(u'p'):
             raise ValueError(u"'%s' is not a property page!" % self.title())
 
-    def get_type(self):
+    def get(self, force=False, *args):
+        if force or not hasattr(self, '_content'):
+            WikibasePage.get(self, force=force, *args)
+        self.type = self._content['datatype']
+
+    def getType(self):
         """
         Returns the type that this item uses
         Examples: item, commons media file, StringValue, NumericalValue
         """
-        raise NotImplementedError
+        if not hasattr(self, 'type'):
+            self.get()
+        if self.type == 'wikibase-entityid':
+            self.type = 'wikibase-item'
+        return self.type
 
 
 class QueryPage(WikibasePage):
@@ -2388,12 +2416,13 @@ class Claim(PropertyPage):
     """
     Claims are standard claims as well as references.
     """
-    def __init__(self, site, pid, snak=None, isReference=False):
+    def __init__(self, site, pid, snak=None, hash=None, isReference=False):
         """
         Defined by the "snak" value, supplemented by site + pid
         """
-        PropertyPage.__init__(self, site, 'Property:'+pid)
+        PropertyPage.__init__(self, site, 'Property:' + pid)
         self.snak = snak
+        self.hash = hash
         self.isReference = isReference
         self.sources = []
         self.target = None
@@ -2409,46 +2438,51 @@ class Claim(PropertyPage):
             claim.snak = data['id']
         else:
             claim.isReference = True
-        if data['mainsnak']['datavalue']['type'] == 'wikibase-entityid':
+        claim.type = data['mainsnak']['datavalue']['type']
+        if claim.type == 'wikibase-entityid':
             claim.target = ItemPage(site, 'Q' +
                                           str(data['mainsnak']['datavalue']['value']['numeric-id']))
         else:
             claim.target = data['mainsnak']['datavalue']['value']
         if 'references' in data:
             for source in data['references']:
-                claim.sources.append(Claim.referenceFromJSON(site, source['snaks'].values()[0][0]))
+                claim.sources.append(Claim.referenceFromJSON(site, source))
         return claim
 
     @staticmethod
     def referenceFromJSON(site, data):
         """
-        This is a simple hack since reference objects
-        aren't wrapped in a mainsnak object.
+        Reference objects are represented a
+        bit differently, and require some
+        more handling.
         """
-        wrap = {'mainsnak': data}
-        return Claim.fromJSON(site, wrap)
+        mainsnak = data['snaks'].values()[0][0]
+        wrap = {'mainsnak': mainsnak}
+        c = Claim.fromJSON(site, wrap)
+        c.hash = data['hash']
+        return c
 
-    def set_target(self, value):
+    def setTarget(self, value):
         """
         Sets the target to the passed value.
         There should be checks to ensure type compliance
         """
         self.target = value
 
-    def get_target(self):
+    def getTarget(self):
         """
         Returns object that the property is associated with.
         None is returned if no target is set
         """
         return self.target
 
-    def get_sources(self):
+    def getSources(self):
         """
         Returns a list of Claims
         """
         return self.sources
 
-    def add_source(self, source):
+    def addSource(self, source):
         """
         source is a Claim.
         adds it as a reference.

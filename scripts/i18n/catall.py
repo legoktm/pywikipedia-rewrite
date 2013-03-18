@@ -55,9 +55,10 @@ msg = {
 	'bs': {
 		'catall-changing': u'Bot: Promjena kategorija.',
 	},
+	# Author: Anskar
 	# Author: Grondin
 	'ca': {
-		'catall-changing': u'Robot: canvi categories',
+		'catall-changing': u'Robot: Canviant categories',
 	},
 	# Author: Asoxor
 	'ckb': {
@@ -112,8 +113,9 @@ msg = {
 	'fo': {
 		'catall-changing': u'Bottur: Broytur bólkar',
 	},
+	# Author: Boniface
 	'fr': {
-		'catall-changing': u'Bot: Change categories',
+		'catall-changing': u'Bot: Modifie les catégories',
 	},
 	# Author: ChrisPtDe
 	'frp': {
