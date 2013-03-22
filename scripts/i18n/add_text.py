@@ -66,9 +66,6 @@ msg = {
 	'be': {
 		'add_text-adding': u'робат дадаў %(adding)s',
 	},
-	'be-tarask': {
-		'add_text-adding': u'робат дадаў %(adding)s',
-	},
 	'be-x-old': {
 		'add_text-adding': u'робат дадаў %(adding)s',
 	},
@@ -93,8 +90,9 @@ msg = {
 	'bs': {
 		'add_text-adding': u'robot dodaje %(adding)s',
 	},
+	# Author: Anskar
 	'ca': {
-		'add_text-adding': u'Robot afegeix %(adding)s',
+		'add_text-adding': u'Robot: Afegint %(adding)s',
 	},
 	'ce': {
 		'add_text-adding': u'робот тIетоьхна %(adding)s',
@@ -103,8 +101,9 @@ msg = {
 		'add_text-adding': u'robot Gidugang %(adding)s',
 	},
 	# Author: Asoxor
+	# Author: Calak
 	'ckb': {
-		'add_text-adding': u'ڕۆبۆت: زێدەکردنی %(adding)s',
+		'add_text-adding': u'ڕۆبۆت: زیادکردنی %(adding)s',
 	},
 	'crh': {
 		'add_text-adding': u'robot ekley %(adding)s',
@@ -206,9 +205,6 @@ msg = {
 	'gn': {
 		'add_text-adding': u'bot ojoapy %(adding)s',
 	},
-	'gsw': {
-		'add_text-adding': u'Bötli: Ygfüegt %(adding)s',
-	},
 	'gu': {
 		'add_text-adding': u'રોબોટ ઉમેરણ %(adding)s',
 	},
@@ -274,9 +270,6 @@ msg = {
 	'kk': {
 		'add_text-adding': u'Боттың үстегені %(adding)s',
 	},
-	'kk-cyrl': {
-		'add_text-adding': u'Боттың үстегені %(adding)s',
-	},
 	'kl': {
 		'add_text-adding': u'Robot Ilassut %(adding)s',
 	},
@@ -297,9 +290,6 @@ msg = {
 		'add_text-adding': u'Bot: dobëijedonn %(adding)s',
 	},
 	'ku': {
-		'add_text-adding': u'robot serzêde kirin %(adding)s',
-	},
-	'ku-latn': {
 		'add_text-adding': u'robot serzêde kirin %(adding)s',
 	},
 	'kv': {
@@ -406,9 +396,6 @@ msg = {
 	},
 	'nah': {
 		'add_text-adding': u'TepozcuayollotlTlamahxiltilli %(adding)s',
-	},
-	'nb': {
-		'add_text-adding': u'robot Legger til %(adding)s',
 	},
 	'nds': {
 		'add_text-adding': u'Bot: tofoiegt: %(adding)s',
@@ -538,10 +525,6 @@ msg = {
 		'add_text-adding': u'Робот: додато %(adding)s',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'add_text-adding': u'Робот: додато %(adding)s',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'add_text-adding': u'Robot: dodato %(adding)s',
 	},
@@ -570,9 +553,6 @@ msg = {
 	'tg': {
 		'add_text-adding': u'робот илова карда истодааст %(adding)s',
 	},
-	'tg-cyrl': {
-		'add_text-adding': u'робот илова карда истодааст %(adding)s',
-	},
 	'th': {
 		'add_text-adding': u'โรบอต เพิ่ม %(adding)s',
 	},
@@ -596,9 +576,6 @@ msg = {
 	'tt': {
 		'add_text-adding': u'робот кушты %(adding)s',
 	},
-	'tt-cyrl': {
-		'add_text-adding': u'робот кушты %(adding)s',
-	},
 	# Author: Tifinaghes
 	'tzm': {
 		'add_text-adding': u'ⴰⵕⵓⴱⵓⵜ ⵜⵔⵏⵓⵜ %(adding)s',
@@ -608,10 +585,6 @@ msg = {
 	},
 	# Author: Sahran
 	'ug': {
-		'add_text-adding': u'ماشىنا ئادەم: %(adding)s قوشۇۋاتىدۇ',
-	},
-	# Author: Sahran
-	'ug-arab': {
 		'add_text-adding': u'ماشىنا ئادەم: %(adding)s قوشۇۋاتىدۇ',
 	},
 	'uk': {
@@ -635,9 +608,6 @@ msg = {
 	},
 	'vo': {
 		'add_text-adding': u'Bot: Läükon vödemi: %(adding)s',
-	},
-	'vro': {
-		'add_text-adding': u'robot manopandminõ %(adding)s',
 	},
 	'wa': {
 		'add_text-adding': u'robot radjouter %(adding)s',
@@ -665,10 +635,6 @@ msg = {
 	},
 	'zh-classical': {
 		'add_text-adding': u'僕 增 %(adding)s',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
-		'add_text-adding': u'机器人：添加 %(adding)s',
 	},
 	# Author: Simon Shek
 	'zh-hant': {

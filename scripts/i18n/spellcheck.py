@@ -2,11 +2,11 @@
 msg = {
 	'en': {
 		'spellcheck-checking': u'Bot-aided spell checker',
-	},	
-# Author: Als-Holder
+	},
+	# Author: Als-Holder
 	'als': {
 		'spellcheck-checking': u'Bot-unterstitzti Rächtschrybkorrektur',
-	},	
+	},
 	'ar': {
 		'spellcheck-checking': u'تدقيق إملائي بمساعدة البوت',
 	},
@@ -27,7 +27,7 @@ msg = {
 		'spellcheck-checking': u'робот ярҙамында орфография',
 	},
 	# Author: Wizardist
-	'be-tarask': {
+	'be-x-old': {
 		'spellcheck-checking': u'Выпраўленьне артаграфіі ботам',
 	},
 	# Author: Gwenn-Ael
@@ -52,6 +52,10 @@ msg = {
 	},
 	# Author: Xqt
 	'de': {
+		'spellcheck-checking': u'Bot-unterstützte Rechtschreibprüfung',
+	},
+	# Author: Eruedin
+	'de-ch': {
 		'spellcheck-checking': u'Bot-unterstützte Rechtschreibprüfung',
 	},
 	# Author: Mirzali
@@ -79,8 +83,9 @@ msg = {
 	'fi': {
 		'spellcheck-checking': u'Koneavusteinen oikeinkirjoituksen tarkistus',
 	},
+	# Author: Boniface
 	'fr': {
-		'spellcheck-checking': u'Correction orthographique par robot',
+		'spellcheck-checking': u'Correction orthographique assistée par un robot',
 	},
 	# Author: Murma174
 	'frr': {
@@ -89,10 +94,6 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'spellcheck-checking': u'Corrección ortográfica asistida por un bot',
-	},
-	# Author: Als-Holder
-	'gsw': {
-		'spellcheck-checking': u'Bot-unterstitzti Rächtschrybkorrektur',
 	},
 	'he': {
 		'spellcheck-checking': u'בדיקת איות באמצעות בוט',
@@ -144,15 +145,16 @@ msg = {
 	'ms': {
 		'spellcheck-checking': u'Penyemak ejaan dibantu bot',
 	},
-	'nb': {
-		'spellcheck-checking': u'Robothjulpet stavekontroll',
-	},
 	# Author: Eukesh
 	'new': {
 		'spellcheck-checking': u'बट-ग्वहालिया हिज्जे निरिक्षक',
 	},
 	'nl': {
 		'spellcheck-checking': u'Spellingscontrole',
+	},
+	# Author: Jon Harald Søby
+	'no': {
+		'spellcheck-checking': u'Robothjulpet stavekontroll',
 	},
 	'pl': {
 		'spellcheck-checking': u'Wspomagane przez robota sprawdzanie pisowni',
@@ -192,10 +194,6 @@ msg = {
 		'spellcheck-checking': u'Ботовска провера правописа',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'spellcheck-checking': u'Ботовска провера правописа',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'spellcheck-checking': u'Botovska provera pravopisa',
 	},
@@ -217,10 +215,6 @@ msg = {
 	},
 	# Author: Yfdyh000
 	'zh': {
-		'spellcheck-checking': u'机器人辅助的拼写检查器',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
 		'spellcheck-checking': u'机器人辅助的拼写检查器',
 	},
 	# Author: Justincheng12345

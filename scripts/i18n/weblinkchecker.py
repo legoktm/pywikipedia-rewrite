@@ -32,6 +32,12 @@ msg = {
 		'weblinkchecker-summary': u'Bot: Xarici istinadın işləməməsi haqqında bildiriş',
 		'weblinkchecker-report': u'Avtomatlaşdırılmış yoxlama aparan bir neçə bot tərəfindən işləməyən xarici istinad tapılmışdır. Zəhmət olmasa, əmin olun ki, istinad əslində aşağıdakı kimidir və onu düzəltmək və ya işləmədiyi halda onu silmək lazımdır!',
 	},
+	# Author: Jim-by
+	'be-x-old': {
+		'weblinkchecker-archive_msg': u'Ўэб-старонка была захаваная ў інтэрнэт архіве. Калі ласка, карыстайцеся спасылкай на адпаведную архіўную вэрсію: [%(URL)s].',
+		'weblinkchecker-caption': u'Нядзейная спасылка',
+		'weblinkchecker-summary': u'Робат: Знойдзеная няслушная вонкавая спасылка',
+	},
 	# Author: Fulup
 	'br': {
 		'weblinkchecker-archive_msg': u'Saveteet eo bet ar bajenn Web gant Internet Archive. Marteze a-walc\'h e c\'hallfec\'h lakaat al liamm da vukañ war-zu unan eus ar stummoù diellaouet : [%(URL)s].',
@@ -39,16 +45,32 @@ msg = {
 		'weblinkchecker-summary': u'Robot : A gemenn ez eus ul liamm diavaez diziraezus',
 		'weblinkchecker-report': u'E-pad meur a batrouilhenn robot n\'eus ket bet gallet diaraez arliamm da-heul. Gwiriit mat eo dall al liamm e gwirionez ha mard eo, reizhit-eñ pe lamit-eñ.',
 	},
+	# Author: Anskar
 	# Author: Pitort
 	'ca': {
+		'weblinkchecker-archive_msg': u'S\'ha desat la pàgina web per Internet Arxive. Si us plau, considereu unir-vos a una versió arxivada apropiada: [%(URL)s].',
 		'weblinkchecker-caption': u'Enllaç trencat',
 		'weblinkchecker-summary': u'Robot: Informant d\'un enllaç extern inaccessible',
+		'weblinkchecker-report': u'Durant diverses execucions automàtiques, el bot ha comprovat que el següent enllaç extern no està disponible. Comproveu que l\'enllaç estigui realment trencat i corregiu-lo o retireu-lo.!',
+	},
+	# Author: Steenth
+	'da': {
+		'weblinkchecker-archive_msg': u'Websiden er blevet gemt af Internet Archive. Overvej sammenkædning til en passende arkiverede version: [%(URL)s].',
+		'weblinkchecker-caption': u'Dødt link',
+		'weblinkchecker-summary': u'bot: Rapporter utilgængelig ekstern link',
+		'weblinkchecker-report': u'Følgende eksterne link har ikke kunne nøjes efter flere forsøg af en automatiseret bot. Kontroller, at linket faktisk er nede, løs det eller fjerne det i så fald!',
 	},
 	'de': {
 		'weblinkchecker-archive_msg': u'Die Webseite wurde vom Internet Archive gespeichert. Bitte verlinke gegebenenfalls eine geeignete archivierte Version: [%(URL)s].',
 		'weblinkchecker-caption': u'Toter Weblink',
 		'weblinkchecker-summary': u'Bot: Berichte nicht verfügbaren Weblink',
 		'weblinkchecker-report': u'Bei mehreren automatisierten Botläufen wurde der folgende Weblink als nicht verfügbar erkannt. Bitte überprüfe, ob der Link tatsächlich unerreichbar ist, und korrigiere oder entferne ihn in diesem Fall!',
+	},
+	# Author: Eruedin
+	'de-ch': {
+		'weblinkchecker-archive_msg': u'Die Webseite wurde vom Internet-Archive gespeichert. Bitte verknüpfe gegebenenfalls mit einer geeigneten archivierten Version: [%(URL)s].',
+		'weblinkchecker-caption': u'Tote Verknüpfung',
+		'weblinkchecker-report': u'Bei mehreren automatisierten Botläufen wurde die folgende Verknüpfung als nicht verfügbar erkannt. Bitte überprüfe, ob die Verknüpfung tatsächlich nicht erreichbar ist, und korrigiere oder entferne sie in diesem Fall!',
 	},
 	# Author: Airon90
 	'eo': {
@@ -73,11 +95,12 @@ msg = {
 		'weblinkchecker-summary': u'ربات:گزارش پیوند غیرقابل دسترسی',
 		'weblinkchecker-report': u'بر طبق بررسی‌های رباتیکی من چندین پیوند غیرقابل دسترس پیدا شد. لطفا آنها بررسی و در صورت لزوم درستش کنید.تشکر!',
 	},
+	# Author: Boniface
 	'fr': {
 		'weblinkchecker-archive_msg': u'La page a été sauvegardée dans l’Internet Archive. Il serait peut-être utile de faire pointer le lien vers une des versions archivées : [%(URL)s].',
 		'weblinkchecker-caption': u'Lien mort',
-		'weblinkchecker-summary': u'Robot : Rapporte lien externe inaccessible',
-		'weblinkchecker-report': u'Pendant plusieurs patrouilles par un robot, le lien suivant a été inaccessible. Veuillez vérifier si le lien est effectivement mort et si oui corrigez ou retirez-le.',
+		'weblinkchecker-summary': u'Robot : Rapporte un lien externe inaccessible',
+		'weblinkchecker-report': u'Lors de plusieurs patrouilles par un robot, le lien suivant était inaccessible. Veuillez vérifier si le lien est effectivement mort et si oui corrigez ou retirez-le.',
 	},
 	# Author: Murma174
 	'frr': {
@@ -106,7 +129,9 @@ msg = {
 		'weblinkchecker-summary': u'bot: nem elérhető külső hivatkozás jelentése',
 		'weblinkchecker-report': u'Számos automatikus bot futtatás után az alábbi külső hivatkozás nem elérhető. Kérlek ellenőrizd, hogy a hivatkozás valóban nem elérhető, és ha így van, akkor javítsd ki vagy távolítsd el!',
 	},
+	# Author: McDutchie
 	'ia': {
+		'weblinkchecker-archive_msg': u'Iste pagina web ha essite salveguardate per Internet Archive. Per favor considera ligar a un version archivate: [%(URL)s].',
 		'weblinkchecker-caption': u'Ligamine defuncte',
 		'weblinkchecker-summary': u'Robot: Reporto de un ligamine externe non functionante',
 		'weblinkchecker-report': u'Durante plure sessiones automatic, le robot ha constatate que le sequente ligamine externe non es disponibile. Per favor confirma que le ligamine de facto es defuncte, e in caso de si, repara o elimina lo!',
@@ -118,12 +143,12 @@ msg = {
 		'weblinkchecker-summary': u'ロボットによる: 利用できない外部リンクの報告',
 		'weblinkchecker-report': u'ボットが何度か自動運行する間に、以下の外部リンクが利用不可能と判明しました。本当にリンク切れしているか確認してから、修復または除去してください!',
 	},
-        'kk': {
-                'weblinkchecker-archive_msg': u'Бұл ғаламтордың беті Интернет Мұрағатында сақталған. Мұрағатталған нұсқасына сәйкесті сілтеуді ескеріңіз: [%(URL)s].',
-                'weblinkchecker-caption': u'Өлі сілтем',
-                'weblinkchecker-summary': u'Бот: Қатынаулы емес сілтеме туралы есеп беру',
-                'weblinkchecker-report': u'Өздікті бот бірнеше жегілгенде келесі сыртқы сілтемеге қатынай алмады. Бұл сілтеменің қатыналуын тексеріп шығыңыз да, не түзетіңіз, не аластаңыз!',
-        },
+	'kk': {
+		'weblinkchecker-archive_msg': u'Бұл ғаламтордың беті Интернет Мұрағатында сақталған. Мұрағатталған нұсқасына сәйкесті сілтеуді ескеріңіз: [%(URL)s].',
+		'weblinkchecker-caption': u'Өлі сілтем',
+		'weblinkchecker-summary': u'Бот: Қатынаулы емес сілтеме туралы есеп беру',
+		'weblinkchecker-report': u'Өздікті бот бірнеше жегілгенде келесі сыртқы сілтемеге қатынай алмады. Бұл сілтеменің қатыналуын тексеріп шығыңыз да, не түзетіңіз, не аластаңыз!',
+	},
 	# Author: 아라
 	'ko': {
 		'weblinkchecker-archive_msg': u'웹 페이지가 인터넷 아카이브에 저장되어 있습니다. 적절한 아카이브한 버전으로 링크를 고려하세요: [%(URL)s].',
@@ -136,6 +161,10 @@ msg = {
 		'weblinkchecker-caption': u'Han enne kappodde Weblengk jefonge',
 		'weblinkchecker-summary': u'Bot: Ene Weblengk jeijt nit mih.',
 		'weblinkchecker-report': u'Esch han bonge die Weblingks paa Mol jetschäck. Se han allemoolde nit jedon Doht ens donnoh loore, un dä Lengk reparreere odo eruß nämme.',
+	},
+	# Author: George Animal
+	'ku': {
+		'weblinkchecker-caption': u'Girêdana mirî',
 	},
 	# Author: Robby
 	'lb': {
@@ -182,12 +211,17 @@ msg = {
 		'weblinkchecker-summary': u'Robot: melding (tijdelijk) onbereikbare externe koppeling',
 		'weblinkchecker-report': u'Tijdens enkele automatische controles bleek de onderstaande externe koppeling onbereikbaar. Controleer alstublieft of de koppeling inderdaad onbereikbaar is. Verwijder deze tekst alstublieft na een succesvolle controle of na het verwijderen of corrigeren van de externe koppeling.',
 	},
-        'no': {
-                'weblinkchecker-archive_msg': u'Denne nettsiden er lagra i Internet Archive. Vurder om lenka kan endres til å peke til en av de arkiverte versjonene: [%(URL)s].',
-                'weblinkchecker-summary': u'bot: Rapporter død eksternlenke',
-        },
+	# Author: Jon Harald Søby
+	'no': {
+		'weblinkchecker-archive_msg': u'Denne nettsiden er lagra i Internet Archive. Vurder om lenka kan endres til å peke til en av de arkiverte versjonene: [%(URL)s].',
+		'weblinkchecker-caption': u'Død lenke',
+		'weblinkchecker-summary': u'bot: Rapporter død eksternlenke',
+		'weblinkchecker-report': u'I løpet av flere automatiske botkjøringer ble følgende lenke funnet å være utilgjengelig. Sjekk om lenken faktisk er død, og fiks eller fjern den om det er tilfelle.',
+	},
+	# Author: Rezonansowy
 	'pl': {
 		'weblinkchecker-archive_msg': u'%(URL)s',
+		'weblinkchecker-caption': u'Niedziałający link',
 		'weblinkchecker-summary': u'Robot zgłasza niedostępny link zewnętrzny',
 	},
 	'pt': {
@@ -221,17 +255,12 @@ msg = {
 	'sl': {
 		'weblinkchecker-caption': u'Mrtva povezava',
 	},
-        'sr': {
-                'weblinkchecker-caption': u'Покварене спољашње повезнице',
-                'weblinkchecker-summary': u'Бот: Пријављивање непостојећих спољашњих повезница',
-                'weblinkchecker-report': u'Током неколико аутоматски провера, бот је пронашао покварене спољашње повезнице. Молимо вас проверите да ли је повезница добра, поправите је или је уклоните!',
-        },
 	# Author: Rancher
-	'sr-ec': {
+	'sr': {
 		'weblinkchecker-archive_msg': u'Веб страница је сачувана у Интернет архиви. Препоручујемо вам да ставите везу до одређене архивиране верзије: [%(URL)s].',
-		'weblinkchecker-caption': u'Неисправна веза',
-		'weblinkchecker-summary': u'Робот: пријављена неисправна спољашња веза',
-		'weblinkchecker-report': u'При неколико покушаја бота, установљено је да следећа спољашња веза није доступна. Проверите да ли је веза уистину неисправна и, ако јесте, исправите је или је уклоните.',
+		'weblinkchecker-caption': u'Покварене спољашње повезнице',
+		'weblinkchecker-summary': u'Бот: Пријављивање непостојећих спољашњих повезница',
+		'weblinkchecker-report': u'Током неколико аутоматски провера, бот је пронашао покварене спољашње повезнице. Молимо вас проверите да ли је повезница добра, поправите је или је уклоните!',
 	},
 	# Author: Rancher
 	'sr-el': {
@@ -274,18 +303,12 @@ msg = {
 		'weblinkchecker-summary': u'Bot: Báo cáo liên kết bên ngoài không truy cập được',
 		'weblinkchecker-report': u'Bot tự động chạy vài lần mà không truy cập được liên kết bên ngoài sau. Xin vui lòng kiểm tra nó thực sự bị hỏng, và nếu vậy, xin sửa hoặc xóa liên kết.',
 	},
-        'zh': {
-                'weblinkchecker-archive_msg': u'这个网页已经被保存在互联网档案馆（Internet Archive）。请为该网页提供一个合适的存档版本： [%(URL)s]。',
-                'weblinkchecker-caption': u'失效链接',
-                'weblinkchecker-summary': u'BOT: 报告失效的外部链接',
-                'weblinkchecker-report': u'一个自动运行的bot发现下列外部链接可能已经失效。请帮助修复错误的链接或者移除它!',
-        },
 	# Author: Yfdyh000
-	'zh-hans': {
-		'weblinkchecker-archive_msg': u'这个网页已经被互联网档案馆（Internet Archive）保存。请为该网页挑选一个适合链接的存档版本: [%(URL)s]。',
+	'zh': {
+		'weblinkchecker-archive_msg': u'这个网页已经被保存在互联网档案馆（Internet Archive）。请为该网页提供一个合适的存档版本： [%(URL)s]。',
 		'weblinkchecker-caption': u'失效链接',
-		'weblinkchecker-summary': u'机器人：报告不可用的外部链接',
-		'weblinkchecker-report': u'自动运行的机器人发现下列外部链接可能已不可用。请帮助检查，修复或移除有问题的链接。',
+		'weblinkchecker-summary': u'BOT: 报告失效的外部链接',
+		'weblinkchecker-report': u'一个自动运行的bot发现下列外部链接可能已经失效。请帮助修复错误的链接或者移除它!',
 	},
 	# Author: Simon Shek
 	'zh-hant': {

@@ -11,34 +11,34 @@ class Family(family.WikimediaFamily):
         self.name = 'wikipedia'
 
         self.languages_by_size = [
-            'en', 'de', 'fr', 'nl', 'it', 'es', 'ru', 'pl', 'ja', 'sv', 'pt',
-            'zh', 'vi', 'uk', 'ca', 'no', 'fi', 'fa', 'cs', 'hu', 'ko', 'ro',
-            'ceb', 'ar', 'id', 'tr', 'kk', 'ms', 'sk', 'sr', 'eo', 'da', 'lt',
-            'eu', 'bg', 'he', 'sl', 'war', 'hr', 'vo', 'et', 'hi', 'gl',
-            'simple', 'nn', 'az', 'la', 'el', 'uz', 'th', 'sh', 'ka', 'oc',
+            'en', 'de', 'fr', 'nl', 'it', 'ru', 'es', 'pl', 'ja', 'sv', 'pt',
+            'zh', 'vi', 'uk', 'ca', 'no', 'fi', 'fa', 'ceb', 'cs', 'hu', 'ko',
+            'ro', 'ar', 'tr', 'id', 'kk', 'war', 'ms', 'sr', 'sk', 'eo', 'da',
+            'lt', 'eu', 'bg', 'he', 'sl', 'hr', 'vo', 'et', 'hi', 'gl',
+            'simple', 'nn', 'az', 'la', 'uz', 'el', 'th', 'sh', 'ka', 'oc',
             'new', 'mk', 'tl', 'pms', 'be', 'ht', 'ta', 'te', 'be-x-old', 'lv',
-            'br', 'mg', 'sq', 'hy', 'jv', 'cy', 'mr', 'lb', 'is', 'bs', 'my',
-            'yo', 'ba', 'an', 'ml', 'lmo', 'af', 'fy', 'pnb', 'bn', 'sw',
+            'mg', 'br', 'sq', 'hy', 'jv', 'cy', 'mr', 'lb', 'is', 'bs', 'my',
+            'yo', 'ba', 'ml', 'an', 'lmo', 'af', 'pnb', 'fy', 'bn', 'sw',
             'roa-rup', 'bpy', 'io', 'ky', 'ur', 'scn', 'ne', 'gu', 'zh-yue',
-            'nds', 'ku', 'ga', 'ast', 'qu', 'su', 'tt', 'cv', 'ia', 'bug',
-            'nap', 'als', 'bat-smg', 'sco', 'map-bms', 'kn', 'wa', 'ckb', 'am',
+            'tt', 'nds', 'ku', 'ga', 'ast', 'qu', 'su', 'cv', 'ia', 'bug',
+            'als', 'nap', 'sco', 'bat-smg', 'map-bms', 'kn', 'wa', 'am', 'ckb',
             'gd', 'hif', 'zh-min-nan', 'tg', 'mzn', 'yi', 'vec', 'arz',
-            'roa-tara', 'nah', 'sa', 'mn', 'os', 'cbk-zam', 'sah', 'pam', 'hsb',
-            'se', 'li', 'si', 'mi', 'bar', 'co', 'gan', 'ilo', 'bo', 'glk',
-            'fo', 'rue', 'bcl', 'pa', 'mrj', 'fiu-vro', 'nds-nl', 'wuu', 'tk',
-            'ps', 'vls', 'diq', 'gv', 'xmf', 'pag', 'kv', 'zea', 'dv', 'nrm',
-            'km', 'koi', 'rm', 'or', 'mhr', 'lad', 'csb', 'udm', 'lij', 'frr',
-            'fur', 'zh-classical', 'ug', 'vep', 'sc', 'pi', 'mt', 'bh', 'ksh',
-            'so', 'nov', 'stq', 'ang', 'ay', 'kw', 'nv', 'hak', 'pcd', 'gn',
-            'ext', 'frp', 'szl', 'gag', 'as', 'ie', 'ln', 'eml', 'xal', 'haw',
-            'pfl', 'pdc', 'rw', 'krc', 'crh', 'ace', 'to', 'ce', 'kl', 'arc',
-            'dsb', 'myv', 'lez', 'sn', 'bjn', 'pap', 'kab', 'tpi', 'lbe', 'bxr',
-            'jbo', 'mdf', 'wo', 'av', 'srn', 'mwl', 'ty', 'kbd', 'lo', 'ab',
+            'roa-tara', 'nah', 'mn', 'sa', 'os', 'sah', 'pam', 'hsb', 'se',
+            'li', 'si', 'mi', 'bar', 'co', 'gan', 'ilo', 'bo', 'glk', 'fo',
+            'rue', 'bcl', 'pa', 'mrj', 'fiu-vro', 'nds-nl', 'wuu', 'tk', 'ps',
+            'vls', 'xmf', 'gv', 'diq', 'pag', 'kv', 'zea', 'dv', 'nrm', 'km',
+            'koi', 'rm', 'or', 'mhr', 'lad', 'csb', 'udm', 'frr', 'lij', 'fur',
+            'vep', 'zh-classical', 'ug', 'stq', 'sc', 'pi', 'bh', 'mt', 'so',
+            'ksh', 'nov', 'ay', 'ang', 'kw', 'nv', 'hak', 'pcd', 'gn', 'ext',
+            'frp', 'szl', 'as', 'gag', 'ie', 'ln', 'eml', 'xal', 'haw', 'pfl',
+            'krc', 'pdc', 'ce', 'rw', 'crh', 'ace', 'to', 'kl', 'arc', 'dsb',
+            'myv', 'lez', 'sn', 'bjn', 'pap', 'kab', 'tpi', 'lbe', 'bxr', 'jbo',
+            'mdf', 'wo', 'cbk-zam', 'av', 'srn', 'mwl', 'ty', 'kbd', 'lo', 'ab',
             'tet', 'ltg', 'na', 'kg', 'ig', 'nso', 'za', 'kaa', 'zu', 'chy',
             'rmy', 'cu', 'tn', 'chr', 'bi', 'got', 'cdo', 'sm', 'bm', 'iu',
             'pih', 'pnt', 'sd', 'ss', 'ki', 'ee', 'ha', 'om', 'fj', 'ti', 'ts',
-            'ks', 'sg', 've', 'rn', 'dz', 'cr', 'ak', 'tum', 'lg', 'ny', 'ik',
-            'ch', 'ff', 'tw', 'st', 'xh', 'min'
+            'ks', 'sg', 've', 'rn', 'dz', 'cr', 'ak', 'tum', 'lg', 'ny', 'ff',
+            'ik', 'ch', 'tw', 'st', 'xh', 'min',
         ]
 
         self.langs = dict([(lang, '%s.wikipedia.org' % lang)
@@ -356,26 +356,26 @@ class Family(family.WikimediaFamily):
         }
 
         self.obsolete = {
-            'aa': None,  # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Afar_Wikipedia
-            'cho': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Choctaw_Wikipedia
+            'aa': None,  # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Afar_Wikipedia
+            'cho': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Choctaw_Wikipedia
             'dk': 'da',
-            'ho': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Hiri_Motu_Wikipedia
-            'hz': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Herero_Wikipedia
-            'ii': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Yi_Wikipedia
-            'kj': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Kwanyama_Wikipedia
-            'kr': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Kanuri_Wikipedia
-            'mh': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Marshallese_Wikipedia
+            'ho': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Hiri_Motu_Wikipedia
+            'hz': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Herero_Wikipedia
+            'ii': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Yi_Wikipedia
+            'kj': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Kwanyama_Wikipedia
+            'kr': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Kanuri_Wikipedia
+            'mh': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Marshallese_Wikipedia
             'minnan': 'zh-min-nan',
-            'mo': 'ro', # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Moldovan_Wikipedia
-            'mus': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Muscogee_Wikipedia
+            'mo': 'ro', # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Moldovan_Wikipedia
+            'mus': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Muscogee_Wikipedia
             'nan': 'zh-min-nan',
             'nl_nds': 'nl-nds', # miss-spelling
             'nb': 'no',
-            'ng': None, #(not reachable) http://meta.wikimedia.org/wiki/Inactive_wikis
+            'ng': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Ndonga_Wikipedia
             'jp': 'ja',
-            'ru-sib': None, # http://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Siberian_Wikipedia
-            'tlh': None,
-            'tokipona': None,
+            'ru-sib': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Siberian_Wikipedia
+            'tlh': None, # https://meta.wikimedia.org/wiki/History_of_the_Klingon_Wikipedia
+            'tokipona': None, # https://meta.wikimedia.org/wiki/Proposals_for_closing_projects/Closure_of_Tokipona_Wikipedia
             'zh-tw': 'zh',
             'zh-cn': 'zh'
         }
@@ -552,12 +552,6 @@ class Family(family.WikimediaFamily):
         else:
             return self.known_families
 
-    def dbName(self, code):
-        # returns the name of the MySQL database
-        # for historic reasons, the databases are called xxwiki instead of
-        # xxwikipedia for Wikipedias.
-        return '%swiki_p' % code
-
     def code2encodings(self, code):
         """Return a list of historical encodings for a specific language
            wikipedia"""
@@ -571,7 +565,4 @@ class Family(family.WikimediaFamily):
         return self.code2encoding(code),
 
     def shared_data_repository(self, code, transcluded=False):
-        if not transcluded or code in ['en', 'he', 'hu', 'it']:
-            return ('wikidata', 'wikidata')
-        else:
-            return (None, None)
+        return ('wikidata', 'wikidata')

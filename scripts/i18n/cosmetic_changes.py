@@ -22,8 +22,8 @@ msg = {
 	},
 	# Author: Als-Chlämens
 	'als': {
-		'cosmetic_changes-append': u'; oberflächlichi Änderige',
 		'cosmetic_changes-standalone': u'Bötli: Oberflächlichi Änderige',
+		'cosmetic_changes-append': u'; oberflächlichi Änderige',
 	},
 	'ar': {
 		'cosmetic_changes-standalone': u'روبوت: تغييرات تجميلية',
@@ -67,15 +67,9 @@ msg = {
 	},
 	# Author: EugeneZelenko
 	# Author: Jim-by
-	'be-tarask': {
-		'cosmetic_changes-standalone': u'Робат: касмэтычныя зьмены',
-		'cosmetic_changes-append': u'; касмэтычныя зьмены',
-	},
-	# Author: EugeneZelenko
-	# Author: Jim-by
 	'be-x-old': {
-		'cosmetic_changes-append': u'; касмэтычныя зьмены',
 		'cosmetic_changes-standalone': u'Робат: касмэтычныя зьмены',
+		'cosmetic_changes-append': u'; касмэтычныя зьмены',
 	},
 	'bg': {
 		'cosmetic_changes-standalone': u'Робот козметични промени',
@@ -129,6 +123,11 @@ msg = {
 		'cosmetic_changes-standalone': u'Bot: Kosmetische Änderungen',
 		'cosmetic_changes-append': u'; kosmetische Änderungen',
 	},
+	# Author: Eruedin
+	'de-ch': {
+		'cosmetic_changes-standalone': u'Bot: Kosmetische Änderungen',
+		'cosmetic_changes-append': u'; kosmetische Änderungen',
+	},
 	# Author: Erdemaslancan
 	'diq': {
 		'cosmetic_changes-standalone': u'Boti vurnayışo kozmetik keno',
@@ -168,9 +167,10 @@ msg = {
 		'cosmetic_changes-standalone': u'Botti teki kosmeettisia muutoksia',
 		'cosmetic_changes-append': u'; kosmeettisia muutoksia',
 	},
+	# Author: Boniface
 	'fr': {
-		'cosmetic_changes-standalone': u'Robot : Changement de type cosmétique',
-		'cosmetic_changes-append': u'; changement de type cosmétique',
+		'cosmetic_changes-standalone': u'Robot : Modifications de type cosmétique',
+		'cosmetic_changes-append': u'; changements de type cosmétique',
 	},
 	# Author: ChrisPtDe
 	'frp': {
@@ -192,11 +192,6 @@ msg = {
 	'gl': {
 		'cosmetic_changes-standalone': u'bot Cambios estética',
 		'cosmetic_changes-append': u'; cambios estética',
-	},
-	# Author: Als-Chlämens
-	'gsw': {
-		'cosmetic_changes-standalone': u'Bötli: Oberflächlichi Änderige',
-		'cosmetic_changes-append': u'; oberflächlichi Änderige',
 	},
 	'he': {
 		'cosmetic_changes-standalone': u'בוט: שינויים קוסמטיים',
@@ -338,10 +333,6 @@ msg = {
 		'cosmetic_changes-standalone': u'Bot: kosmetiċi bidliet',
 		'cosmetic_changes-append': u'; kosmetiċi bidliet',
 	},
-	'nb': {
-		'cosmetic_changes-standalone': u'Bot: Kosmetiske endringer',
-		'cosmetic_changes-append': u'; kosmetiske endringer',
-	},
 	# Author: Slomox
 	'nds': {
 		'cosmetic_changes-standalone': u'Bot: kosmeetsch Ännern',
@@ -368,8 +359,8 @@ msg = {
 		'cosmetic_changes-append': u'; kosmetiske endringar',
 	},
 	'no': {
-		'cosmetic_changes-append': u'; kosmetiske endringer',
 		'cosmetic_changes-standalone': u'Bot: Kosmetiske endringer',
+		'cosmetic_changes-append': u'; kosmetiske endringer',
 	},
 	# Author: Shisir 1945
 	'or': {
@@ -446,11 +437,6 @@ msg = {
 	},
 	# Author: Rancher
 	'sr': {
-		'cosmetic_changes-append': u'; козметичке измене',
-		'cosmetic_changes-standalone': u'Робот: козметичке измене',
-	},
-	# Author: Rancher
-	'sr-ec': {
 		'cosmetic_changes-standalone': u'Робот: козметичке измене',
 		'cosmetic_changes-append': u'; козметичке измене',
 	},
@@ -504,11 +490,6 @@ msg = {
 	},
 	# Author: Zahidulla
 	'tt': {
-		'cosmetic_changes-append': u'; косметик үзгәртүләр',
-		'cosmetic_changes-standalone': u'Робот: косметик үзгәртүләр',
-	},
-	# Author: Zahidulla
-	'tt-cyrl': {
 		'cosmetic_changes-standalone': u'Робот: косметик үзгәртүләр',
 		'cosmetic_changes-append': u'; косметик үзгәртүләр',
 	},
@@ -548,11 +529,6 @@ msg = {
 	},
 	# Author: Yfdyh000
 	'zh': {
-		'cosmetic_changes-append': u';整理源码',
-		'cosmetic_changes-standalone': u'机器人：整理源码',
-	},
-	# Author: Yfdyh000
-	'zh-hans': {
 		'cosmetic_changes-standalone': u'机器人：整理源码',
 		'cosmetic_changes-append': u';整理源码',
 	},

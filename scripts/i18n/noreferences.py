@@ -44,10 +44,6 @@ msg = {
 		'noreferences-add-tag': u'Robot: дабаўлены адсутнічаючы тэг <references />',
 	},
 	# Author: EugeneZelenko
-	'be-tarask': {
-		'noreferences-add-tag': u'Робат: дадаў адсутнічаючы тэг <references />',
-	},
-	# Author: EugeneZelenko
 	'be-x-old': {
 		'noreferences-add-tag': u'Робат: дадаў адсутнічаючы тэг <references />',
 	},
@@ -84,6 +80,10 @@ msg = {
 		'noreferences-add-tag': u'Robot: Tilføjer manglende <references />-tag',
 	},
 	'de': {
+		'noreferences-add-tag': u'Bot: Trage fehlendes <references /> nach',
+	},
+	# Author: Eruedin
+	'de-ch': {
 		'noreferences-add-tag': u'Bot: Trage fehlendes <references /> nach',
 	},
 	# Author: Erdemaslancan
@@ -133,10 +133,6 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'noreferences-add-tag': u'Bot: Engado a etiqueta <references />, que faltaba',
-	},
-	# Author: Als-Chlämens
-	'gsw': {
-		'noreferences-add-tag': u'Bötli: Due e <references /> Markierig, wo no gfäält het, yyfiege',
 	},
 	'he': {
 		'noreferences-add-tag': u'בוט: מוסיף תגית <references /> חסרה',
@@ -227,10 +223,6 @@ msg = {
 	'ms': {
 		'noreferences-add-tag': u'Robot: Menambah tag  <references /> yang hilang',
 	},
-	# Author: Nghtwlkr
-	'nb': {
-		'noreferences-add-tag': u'Robot: Legger til manglende <references />-element',
-	},
 	# Author: Servien
 	'nds-nl': {
 		'noreferences-add-tag': u'Bot: ontbrekende <references />-kode derbie ezet',
@@ -302,10 +294,6 @@ msg = {
 		'noreferences-add-tag': u'Робот: додата одсутна ознака <references />',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'noreferences-add-tag': u'Робот: додата одсутна ознака <references />',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'noreferences-add-tag': u'Robot: dodata odsutna oznaka <references />',
 	},
@@ -344,10 +332,6 @@ msg = {
 	'tt': {
 		'noreferences-add-tag': u'Робот: <references /> дигән булмаган тег өстәлде',
 	},
-	# Author: Ajdar
-	'tt-cyrl': {
-		'noreferences-add-tag': u'Робот: <references /> дигән булмаган тег өстәлде',
-	},
 	# Author: Dim Grits
 	'uk': {
 		'noreferences-add-tag': u'Robot: Дадано відсутній тег <references />',
@@ -370,10 +354,6 @@ msg = {
 	},
 	# Author: Anakmalaysia
 	'zh': {
-		'noreferences-add-tag': u'机器人：添加缺少的<references />标签',
-	},
-	# Author: Anakmalaysia
-	'zh-hans': {
 		'noreferences-add-tag': u'机器人：添加缺少的<references />标签',
 	},
 	# Author: Breawycker

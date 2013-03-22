@@ -52,10 +52,6 @@ msg = {
 		'isbn-formatting': u'робат аформіў ISBN',
 	},
 	# Author: Jim-by
-	'be-tarask': {
-		'isbn-formatting': u'Робат: фарматаваньне ISBN',
-	},
-	# Author: Jim-by
 	'be-x-old': {
 		'isbn-formatting': u'Робат: фарматаваньне ISBN',
 	},
@@ -107,6 +103,10 @@ msg = {
 		'isbn-formatting': u'Robot: Formaterer ISBN',
 	},
 	'de': {
+		'isbn-formatting': u'Bot: Formatiere ISBN',
+	},
+	# Author: Eruedin
+	'de-ch': {
 		'isbn-formatting': u'Bot: Formatiere ISBN',
 	},
 	# Author: Erdemaslancan
@@ -168,10 +168,6 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'isbn-formatting': u'Bot: Dou formato ISBN',
-	},
-	# Author: Als-Holder
-	'gsw': {
-		'isbn-formatting': u'Bot: ISBN formatiert',
 	},
 	# Author: YaronSh
 	'he': {
@@ -238,10 +234,6 @@ msg = {
 	'ku': {
 		'isbn-formatting': u'Robot:ISBN\'ê format bike',
 	},
-	# Author: George Animal
-	'ku-latn': {
-		'isbn-formatting': u'Robot:ISBN\'ê format bike',
-	},
 	# Author: Robby
 	'lb': {
 		'isbn-formatting': u'Bot: ISBN formatéiert',
@@ -294,9 +286,6 @@ msg = {
 	'my': {
 		'isbn-formatting': u'ရိုဘော့ - ISBN နံပါတ်ကို ပုံစံချနေသည်',
 	},
-	'nb': {
-		'isbn-formatting': u'robot: Formaterer ISBN',
-	},
 	# Author: Slomox
 	'nds': {
 		'isbn-formatting': u'Bot: ISBN-Format',
@@ -317,6 +306,7 @@ msg = {
 	'nn': {
 		'isbn-formatting': u'robot: formaterer ISBN',
 	},
+	# Author: Jon Harald Søby
 	'no': {
 		'isbn-formatting': u'robot: Formaterer ISBN',
 	},
@@ -384,10 +374,6 @@ msg = {
 		'isbn-formatting': u'Робот: обликовање ISBN-а',
 	},
 	# Author: Rancher
-	'sr-ec': {
-		'isbn-formatting': u'Робот: обликовање ISBN-а',
-	},
-	# Author: Rancher
 	'sr-el': {
 		'isbn-formatting': u'Robot: oblikovanje ISBN-a',
 	},
@@ -427,10 +413,6 @@ msg = {
 	'tt': {
 		'isbn-formatting': u'Робот: ISBN үзгәртеп кору',
 	},
-	# Author: Zahidulla
-	'tt-cyrl': {
-		'isbn-formatting': u'Робот: ISBN үзгәртеп кору',
-	},
 	# Author: Тест
 	'uk': {
 		'isbn-formatting': u'Робот: Форматування ISBN',
@@ -458,10 +440,6 @@ msg = {
 	},
 	# Author: Hydra
 	'zh': {
-		'isbn-formatting': u'机器人：ISBN格式化',
-	},
-	# Author: Hydra
-	'zh-hans': {
 		'isbn-formatting': u'机器人：ISBN格式化',
 	},
 	# Author: Andrew971218
