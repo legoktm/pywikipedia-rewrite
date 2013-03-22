@@ -2185,6 +2185,7 @@ class User(Page):
             yield ImagePage(self.site, item.title().title()), \
                   unicode(item.timestamp()), item.comment(), item.pageid() > 0
 
+
 class WikibasePage(Page):
     """
     The base page for the Wikibase extension.
@@ -2194,7 +2195,7 @@ class WikibasePage(Page):
         Page.__init__(self, site, title)
         if isinstance(self.site, pywikibot.site.DataSite):
             self.repo = self.site
-            self.id = title.lower()
+            self.id = self.title(withNamespace=False).lower()
         else:
             self.repo = self.site.data_repository()
 
@@ -2222,6 +2223,15 @@ class WikibasePage(Page):
             raise pywikibot.exceptions.BadTitle
         return params
 
+    def exists(self):
+        if not hasattr(self, '_content'):
+            try:
+                self.get()
+                return True
+            except pywikibot.NoPage:
+                return False
+        return 'lastrevid' in self._content
+
     def get(self, force=False, *args):
         """
         Fetches all page data, and caches it
@@ -2232,10 +2242,10 @@ class WikibasePage(Page):
             data = self.repo.loadcontent(self.__defined_by(), *args)
             self.id = data.keys()[0]
             self._content = data[self.id]
-            if 'lastrevid' in self._content:
-                self.lastrevid = self._content['lastrevid']
-            else:
-                raise pywikibot.NoPage
+        if 'lastrevid' in self._content:
+            self.lastrevid = self._content['lastrevid']
+        else:
+            raise pywikibot.NoPage(self)
         #aliases
         self.aliases = {}
         if 'aliases' in self._content:
@@ -2279,11 +2289,77 @@ class WikibasePage(Page):
             self.get()
         return self.lastrevid
 
-    def save(self, summary, **kwargs):
+    def __normalizeLanguages(self, data):
         """
-        Save whatever we added/removed/etc.
+        Helper function to convert any site objects
+        into the language they may represent.
+        @param data The dict to check
+        @type data dict
         """
-        raise NotImplementedError
+        for key in data:
+            if isinstance(key, pywikibot.site.BaseSite):
+                data[key.language()] = data[key]
+                del data[key]
+        return data
+
+    def __getdbName(self, site):
+        """
+        Helper function to normalize site
+        objects into dbnames
+        """
+        if isinstance(site, pywikibot.site.BaseSite):
+            return site.dbName()
+        return site
+
+    def editEntity(self, data, **kwargs):
+        """
+        Enables updating of entities through wbeditentity
+        This function is wrapped around by:
+         *editLabels
+         *editDescriptions
+         *editAliases
+         *ItemPage.setSitelinks
+        @param data Data to be saved
+        @type data dict
+        """
+        if hasattr(self, 'lastrevid'):
+            baserevid = self.lastrevid
+        else:
+            baserevid = None
+        updates = self.repo.editEntity(self.__defined_by(), data, baserevid=baserevid, **kwargs)
+        self.lastrevid = updates['entity']['lastrevid']
+
+    def editLabels(self, labels, **kwargs):
+        """
+        Labels should be a dict, with the key
+        as a language or a site object. The
+        value should be the string to set it to.
+        You can set it to '' to remove the label.
+        """
+        labels = self.__normalizeLanguages(labels)
+        data = {'labels': labels}
+        self.editEntity(data, **kwargs)
+
+    def editDescriptions(self, descriptions, **kwargs):
+        """
+        Descriptions should be a dict, with the key
+        as a language or a site object. The
+        value should be the string to set it to.
+        You can set it to '' to remove the description.
+        """
+        descriptions = self.__normalizeLanguages(descriptions)
+        data = {'descriptions': descriptions}
+        self.editEntity(data, **kwargs)
+
+    def editAliases(self, aliases, **kwargs):
+        """
+        Aliases should be a dict, with the key
+        as a language or a site object. The
+        value should be a list of strings.
+        """
+        aliases = self.__normalizeLanguages(aliases)
+        data = {'aliases': aliases}
+        self.editEntity(data, **kwargs)
 
 
 class ItemPage(WikibasePage):
@@ -2349,17 +2425,61 @@ class ItemPage(WikibasePage):
     def getSitelink(self, site, force=False):
         """
         Returns a page object for the specific site
-        site is a pywikibot.Site
+        site is a pywikibot.Site or database name
         force will override caching
         If the item doesn't have that language, raise NoPage
         """
         if force or not hasattr(self, '_content'):
             self.get(force=force)
-        dbname = site.dbName()
+        dbname = self.__getdbName(site)
         if not dbname in self.sitelinks:
-            raise pywikibot.NoPage
+            raise pywikibot.NoPage(self)
         else:
             return self.sitelinks[dbname]
+
+    def setSitelink(self, sitelink, **kwargs):
+        """
+        A sitelink can either be a Page object,
+        or a {'site':dbname,'title':title} dictionary.
+        """
+        self.setSitelinks([sitelink], **kwargs)
+
+    def removeSitelink(self, site, **kwargs):
+        """
+        A site can either be a Site object,
+        or it can be a dbName.
+        """
+        self.removeSitelinks([site], **kwargs)
+
+    def removeSitelinks(self, sites, **kwargs):
+        """
+        Sites should be a list, with values either
+        being Site objects, or dbNames.
+        """
+        data = {}
+        for site in sites:
+            site = self.__getdbName(site)
+            data[site] = {'site': site, 'title': ''}
+        self.setSitelinks(data, **kwargs)
+
+    def setSitelinks(self, sitelinks, **kwargs):
+        """
+        Sitelinks should be a list. Each item in the
+        list can either be a Page object, or a dict
+        with a value for 'site' and 'title'.
+        """
+
+        data = {}
+        for obj in sitelinks:
+            if isinstance(obj, Page):
+                dbName = self.__getdbName(obj.site)
+                data[dbName] = {'site': dbName, 'title': obj.title()}
+            else:
+                #TODO: Do some verification here
+                dbName = obj['site']
+                data[dbName] = obj
+        data = {'sitelinks': data}
+        self.editEntity(data, **kwargs)
 
     def addClaim(self, claim, bot=True):
         """
@@ -2409,7 +2529,7 @@ class QueryPage(WikibasePage):
         WikibasePage.__init__(self, site, title)
         self.id = self.title(withNamespace=False).lower()
         if not self.id.startswith(u'u'):
-            raise ValueError(u"'%s' is not a property page!" % self.title())
+            raise ValueError(u"'%s' is not a query page!" % self.title())
 
 
 class Claim(PropertyPage):
@@ -2469,6 +2589,18 @@ class Claim(PropertyPage):
         """
         self.target = value
 
+    def changeTarget(self, value=None, snaktype='value', **kwargs):
+        """
+        This actually saves the new target.
+        """
+        if value:
+            self.target = value
+
+        data = self.repo.changeClaimTarget(self, snaktype=snaktype,
+                                           **kwargs)
+        #TODO: Re-create the entire item from JSON, not just id
+        self.snak = data['claim']['id']
+
     def getTarget(self):
         """
         Returns object that the property is associated with.
@@ -2488,7 +2620,6 @@ class Claim(PropertyPage):
         adds it as a reference.
         """
         raise NotImplementedError
-
 
 
 class Revision(object):

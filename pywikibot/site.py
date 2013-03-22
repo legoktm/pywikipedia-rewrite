@@ -3356,6 +3356,20 @@ class DataSite (APISite):
             raise pywikibot.data.api.APIError, data['errors']
         return data['entities']
 
+    def editEntity(self, identification, data, **kwargs):
+        params = dict(**identification)
+        params['action'] = 'wbeditentity'
+        if 'baserevid' in kwargs and kwargs['baserevid']:
+            params['baserevid'] = kwargs['baserevid']
+        params['token'] = self.token(pywikibot.Page(self, u'Main Page'), 'edit')  # Use a dummy page
+        for arg in kwargs:
+            if arg in ['bot', 'clear', 'data', 'exclude', 'summary']:
+                params[arg] = kwargs[arg]
+        params['data'] = json.dumps(data)
+        req = api.Request(site=self, **params)
+        data = req.submit()
+        return data
+
     def addClaim(self, item, claim, bot=True):
 
         params = dict(action='wbcreateclaim',
@@ -3383,6 +3397,40 @@ class DataSite (APISite):
         else:
             item.claims[claim.getID()] = [claim]
         item.lastrevid = data['pageinfo']['lastrevid']
+
+    def changeClaimTarget(self, claim, snaktype='value', **kwargs):
+        """
+        Sets the claim target to whatever claim.target is
+        An optional snaktype lets you set a novalue or somevalue.
+        """
+        if claim.isReference:
+            raise NotImplementedError
+        if not claim.snak:
+            #We need to already have the snak value
+            raise pywikibot.NoPage(claim)
+        params = dict(action='wbsetclaimvalue',
+                      claim=claim.snak,
+                      snaktype=snaktype,
+                      )
+        params['token'] = self.token(claim, 'edit')
+        if snaktype == 'value':
+            #This code is repeated from above, maybe it should be it's own function?
+            if claim.getType() == 'wikibase-item':
+                params['value'] = json.dumps({'entity-type': 'item',
+                                              'numeric-id': claim.getTarget().getID(numeric=True)})
+            elif claim.getType() == 'string':
+                params['value'] = '"' + claim.getTarget() + '"'
+            else:
+                raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())
+
+        for arg in kwargs:
+            #TODO: Get the lastrevid from the item
+            if arg in ['bot','lastrevid']:
+                params[arg] = kwargs[arg]
+        req = api.Request(site=self, **params)
+        data = req.submit()
+        return data
+
 
 
 
