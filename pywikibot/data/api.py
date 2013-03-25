@@ -346,6 +346,7 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
                     # retry the previous query
                     continue
             if "warnings" in result:
+                print result['warnings']
                 modules = [k for k in result["warnings"] if k != "info"]
                 for mod in modules:
                     pywikibot.warning(
