@@ -10,10 +10,16 @@ Interface functions to Mediawiki's api.php
 __version__ = '$Id$'
 
 from UserDict import DictMixin
-from datetime import datetime, timedelta
+from pywikibot.comms import http
+from email.mime.multipart import MIMEMultipart
+from email.mime.nonmultipart import MIMENonMultipart
+import datetime
+import hashlib
 import json
 import logging
 import mimetypes
+import os
+import pickle
 import pprint
 import re
 import traceback
@@ -37,8 +43,10 @@ class APIError(pywikibot.Error):
         self.info = info
         self.other = kwargs
         self.unicode = unicode(self.__str__())
+
     def __repr__(self):
         return 'APIError("%(code)s", "%(info)s", %(other)s)' % self.__dict__
+
     def __str__(self):
         return "%(code)s: %(info)s" % self.__dict__
 
@@ -130,7 +138,7 @@ class Request(object, DictMixin):
                     )
         if self.params["action"] == "edit":
             pywikibot.debug(u"Adding user assertion", _logger)
-            self.params["assert"] = "user" # make sure user is logged in
+            self.params["assert"] = "user"  # make sure user is logged in
 
     # implement dict interface
     def __getitem__(self, key):
@@ -177,7 +185,7 @@ class Request(object, DictMixin):
             if "properties" in self.params:
                 if "info" in self.params["properties"]:
                     inprop = self.params.get("inprop", [])
-                    info = set(info + ["protection", "talkid", "subjectid"])
+                    info = set(inprop + ["protection", "talkid", "subjectid"])
                     self.params["info"] = list(info)
         if "maxlag" not in self.params and config.maxlag:
             self.params["maxlag"] = [str(config.maxlag)]
@@ -217,10 +225,6 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
         @return:  The data retrieved from api.php (a dict)
 
         """
-        from pywikibot.comms import http
-        from email.mime.multipart import MIMEMultipart
-        from email.mime.nonmultipart import MIMENonMultipart
-
         paramstring = self.http_params()
         while True:
             action = self.params.get("action", "")
@@ -229,13 +233,13 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
                 return simulate
             self.site.throttle(write=self.write)
             uri = self.site.scriptpath() + "/api.php"
+            ssl = False
+            if self.site.family.name in config.available_ssl_project:
+                if action == "login" and config.use_SSL_onlogin:
+                    ssl = True
+                elif config.use_SSL_always:
+                    ssl = True
             try:
-                ssl = False
-                if self.site.family.name in config.available_ssl_project:
-                    if action == "login" and config.use_SSL_onlogin:
-                        ssl = True
-                    elif config.use_SSL_always:
-                        ssl = True
                 if self.mime:
                     # construct a MIME message containing all API key/values
                     container = MIMEMultipart(_subtype='form-data')
@@ -330,7 +334,7 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
                         self.site._userinfo.update(result['query']['userinfo'])
                     else:
                         self.site._userinfo = result['query']['userinfo']
-                status = self.site._loginstatus # save previous login status
+                status = self.site._loginstatus  # save previous login status
                 if ( ("error" in result
                             and result["error"]["code"].endswith("limit"))
                       or (status >= 0
@@ -385,15 +389,11 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
         if self.max_retries < 0:
             raise TimeoutError("Maximum retries attempted without success.")
         pywikibot.warning(u"Waiting %s seconds before retrying."
-                            % self.retry_wait)
+                          % self.retry_wait)
         time.sleep(self.retry_wait)
         # double the next wait, but do not exceed 120 seconds
         self.retry_wait = min(120, self.retry_wait * 2)
 
-import datetime
-import hashlib
-import pickle
-import os
 
 class CachedRequest(Request):
     def __init__(self, expiry, *args, **kwargs):
@@ -585,8 +585,7 @@ class QueryGenerator(object):
             for param in self._modules[mod].get("parameters", []):
                 if param["name"] == "limit":
                     if (self.site.logged_in()
-                            and "apihighlimits" in
-                                self.site.getuserinfo()["rights"]):
+                        and self.site.has_right('apihighlimits')):
                         self.api_limit = int(param["highmax"])
                     else:
                         self.api_limit = int(param["max"])
@@ -695,8 +694,7 @@ u"%s: stopped iteration because 'query' not found in api response."
                 for item in resultdata:
                     yield self.result(item)
                     count += 1
-                    if self.limit is not None and self.limit > 0 \
-                                              and count >= self.limit:
+                    if self.limit > 0 and count >= self.limit:
                         return
             if not "query-continue" in self.data:
                 return
@@ -870,8 +868,8 @@ class LoginManager(login.LoginManager):
 
         """
         if hasattr(self, '_waituntil'):
-            if datetime.now() < self._waituntil:
-                diff = self._waituntil - datetime.now()
+            if datetime.datetime.now() < self._waituntil:
+                diff = self._waituntil - datetime.datetime.now()
                 pywikibot.warning(u"Too many tries, waiting %s seconds before retrying."
                                     % diff.seconds)
                 time.sleep(diff.seconds)
@@ -899,8 +897,8 @@ class LoginManager(login.LoginManager):
                 login_request["lgtoken"] = token
                 continue
             elif login_result['login']['result'] == "Throttled":
-                self._waituntil = datetime.now() \
-                                  + timedelta(seconds=int(
+                self._waituntil = datetime.datetime.now() \
+                                  + datetime.timedelta(seconds=int(
                                                 login_result["login"]["wait"])
                                               )
                 break

@@ -45,7 +45,7 @@ class TestSiteObject(unittest.TestCase):
         self.assertEqual(mysite.family.name, self.family)
         self.assertEqual(mysite.code, self.code)
         self.assertType(mysite.lang, basestring)
-        self.assertType(mysite == pywikibot.Site("en", "wikipedia"), bool)
+        self.assertEqual(mysite, pywikibot.Site("en", "wikipedia"))
         self.assertType(mysite.user(), (basestring, type(None)))
         self.assertEqual(mysite.sitename(),
                          "%s:%s" % (self.family,
@@ -74,7 +74,8 @@ class TestSiteObject(unittest.TestCase):
         self.assertTrue(mysite.code in langs)
         obs = mysite.family.obsolete
         ipf = mysite.interwiki_putfirst()
-        self.assertType(ipf, list)
+        if ipf:  # Not all languages use this
+            self.assertType(ipf, list)
         
         for item in mysite.validLanguageLinks():
             self.assertTrue(item in langs, item)
@@ -530,7 +531,7 @@ class TestSiteObject(unittest.TestCase):
         for using in mysite.imageusage(imagepage, filterredir=True, total=5):
             self.assertType(using, pywikibot.Page)
             self.assertTrue(using.isRedirectPage())
-        for using in mysite.imageusage(imagepage, filterredir=True, total=5):
+        for using in mysite.imageusage(imagepage, filterredir=False, total=5):
             self.assertType(using, pywikibot.Page)
             self.assertFalse(using.isRedirectPage())
 
@@ -539,35 +540,33 @@ class TestSiteObject(unittest.TestCase):
 
         le = list(mysite.logevents(total=10))
         self.assertTrue(len(le) <= 10)
-        self.assertTrue(all(isinstance(entry, dict) and "type" in entry
+        self.assertTrue(all(isinstance(entry, pywikibot.data.logentries.LogEntry)
                             for entry in le))
         for typ in ("block", "protect", "rights", "delete", "upload",
                 "move", "import", "patrol", "merge"):
             for entry in mysite.logevents(logtype=typ, total=3):
-                self.assertEqual(entry["type"], typ)
+                self.assertEqual(entry.type(), typ)
         for entry in mysite.logevents(page=mainpage, total=3):
-            self.assertTrue("title" in entry
-                            and entry["title"] == mainpage.title())
+            self.assertTrue(entry.title().title() == mainpage.title())
         for entry in mysite.logevents(user=mysite.user(), total=3):
-            self.assertTrue("user" in entry
-                            and entry["user"] == mysite.user())
+            self.assertTrue(entry.user() == mysite.user())
         for entry in mysite.logevents(start="2008-09-01T00:00:01Z", total=5):
-            self.assertType(entry, dict)
-            self.assertTrue(entry['timestamp'] <= "2008-09-01T00:00:01Z")
+            self.assertType(entry, pywikibot.data.logentries.LogEntry)
+            self.assertTrue(str(entry.timestamp()) <= "2008-09-01T00:00:01Z")
         for entry in mysite.logevents(end="2008-09-02T23:59:59Z", total=5):
-            self.assertType(entry, dict)
-            self.assertTrue(entry['timestamp'] >= "2008-09-02T23:59:59Z")
+            self.assertType(entry, pywikibot.data.logentries.LogEntry)
+            self.assertTrue(str(entry.timestamp()) >= "2008-09-02T23:59:59Z")
         for entry in mysite.logevents(start="2008-02-02T00:00:01Z",
                                       end="2008-02-02T23:59:59Z",
                                       reverse=True, total=5):
-            self.assertType(entry, dict)
-            self.assertTrue("2008-02-02T00:00:01Z" <= entry['timestamp']
+            self.assertType(entry, pywikibot.data.logentries.LogEntry)
+            self.assertTrue("2008-02-02T00:00:01Z" <= str(entry.timestamp())
                                 <= "2008-02-02T23:59:59Z")
         for entry in mysite.logevents(start="2008-02-03T23:59:59Z",
                                       end="2008-02-03T00:00:01Z",
                                       total=5):
-            self.assertType(entry, dict)
-            self.assertTrue("2008-02-03T00:00:01Z" <= entry['timestamp']
+            self.assertType(entry, pywikibot.data.logentries.LogEntry)
+            self.assertTrue("2008-02-03T00:00:01Z" <= str(entry.timestamp())
                                 <= "2008-02-03T23:59:59Z")
         # starttime earlier than endtime
         self.assertRaises(pywikibot.Error, mysite.logevents,
@@ -629,12 +628,13 @@ class TestSiteObject(unittest.TestCase):
             prefix = title[ : title.index(":")]
             self.assertTrue(mysite.ns_index(prefix) in [6,7])
             self.assertTrue(change["ns"] in [6,7])
-        for change in mysite.recentchanges(pagelist=[mainpage, imagepage],
-                                           total=5):
-            self.assertType(change, dict)
-            self.assertTrue("title" in change)
-            self.assertTrue(change["title"] in (mainpage.title(),
-                                                imagepage.title()))
+        if mysite.versionnumber() <= 14:
+            for change in mysite.recentchanges(pagelist=[mainpage, imagepage],
+                                               total=5):
+                self.assertType(change, dict)
+                self.assertTrue("title" in change)
+                self.assertTrue(change["title"] in (mainpage.title(),
+                                                    imagepage.title()))
         for typ in ("edit", "new", "log"):
             for change in mysite.recentchanges(changetype=typ, total=5):
                 self.assertType(change, dict)
@@ -664,10 +664,12 @@ class TestSiteObject(unittest.TestCase):
             self.assertTrue("redirect" not in change)
         for change in mysite.recentchanges(showPatrolled=True, total=5):
             self.assertType(change, dict)
-            self.assertTrue("patrolled" in change)
+            if mysite.has_right('patrol'):
+                self.assertTrue("patrolled" in change)
         for change in mysite.recentchanges(showPatrolled=False, total=5):
             self.assertType(change, dict)
-            self.assertTrue("patrolled" not in change)
+            if mysite.has_right('patrol'):
+                self.assertTrue("patrolled" not in change)
 
     def testSearch(self):
         """Test the site.search() method"""
