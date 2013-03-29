@@ -2198,6 +2198,7 @@ class WikibasePage(Page):
             self.id = self.title(withNamespace=False).lower()
         else:
             self.repo = self.site.data_repository()
+        self._isredir = False  # Wikibase pages cannot be a redirect
 
     def __defined_by(self):
         """
@@ -2546,6 +2547,7 @@ class Claim(PropertyPage):
         self.isReference = isReference
         self.sources = []
         self.target = None
+        self.snaktype = 'value'
 
     @staticmethod
     def fromJSON(site, data):
@@ -2558,12 +2560,14 @@ class Claim(PropertyPage):
             claim.snak = data['id']
         else:
             claim.isReference = True
-        claim.type = data['mainsnak']['datavalue']['type']
-        if claim.type == 'wikibase-entityid':
-            claim.target = ItemPage(site, 'Q' +
-                                          str(data['mainsnak']['datavalue']['value']['numeric-id']))
-        else:
-            claim.target = data['mainsnak']['datavalue']['value']
+        claim.snaktype = data['mainsnak']['snaktype']
+        if claim.getSnakType() == 'value':
+            claim.type = data['mainsnak']['datavalue']['type']
+            if claim.type == 'wikibase-entityid':
+                claim.target = ItemPage(site, 'Q' +
+                                              str(data['mainsnak']['datavalue']['value']['numeric-id']))
+            else:
+                claim.target = data['mainsnak']['datavalue']['value']
         if 'references' in data:
             for source in data['references']:
                 claim.sources.append(Claim.referenceFromJSON(site, source))
@@ -2587,6 +2591,14 @@ class Claim(PropertyPage):
         Sets the target to the passed value.
         There should be checks to ensure type compliance
         """
+        types = {'wikibase-item': ItemPage,
+                 'string': basestring,
+                 'commonsMedia': ImagePage,
+                 }
+        if self.getType() in types:
+            if not isinstance(value, types[self.getType()]):
+                raise ValueError("%s is not type %s."
+                                 % (value, str(types[self.getType()])))
         self.target = value
 
     def changeTarget(self, value=None, snaktype='value', **kwargs):
@@ -2594,7 +2606,7 @@ class Claim(PropertyPage):
         This actually saves the new target.
         """
         if value:
-            self.target = value
+            self.setTarget(value)
 
         data = self.repo.changeClaimTarget(self, snaktype=snaktype,
                                            **kwargs)
@@ -2607,6 +2619,28 @@ class Claim(PropertyPage):
         None is returned if no target is set
         """
         return self.target
+
+    def getSnakType(self):
+        """
+        Returns the "snaktype"
+        Can be "value", "somevalue" or "novalue"
+        """
+        return self.snaktype
+
+    def setSnakType(self, value):
+        if value in ['value', 'somevalue', 'novalue']:
+            self.snaktype = value
+        else:
+            raise ValueError("snaktype must be 'value', 'somevalue', or 'novalue'.")
+
+    def changeSnakType(self, value=None, **kwargs):
+        """
+        This actually saves the new snakvalue.
+        TODO: Is this function really needed?
+        """
+        if value:
+            self.setSnakType(value)
+        self.changeTarget(snaktype=self.getSnakType(), **kwargs)
 
     def getSources(self):
         """
