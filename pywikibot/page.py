@@ -2517,9 +2517,7 @@ class PropertyPage(WikibasePage):
         Examples: item, commons media file, StringValue, NumericalValue
         """
         if not hasattr(self, 'type'):
-            self.get()
-        if self.type == 'wikibase-entityid':
-            self.type = 'wikibase-item'
+            self.type = self.repo.getPropertyType(self)
         return self.type
 
 
@@ -2563,11 +2561,14 @@ class Claim(PropertyPage):
             claim.isReference = True
         claim.snaktype = data['mainsnak']['snaktype']
         if claim.getSnakType() == 'value':
-            claim.type = data['mainsnak']['datavalue']['type']
-            if claim.type == 'wikibase-entityid':
+            if claim.getType() == 'wikibase-item':
                 claim.target = ItemPage(site, 'Q' +
                                               str(data['mainsnak']['datavalue']['value']['numeric-id']))
+            elif claim.getType() == 'commonsMedia':
+                claim.target = ImagePage(site.image_repository(), 'File:' +
+                                                                  data['mainsnak']['datavalue']['value'])
             else:
+                #This covers string type
                 claim.target = data['mainsnak']['datavalue']['value']
         if 'references' in data:
             for source in data['references']:
