@@ -14,6 +14,7 @@ try:
     from hashlib import md5
 except ImportError:
     from md5 import md5
+import datetime
 import itertools
 import os
 import re
@@ -3358,6 +3359,21 @@ class DataSite (APISite):
             raise pywikibot.data.api.APIError, data['errors']
         return data['entities']
 
+    def getPropertyType(self, prop):
+        """
+        This is used sepecifically because we can cache
+        the value for a much longer time (near infinite).
+        """
+        params = dict(action='wbgetentities',
+                      ids=prop.getID(),
+                      props='datatype',
+                      )
+        expiry = datetime.timedelta(days=365*100)
+        #Store it for 100 years
+        req = api.CachedRequest(expiry, site=self, **params)
+        data = req.submit()
+        return data['entities'][prop.getID()]['datatype']
+
     def editEntity(self, identification, data, **kwargs):
         params = dict(**identification)
         params['action'] = 'wbeditentity'
@@ -3387,7 +3403,9 @@ class DataSite (APISite):
                 params['value'] = json.dumps({'entity-type': 'item',
                                               'numeric-id': claim.getTarget().getID(numeric=True)})
             elif claim.getType() == 'string':
-                params['value'] = '"' + claim.getTarget() + '"'
+                params['value'] = json.dumps(claim.getTarget())
+            elif claim.getType() == 'commonsMedia':
+                params['value'] = json.dumps(claim.getTarget().title(withNamespace=False))
             else:
                 raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())
         params['token'] = self.token(item, 'edit')
@@ -3422,7 +3440,9 @@ class DataSite (APISite):
                 params['value'] = json.dumps({'entity-type': 'item',
                                               'numeric-id': claim.getTarget().getID(numeric=True)})
             elif claim.getType() == 'string':
-                params['value'] = '"' + claim.getTarget() + '"'
+                params['value'] = json.dumps(claim.getTarget())
+            elif claim.getType() == 'commonsMedia':
+                params['value'] = json.dumps(claim.getTarget().title(withNamespace=False))
             else:
                 raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())
 
