@@ -2514,7 +2514,8 @@ redirects on %(site)s wiki""",
 
     def editpage(self, page, summary, minor=True, notminor=False,
                  bot=True, recreate=True, createonly=False, nocreate=False, watch=None,
-                 newsection=False, append=False, lastrev=None, token=None, skipec=False,useid=False):
+                 newsection=False, append=False, lastrev=None, token=None, skipec=False,
+                 useid=False, timestamp=None):
         """Submit an edited Page object to be saved to the wiki.
 
         @param page: The Page to be saved; its .text property will be used
@@ -2573,7 +2574,9 @@ redirects on %(site)s wiki""",
             params["text"] = text
         if bot:
             params["bot"] = ""
-        if (lastrev is not None) and (not skipec):
+        if timestamp:
+            params['basetimestamp'] = timestamp
+        elif (lastrev is not None) and (not skipec):
             params["basetimestamp"] = page._revisions[lastrev].timestamp
         if minor:
             params['minor'] = ""
