@@ -1353,6 +1353,10 @@ class APISite(BaseSite):
             see API documentation for full list of types
 
         """
+        if not hasattr(self, 'tokens'):
+            self.tokens = {}
+        if tokentype in self.tokens:
+            return self.tokens[tokentype]
         query = api.PropertyGenerator("info|revisions",
                                       titles=page.title(withSection=False),
                                       intoken=tokentype,
@@ -1365,7 +1369,8 @@ class APISite(BaseSite):
                         item['title']))
             api.update_page(page, item)
             pywikibot.debug(unicode(item), _logger)
-            return item[tokentype + "token"]
+            self.tokens[tokentype] = item[tokentype + "token"]
+            return self.tokens[tokentype]
 
     # following group of methods map more-or-less directly to API queries
 
