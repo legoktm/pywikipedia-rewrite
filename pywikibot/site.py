@@ -1358,7 +1358,7 @@ class APISite(BaseSite):
             self.tokens = {}
         if tokentype in self.tokens:
             return self.tokens[tokentype]
-        query = api.PropertyGenerator("info|revisions",
+        query = api.PropertyGenerator("info",
                                       titles=page.title(withSection=False),
                                       intoken=tokentype,
                                       site=self)
@@ -3500,8 +3500,16 @@ class DataSite (APISite):
         data = req.submit()
         return data
 
-
-
+    def removeClaims(self, claims, **kwargs):
+        params = dict(action='wbremoveclaims')
+        params['claim'] = '|'.join(claim.snak for claim in claims)
+        params['token'] = self.token(pywikibot.Page(self, u'Main Page'), 'edit')  # Use a dummy page
+        for kwarg in kwargs:
+            if kwarg in ['bot', 'baserevid']:
+                params[kwarg] = kwargs[kwarg]
+        req = api.Request(site=self, **params)
+        data = req.submit()
+        return data
 
     # deprecated BaseSite methods
     def fam(self):

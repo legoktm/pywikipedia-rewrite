@@ -19,6 +19,7 @@ import re
 from HTMLParser import HTMLParser
 import config2 as config
 
+TEMP_REGEX = re.compile('{{(msg:)?(?P<name>[^{\|]+?)(\|(?P<params>[^{]+?))?}}')
 
 def unescape(s):
     """Replace escaped HTML-special characters by their originals"""
@@ -75,14 +76,6 @@ def replaceExcept(text, old, new, exceptions, caseInsensitive=False,
         # source code readability.
         # TODO: handle nested tables.
         'table':        re.compile(r'(?ims)^{\|.*?^\|}|<table>.*?</table>'),
-        # templates with parameters often have whitespace that is used to
-        # improve wiki source code readability.
-        # 'template':    re.compile(r'(?s){{.*?}}'),
-        # The regex above fails on nested templates. This regex can handle
-        # templates cascaded up to level 2, but no deeper. For arbitrary
-        # depth, we'd need recursion which can't be done in Python's re.
-        # After all, the language of correct parenthesis words is not regular.
-        'template':     re.compile(r'(?s){{(({{.*?}})?.*?)*}}'),
         'hyperlink':    compileLinkR(),
         'gallery':      re.compile(r'(?is)<gallery.*?>.*?</gallery>'),
         # this matches internal wikilinks, but also interwiki, categories, and
@@ -107,12 +100,15 @@ def replaceExcept(text, old, new, exceptions, caseInsensitive=False,
             old = re.compile(old)
 
     dontTouchRegexes = []
+    except_templates = False
     for exc in exceptions:
-        if isinstance(exc, str) or isinstance(exc, unicode):
+        if isinstance(exc, basestring):
             # assume it's a reference to the exceptionRegexes dictionary
             # defined above.
             if exc in exceptionRegexes:
                 dontTouchRegexes.append(exceptionRegexes[exc])
+            elif exc == 'template':
+                except_templates = True
             else:
                 # nowiki, noinclude, includeonly, timeline, math ond other
                 # extensions
@@ -125,6 +121,37 @@ def replaceExcept(text, old, new, exceptions, caseInsensitive=False,
         else:
             # assume it's a regular expression
             dontTouchRegexes.append(exc)
+
+    # mark templates
+    # don't care about mw variables and parser functions
+    if except_templates:
+        marker1 = findmarker(text)
+        marker2 = findmarker(text, u'##', u'#')
+        Rvalue = re.compile('{{{.+?}}}')
+        Rmarker1 = re.compile('%(mark)s(\d+)%(mark)s' % {'mark': marker1})
+        Rmarker2 = re.compile('%(mark)s(\d+)%(mark)s' % {'mark': marker2})
+        # hide the flat template marker
+        dontTouchRegexes.append(Rmarker1)
+        values = {}
+        count = 0
+        for m in Rvalue.finditer(text):
+            count += 1
+            item = m.group()
+            text = text.replace(item, '%s%d%s' % (marker2, count, marker2))
+            values[count] = item
+        inside = {}
+        count = 0
+        while TEMP_REGEX.search(text) is not None:
+            for m in TEMP_REGEX.finditer(text):
+                count += 1
+                item = m.group()
+                text = text.replace(item, '%s%d%s' % (marker1, count, marker1))
+
+                for m2 in Rmarker1.finditer(item):
+                    item = item.replace(m2.group(), inside[int(m2.group(1))])
+                for m2 in Rmarker2.finditer(item):
+                    item = item.replace(m2.group(), values[int(m2.group(1))])
+                inside[count] = item
     index = 0
     markerpos = len(text)
     while True:
@@ -194,6 +221,12 @@ def replaceExcept(text, old, new, exceptions, caseInsensitive=False,
                 index = match.start() + len(replacement)
             markerpos = match.start() + len(replacement)
     text = text[:markerpos] + marker + text[markerpos:]
+
+    if except_templates:  # restore templates from dict
+        for m2 in Rmarker1.finditer(text):
+            text = text.replace(m2.group(), inside[int(m2.group(1))])
+        for m2 in Rmarker2.finditer(text):
+            text = text.replace(m2.group(), values[int(m2.group(1))])
     return text
 
 
@@ -274,13 +307,13 @@ def isDisabled(text, index, tags=['*']):
 
     """
     # Find a marker that is not already in the text.
-    marker = findmarker(text, '@@', '@')
+    marker = findmarker(text)
     text = text[:index] + marker + text[index:]
     text = removeDisabledParts(text, tags)
     return (marker not in text)
 
 
-def findmarker(text, startwith=u'@', append=None):
+def findmarker(text, startwith=u'@@', append=None):
     # find a string which is not part of text
     if not append:
         append = u'@'
@@ -446,7 +479,7 @@ def replaceLanguageLinks(oldtext, new, site=None, addOnly=False,
 
     """
     # Find a marker that is not already in the text.
-    marker = findmarker(oldtext, u'@@')
+    marker = findmarker(oldtext)
     if site is None:
         site = pywikibot.getSite()
     separator = site.family.interwiki_text_separator
@@ -708,7 +741,7 @@ def replaceCategoryLinks(oldtext, new, site=None, addOnly=False):
 
     """
     # Find a marker that is not already in the text.
-    marker = findmarker(oldtext, u'@@')
+    marker = findmarker(oldtext)
     if site is None:
         site = pywikibot.getSite()
     if site.sitename() == 'wikipedia:de' and "{{Personendaten" in oldtext:
@@ -831,7 +864,7 @@ def compileLinkR(withoutBracketed=False, onlyBracketed=False):
 #----------------------------------
 
 def extract_templates_and_params(text):
-    """Return list of template calls found in text.
+    """Return a list of templates found in text.
 
     Return value is a list of tuples. There is one tuple for each use of a
     template in the page, with the template title as the first entry and a
@@ -840,35 +873,32 @@ def extract_templates_and_params(text):
     with an integer value corresponding to its position among the unnnamed
     parameters, and if this results multiple parameters with the same name
     only the last value provided will be returned.
+    @param text: The wikitext from which templates are extracted
+    @type text: unicode or string
 
     """
     # remove commented-out stuff etc.
     thistxt = removeDisabledParts(text)
 
     # marker for inside templates or parameters
-    marker = u'@@'
-    while marker in thistxt:
-        marker += u'@'
+    marker = findmarker(thistxt)
 
     # marker for links
-    marker2 = u'##'
-    while marker2 in thistxt:
-        marker2 += u'#'
+    marker2 = findmarker(thistxt, u'##', u'#')
 
     # marker for math
-    marker3 = u'%%'
-    while marker2 in thistxt:
-        marker3 += u'%'
+    marker3 = findmarker(thistxt, u'%%', u'%')
+
+    # marker for value parameter
+    marker4 = findmarker(thistxt, u'§§', u'§')
 
     result = []
-    inside = {}
-    count = 0
-    Rtemplate = re.compile(
-        ur'{{(msg:)?(?P<name>[^{\|]+?)(\|(?P<params>[^{]+?))?}}')
     Rmath = re.compile(ur'<math>[^<]+</math>')
+    Rvalue = re.compile(r'{{{.+?}}}')
     Rmarker = re.compile(ur'%s(\d+)%s' % (marker, marker))
     Rmarker2 = re.compile(ur'%s(\d+)%s' % (marker2, marker2))
     Rmarker3 = re.compile(ur'%s(\d+)%s' % (marker3, marker3))
+    Rmarker4 = re.compile(ur'%s(\d+)%s' % (marker4, marker4))
 
     # Replace math with markers
     maths = {}
@@ -879,8 +909,18 @@ def extract_templates_and_params(text):
         thistxt = thistxt.replace(text, '%s%d%s' % (marker3, count, marker3))
         maths[count] = text
 
-    while Rtemplate.search(thistxt) is not None:
-        for m in Rtemplate.finditer(thistxt):
+    values = {}
+    count = 0
+    for m in Rvalue.finditer(thistxt):
+        count += 1
+        text = m.group()
+        thistxt = thistxt.replace(text, '%s%d%s' % (marker4, count, marker4))
+        values[count] = text
+
+    inside = {}
+    count = 0
+    while TEMP_REGEX.search(thistxt) is not None:
+        for m in TEMP_REGEX.finditer(thistxt):
             # Make sure it is not detected again
             count += 1
             text = m.group()
@@ -891,6 +931,8 @@ def extract_templates_and_params(text):
                 text = text.replace(m2.group(), inside[int(m2.group(1))])
             for m2 in Rmarker3.finditer(text):
                 text = text.replace(m2.group(), maths[int(m2.group(1))])
+            for m2 in Rmarker4.finditer(text):
+                text = text.replace(m2.group(), values[int(m2.group(1))])
             inside[count] = text
 
             # Name
@@ -900,6 +942,35 @@ def extract_templates_and_params(text):
                 # Doesn't detect templates whose name changes,
                 # or templates whose name contains math tags
                 continue
+
+            # {{#if: }}
+            if name.startswith('#'):
+                continue
+
+## TODO: merged from wikipedia.py - implement the following
+##            if self.site().isInterwikiLink(name):
+##                continue
+##            # {{DEFAULTSORT:...}}
+##            defaultKeys = self.site().versionnumber() > 13 and \
+##                          self.site().getmagicwords('defaultsort')
+##            # It seems some wikis does not have this magic key
+##            if defaultKeys:
+##                found = False
+##                for key in defaultKeys:
+##                    if name.startswith(key):
+##                        found = True
+##                        break
+##                if found: continue
+##
+##            try:
+##                name = Page(self.site(), name).title()
+##            except InvalidTitle:
+##                if name:
+##                    output(
+##                        u"Page %s contains invalid template name {{%s}}."
+##                       % (self.title(), name.strip()))
+##                continue
+
             # Parameters
             paramString = m.group('params')
             params = {}
@@ -933,6 +1004,9 @@ def extract_templates_and_params(text):
                     for m2 in Rmarker3.finditer(param_val):
                         param_val = param_val.replace(m2.group(),
                                                       maths[int(m2.group(1))])
+                    for m2 in Rmarker4.finditer(param_val):
+                        param_val = param_val.replace(m2.group(),
+                                                      values[int(m2.group(1))])
                     params[param_name.strip()] = param_val.strip()
 
             # Add it to the result
