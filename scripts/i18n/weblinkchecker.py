@@ -45,6 +45,13 @@ msg = {
 		'weblinkchecker-summary': u'Robot : A gemenn ez eus ul liamm diavaez diziraezus',
 		'weblinkchecker-report': u'E-pad meur a batrouilhenn robot n\'eus ket bet gallet diaraez arliamm da-heul. Gwiriit mat eo dall al liamm e gwirionez ha mard eo, reizhit-eñ pe lamit-eñ.',
 	},
+	# Author: Edinwiki
+	'bs': {
+		'weblinkchecker-archive_msg': u'Ova stranica je arhivirana na "Internet Archive". Pokušajte staviti vezu prema arhiviranoj verziji ove stranice: [%(URL)s].',
+		'weblinkchecker-caption': u'Mrtav link',
+		'weblinkchecker-summary': u'Bot: Prijavljam nedostupnu vanjsku vezu',
+		'weblinkchecker-report': u'Poslije nekoliko automatskih pokušaja bota, ustanovljeno je da je sljedeća vanjska veza nedostupna. Provjerite da li je veza zaista neispravna i zatim je ispravite ako je ovo slučaj!',
+	},
 	# Author: Anskar
 	# Author: Pitort
 	'ca': {
@@ -52,6 +59,13 @@ msg = {
 		'weblinkchecker-caption': u'Enllaç trencat',
 		'weblinkchecker-summary': u'Robot: Informant d\'un enllaç extern inaccessible',
 		'weblinkchecker-report': u'Durant diverses execucions automàtiques, el bot ha comprovat que el següent enllaç extern no està disponible. Comproveu que l\'enllaç estigui realment trencat i corregiu-lo o retireu-lo.!',
+	},
+	# Author: Tchoř
+	'cs': {
+		'weblinkchecker-archive_msg': u'Webová stránka je uložena v projektu Internet Archive. Prosím zvažte, zda neodkázat na patřičnou archivovanou verzi  [%(URL)s].',
+		'weblinkchecker-caption': u'Mrtvý odkaz',
+		'weblinkchecker-summary': u'Robot: Ohlašuji nedostupný externí odkaz.',
+		'weblinkchecker-report': u'Během několika automatizovaných běhů byl následující externí odkaz nedostupný. Prosím, ověřte, zda je skutečně nedostupný, a pokud ano, pak jej opravte nebo odstraňte!',
 	},
 	# Author: Steenth
 	'da': {
@@ -73,8 +87,9 @@ msg = {
 		'weblinkchecker-report': u'Bei mehreren automatisierten Botläufen wurde die folgende Verknüpfung als nicht verfügbar erkannt. Bitte überprüfe, ob die Verknüpfung tatsächlich nicht erreichbar ist, und korrigiere oder entferne sie in diesem Fall!',
 	},
 	# Author: Gorizon
+	# Author: Mirzali
 	'diq': {
-		'weblinkchecker-caption': u'Greyo merde',
+		'weblinkchecker-caption': u'Gıreyo merde',
 	},
 	# Author: Airon90
 	'eo': {
