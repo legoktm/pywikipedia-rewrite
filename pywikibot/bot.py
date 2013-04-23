@@ -30,6 +30,7 @@ INPUT = 25
 
 import pywikibot
 from pywikibot import config
+from pywikibot import version
 
 
 # User interface initialization
@@ -153,26 +154,26 @@ def init_handlers(strm=None):
     @param strm: Output stream. If None, re-uses the last stream if one
         was defined, otherwise uses sys.stderr
 
-    """
-    # Note: this function is called by handleArgs(), so it should normally
-    # not need to be called explicitly
+    Note: this function is called by handleArgs(), so it should normally
+    not need to be called explicitly
 
-    # All user output is routed through the logging module.
-    # Each type of output is handled by an appropriate handler object.
-    # This structure is used to permit eventual development of other
-    # user interfaces (GUIs) without modifying the core bot code.
-    # The following output levels are defined:
-    #    DEBUG - only for file logging; debugging messages
-    #    STDOUT - output that must be sent to sys.stdout (for bots that may
-    #             have their output redirected to a file or other destination)
-    #    VERBOSE - optional progress information for display to user
-    #    INFO - normal (non-optional) progress information for display to user
-    #    INPUT - prompts requiring user response
-    #    WARN - user warning messages
-    #    ERROR - user error messages
-    #    CRITICAL - fatal error messages
-    # Accordingly, do ''not'' use print statements in bot code; instead,
-    # use pywikibot.output function.
+    All user output is routed through the logging module.
+    Each type of output is handled by an appropriate handler object.
+    This structure is used to permit eventual development of other
+    user interfaces (GUIs) without modifying the core bot code.
+    The following output levels are defined:
+       DEBUG - only for file logging; debugging messages
+       STDOUT - output that must be sent to sys.stdout (for bots that may
+                have their output redirected to a file or other destination)
+       VERBOSE - optional progress information for display to user
+       INFO - normal (non-optional) progress information for display to user
+       INPUT - prompts requiring user response
+       WARN - user warning messages
+       ERROR - user error messages
+       CRITICAL - fatal error messages
+    Accordingly, do ''not'' use print statements in bot code; instead,
+    use pywikibot.output function.
+    """
 
     global _handlers_initialized
 
@@ -190,6 +191,8 @@ def init_handlers(strm=None):
 
     root_logger = logging.getLogger("pywiki")
     root_logger.setLevel(DEBUG+1) # all records except DEBUG go to logger
+    if hasattr(root_logger, 'captureWarnings'):
+        root_logger.captureWarnings(True) # introduced in Python >= 2.7
     root_logger.handlers = [] # remove any old handlers
 
     # configure handler(s) for display to user interface
@@ -223,7 +226,42 @@ def init_handlers(strm=None):
             debuglogger.setLevel(DEBUG)
             debuglogger.addHandler(file_handler)
 
+        writelogheader()
+
     _handlers_initialized = True
+
+
+def writelogheader():
+    """
+    Save additional version, system and status info to the logfile in use,
+    so that the user can look it up later to track errors or report bugs.
+    """
+    output(u'=== Pywikipediabot framework v2.0 -- Logging header ===')
+
+    # script call
+    output(u'COMMAND: %s' % unicode(sys.argv))
+
+    # new framework release/revision?
+    site = pywikibot.getSite()
+    output(u'VERSION: %s' % unicode((version.getversion().strip(' ()'),
+                                          version.getversion_onlinerepo(),
+                                          site.live_version())))
+
+    # system
+    if hasattr(os, 'uname'):
+        output(u'SYSTEM: %s' % unicode(os.uname()))
+
+    # imported modules
+    #output(u'MODULES:')
+    #for item in sys.modules.keys():
+    #    ver = version.getfileversion('%s.py' % item)
+    #    if ver and (ver[0] == u'$'):
+    #        output(u'  %s' % ver)
+
+    # messages on bot discussion page?
+    output(u'MESSAGES: %s' % ('unanswered' if site.messages() else 'none'))
+
+    output(u'=== ' * 14)
 
 
 # User output/logging functions
@@ -348,9 +386,36 @@ def log(text, decoder=None, newline=True, **kwargs):
     """Output a record to the log file."""
     logoutput(text, decoder, newline, VERBOSE, **kwargs)
 
+def critical(text, decoder=None, newline=True, **kwargs):
+    """Output a debug record to the log file."""
+    logoutput(text, decoder, newline, CRITICAL, **kwargs)
+
 def debug(text, layer, decoder=None, newline=True, **kwargs):
     """Output a debug record to the log file."""
     logoutput(text, decoder, newline, DEBUG, layer, **kwargs)
+
+def exception(msg=None, decoder=None, newline=True, full=False, **kwargs):
+    """Output an error traceback to the user via the userinterface.
+
+       Use directly after an 'except' statement:
+           ...
+           except:
+               pywikibot.exception()
+           ...
+       or alternatively:
+           ...
+           except Exception, e:
+               pywikibot.exception(e)
+           ...
+    """
+    if isinstance(msg, BaseException):
+        exc_info = 1
+    else:
+        exc_info = sys.exc_info()
+        msg = unicode(exc_info[1]).strip()
+    if full:
+        kwargs['exc_info'] = exc_info
+    logoutput(msg, decoder, newline, ERROR, **kwargs)
 
 
 # User input functions
