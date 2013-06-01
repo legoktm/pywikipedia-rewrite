@@ -243,6 +243,12 @@ msg = {
 	'gu': {
 		'welcome-welcome': u'સ્વાગત!',
 	},
+	# Author: Jetlag
+	'hak': {
+		'welcome-welcome': u'歡迎！',
+		'welcome-bad_username': u'機械人：添加需要檢查个用戶名',
+		'welcome-updating': u'機械人：更新日誌',
+	},
 	# Author: Amire80
 	'he': {
 		'welcome-welcome': u'ברוך הבא!',
@@ -455,7 +461,7 @@ msg = {
 	},
 	# Author: Raj Singh
 	'pa': {
-		'welcome-welcome': u'ਸੁਆਗਤ!',
+		'welcome-welcome': u'ਤੁਹਾਡਾ ਸਵਾਗਤ!',
 	},
 	'pdc': {
 		'welcome-welcome': u'Wilkum!',
@@ -486,6 +492,7 @@ msg = {
 		'welcome-updating': u'Robô: A atualizando registo',
 	},
 	# Author: Giro720
+	# Author: Luckas
 	# Author: Luckas Blade
 	# Author: 555
 	'pt-br': {

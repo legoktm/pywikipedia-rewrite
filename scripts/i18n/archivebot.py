@@ -162,7 +162,11 @@ msg = {
 		'archivebot-archive-summary': u'Archivuji %(count)d {{PLURAL:%(count)d|vlákno|vlákna|vláken}} z [[%(from)s]].',
 	},
 	# Author: Pwyll
+	# Author: Robin Owain
 	'cy': {
+		'archivebot-older-than': u'hŷn na',
+		'archivebot-page-summary': u'Robot: Archifwyd %(count)d {{PLURAL:%(count)d|llinyn sgwrs|llinyn sgwrs}} (%(why)s) i\'r %(archives)s.',
+		'archivebot-archiveheader': u'{{talkarchive}}',
 		'archivebot-archive-full': u'(ARCHIF YN LLAWN)',
 	},
 	# Author: Christian List
@@ -294,6 +298,14 @@ msg = {
 		'archivebot-archiveheader': u'{{talkarchive}}',
 		'archivebot-archive-full': u'(ARQUIVO COMPLETO)',
 		'archivebot-archive-summary': u'Arquivo %(count)d {{PLURAL:%(count)d|fío|fíos}} de [[%(from)s]].',
+	},
+	# Author: Jetlag
+	'hak': {
+		'archivebot-older-than': u'早於',
+		'archivebot-page-summary': u'機械人：%(count)d討論串(%(why)s)存檔至%(archives)s。',
+		'archivebot-archiveheader': u'{{talkarchive}}',
+		'archivebot-archive-full': u'(存檔滿矣)',
+		'archivebot-archive-summary': u'機械人：從%(from)s存檔%(count)d。',
 	},
 	# Author: Amire80
 	# Author: Ofekalef

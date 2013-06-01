@@ -361,6 +361,10 @@ msg = {
 	'cv': {
 		'thirdparty-drtrigonbot-sum_disc-summary-head': u'робот',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'thirdparty-drtrigonbot-sum_disc-summary-head': u'robot',
+	},
 	# Author: Christian List
 	# Author: Kaare
 	'da': {
@@ -660,6 +664,27 @@ msg = {
 	# Author: Harsh4101991
 	'gu': {
 		'thirdparty-drtrigonbot-sum_disc-summary-head': u'રોબોટ',
+	},
+	# Author: Anson2812
+	# Author: Jetlag
+	'hak': {
+		'thirdparty-drtrigonbot-sum_disc-summary-head': u'機械人',
+		'thirdparty-drtrigonbot-sum_disc-parse-nonhuman': u'（無發現人類編輯）',
+		'thirdparty-drtrigonbot-sum_disc-parse-start': u';%d. %B %Y',
+		'thirdparty-drtrigonbot-sum_disc-parse': u':* %(notify)s: %(page_sections)s - [%(history_link)s 最尾編輯] (由%(user)s於%(time)s更改%(page_size)s位元)',
+		'thirdparty-drtrigonbot-sum_disc-parse-warning': u':* 機械人警告信息：%(page)s"\'\'%(warning)s\'\'"',
+		'thirdparty-drtrigonbot-sum_disc-notify-new': u'新討論',
+		'thirdparty-drtrigonbot-sum_disc-parse-notify': u':* %(notify)s: %(page_sections)s - [%(history_link)s %(page)s] (由%(user)s於%(time)s更改%(page_size)s位元)',
+		'thirdparty-drtrigonbot-sum_disc-notify-notify': u'通知',
+		'thirdparty-drtrigonbot-subster-summary-mod': u'替換%(tags)s標記',
+		'thirdparty-drtrigonbot-sum_disc-notify-closed': u'討論已關閉',
+		'thirdparty-drtrigonbot-sum_disc-parse-closed': u':* %(notify)s：%(page)s所有討論完結（停止監察）-最後由%(user)s於%(time)s編寫',
+		'thirdparty-drtrigonbot-sum_disc-summary-add': u'添加討論摘要：%(num)i項',
+		'thirdparty-drtrigonbot-sum_disc-notify-changed': u'討論已更改',
+		'thirdparty-drtrigonbot-sum_disc-summary-clean': u'添加並修改討論摘要：%(num)i項',
+		'thirdparty-drtrigonbot-sum_disc-summary-mod': u'討論摘要更新：%(page)s裏肚%(num)i項',
+		'thirdparty-drtrigonbot-sum_disc-notify-maintmsg': u'機械人消息',
+		'thirdparty-drtrigonbot-sum_disc-parse-end': u'<noinclude>\n\n摘要由在%(sign)s生成</noinclude></noinclude>',
 	},
 	# Author: Amire80
 	# Author: Ofekalef
@@ -1672,6 +1697,10 @@ msg = {
 		'thirdparty-drtrigonbot-sum_disc-summary-mod': u'Đã cập nhật tóm lược thảo luận: %(num)i mục tại “%(page)s”',
 		'thirdparty-drtrigonbot-sum_disc-notify-maintmsg': u'THÔNG ĐIỆP BOT',
 		'thirdparty-drtrigonbot-sum_disc-parse-end': u'<noinclude>\n\nThành viên và lúc giờ tính tóm lược: %(sign)s</noinclude>',
+	},
+	# Author: Malafaya
+	'vo': {
+		'thirdparty-drtrigonbot-sum_disc-notify-new': u'Bespik Nulik',
 	},
 	# Author: Srtxg
 	'wa': {

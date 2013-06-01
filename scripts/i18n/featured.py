@@ -119,9 +119,12 @@ msg = {
 		'featured-featured': u'робот: суйласа илнӗ статья %(page)s',
 		'featured-former': u'робот: суйласа илнӗ статья пулнӑ %(page)s',
 	},
+	# Author: Robin Owain
 	'cy': {
 		'featured-good': u'Robot: Mae %(page)s yn erthygl dda',
+		'featured-list': u'Robot: Mae %(page)s yn rhestr arbennig',
 		'featured-featured': u'Robot: Mae %(page)s yn erthygl ddethol',
+		'featured-former': u'Robot: Mae %(pages)s yn gyn-erthygl arbennig',
 	},
 	# Author: Christian List
 	# Author: Emaus
@@ -221,6 +224,13 @@ msg = {
 		'featured-list': u'Bot: "%(page)s" é unha lista destacada',
 		'featured-featured': u'Bot: "%(page)s" é un artigo destacado',
 		'featured-former': u'Bot: "%(page)s" é un antigo artigo destacado',
+	},
+	# Author: Jetlag
+	'hak': {
+		'featured-good': u'機械人：%(page)s為優良條目',
+		'featured-list': u'機械人：%(page)s為特色列表',
+		'featured-featured': u'機械人：%(page)s為特色條目',
+		'featured-former': u'機械人：%(page)s曾經係一隻特色條目',
 	},
 	# Author: Amire80
 	'he': {

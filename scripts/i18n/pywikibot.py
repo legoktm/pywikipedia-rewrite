@@ -2,7 +2,7 @@
 msg = {
 	'en': {
 		'pywikibot-enter-category-name': u'Please enter the category name:',
-		'pywikibot-enter-file-links-processing': u'Links to which image page should be processed?',
+		'pywikibot-enter-file-links-processing': u'Links to which file page should be processed?',
 		'pywikibot-enter-finished-browser': u'Press Enter when finished in browser.',
 		'pywikibot-enter-namespace-number': u'Please enter a namespace by its number:',
 		'pywikibot-enter-new-text': u'Please enter the new text:',
@@ -14,7 +14,7 @@ msg = {
 	'qqq': {
 		'pywikibot-enter-xml-filename': u'Message displayed to the bot owner to enter the XML dump\'s filename.',
 		'pywikibot-enter-page-processing': u'Question displayed to the bot owner which page should be processed.',
-		'pywikibot-enter-file-links-processing': u'Question displayed to the bot owner processing links to a given image page.',
+		'pywikibot-enter-file-links-processing': u'Question displayed to the bot owner processing links to a given file page.',
 		'pywikibot-enter-namespace-number': u'Message displayed to the bot owner to enter a namespace by its number.',
 		'pywikibot-enter-new-text': u'Message displayed to the bot owner to enter the new text.',
 		'pywikibot-enter-category-name': u'Message displayed to the bot owner to enter the category name.',
@@ -134,6 +134,16 @@ msg = {
 		'pywikibot-enter-new-text': u'Prosím zadejte nový text:',
 		'pywikibot-enter-category-name': u'Prosím, zadejte jméno kategorie:',
 		'pywikibot-enter-finished-browser': u'Po ukončení práce v prohlížeči zmáčněte Enter.',
+	},
+	# Author: Robin Owain
+	'cy': {
+		'pywikibot-enter-xml-filename': u'Nodwch enwffeil y gronfa XML',
+		'pywikibot-enter-page-processing': u'Pa dudalen ddylem ei phrosesu?',
+		'pywikibot-enter-file-links-processing': u'Dolennau i ba tudalen delwedd ddylid gael ei phrosesu?',
+		'pywikibot-enter-namespace-number': u'Nodwch rif y "namespace"',
+		'pywikibot-enter-new-text': u'Nodwch y testun newydd',
+		'pywikibot-enter-category-name': u'Nodwch enw\'r categori:',
+		'pywikibot-enter-finished-browser': u'Pwyswch Enter ar ôl gorffen pori.',
 	},
 	# Author: Kaare
 	'da': {
@@ -261,11 +271,21 @@ msg = {
 		'pywikibot-enter-category-name': u'Insira o nome da categoría:',
 		'pywikibot-enter-finished-browser': u'Prema na tecla "Intro" cando remate no navegador.',
 	},
+	# Author: Jetlag
+	'hak': {
+		'pywikibot-enter-xml-filename': u'請輸入XML Dump个文件名稱：',
+		'pywikibot-enter-page-processing': u'哪隻頁面需要處理？',
+		'pywikibot-enter-file-links-processing': u'哪隻圖像个連接需要處理？',
+		'pywikibot-enter-namespace-number': u'請輸入名字空間編號：',
+		'pywikibot-enter-new-text': u'請輸入新文字：',
+		'pywikibot-enter-category-name': u'請輸入分類名稱：',
+		'pywikibot-enter-finished-browser': u'搞掂後請撳下Enter鍵。',
+	},
 	# Author: Amire80
 	'he': {
 		'pywikibot-enter-xml-filename': u'נא להזין את שם קובץ ה־XML עם הדאמפ:',
 		'pywikibot-enter-page-processing': u'איזה דף יש לעבד?',
-		'pywikibot-enter-file-links-processing': u'קישורים לאיזה דף תמונה יש לעבד?',
+		'pywikibot-enter-file-links-processing': u'קישורים לאיזה דף קובץ יש לעבד?',
 		'pywikibot-enter-namespace-number': u'נא להזין את שם מרחב השם לפי המספר שלו:',
 		'pywikibot-enter-new-text': u'נא להזין את הטקסט החדש:',
 		'pywikibot-enter-category-name': u'נא להזין את שם הקטגוריה:',
@@ -273,10 +293,11 @@ msg = {
 	},
 	# Author: Dj
 	# Author: R-Joe
+	# Author: Tacsipacsi
 	'hu': {
 		'pywikibot-enter-xml-filename': u'Add meg az XML dump fájl nevét:',
 		'pywikibot-enter-page-processing': u'Melyik lapot kell feldolgozni?',
-		'pywikibot-enter-file-links-processing': u'Melyik képre mutató hivatkozásokat kell feldolgozni?',
+		'pywikibot-enter-file-links-processing': u'Melyik fájlra mutató hivatkozásokat kell feldolgozni?',
 		'pywikibot-enter-namespace-number': u'Add meg a névteret a számával:',
 		'pywikibot-enter-new-text': u'Add meg az új szöveget:',
 		'pywikibot-enter-category-name': u'Add meg a kategória nevet:',
@@ -315,7 +336,7 @@ msg = {
 	'ja': {
 		'pywikibot-enter-xml-filename': u'XML ダンプのファイル名を入力:',
 		'pywikibot-enter-page-processing': u'どのページを処理しますか?',
-		'pywikibot-enter-file-links-processing': u'どの画像ページヘのリンクを処理しますか?',
+		'pywikibot-enter-file-links-processing': u'どのファイルページヘのリンクを処理しますか?',
 		'pywikibot-enter-namespace-number': u'名前空間の番号を入力:',
 		'pywikibot-enter-new-text': u'新しいテキストを入力:',
 		'pywikibot-enter-category-name': u'カテゴリ名を入力:',
@@ -645,13 +666,24 @@ msg = {
 		'pywikibot-enter-finished-browser': u'请在浏览器作业完成后按下Enter键。',
 	},
 	# Author: Justincheng12345
+	# Author: Simon Shek
 	'zh-hant': {
 		'pywikibot-enter-xml-filename': u'請輸入XML Dump的檔案名稱：',
 		'pywikibot-enter-page-processing': u'甚麼頁面需要處理？',
-		'pywikibot-enter-file-links-processing': u'甚麼圖像的連接需要處理？',
+		'pywikibot-enter-file-links-processing': u'甚麼檔案的連接需要處理？',
 		'pywikibot-enter-namespace-number': u'請輸入名字空間編號：',
 		'pywikibot-enter-new-text': u'請輸入新文字：',
 		'pywikibot-enter-category-name': u'請輸入分類名稱：',
 		'pywikibot-enter-finished-browser': u'完成後請按下Enter鍵。',
+	},
+	# Author: Justincheng12345
+	'zh-hk': {
+		'pywikibot-enter-xml-filename': u'請輸入XML Dump的檔案名稱：',
+		'pywikibot-enter-page-processing': u'需要處理哪個頁面？',
+		'pywikibot-enter-file-links-processing': u'應該處理甚麼圖像的連入頁面？',
+		'pywikibot-enter-namespace-number': u'請輸入名字空間編號：',
+		'pywikibot-enter-new-text': u'請輸入新文字：',
+		'pywikibot-enter-category-name': u'請輸入分類名稱：',
+		'pywikibot-enter-finished-browser': u'於瀏覽器中完成後請按下Enter鍵。',
 	},
 };

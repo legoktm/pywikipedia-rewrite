@@ -89,7 +89,9 @@ msg = {
 	# Author: Gorizon
 	# Author: Mirzali
 	'diq': {
+		'weblinkchecker-archive_msg': u'Pela webi arşiw da interneti de nımneya ya. Hewl wersiyone arşiwi re diqqet bıkeri  [%(URL)s].',
 		'weblinkchecker-caption': u'Gıreyo merde',
+		'weblinkchecker-summary': u'Bot: Teber gre de rapera xeberkerdış',
 	},
 	# Author: Airon90
 	'eo': {
@@ -135,6 +137,14 @@ msg = {
 		'weblinkchecker-caption': u'Ligazón morta',
 		'weblinkchecker-summary': u'Bot: Sinalo a ligazón externa non dispoñible',
 		'weblinkchecker-report': u'Durante varias execucións automáticas, o bot constatou que a seguinte ligazón externa non está dispoñible. Comprobe se a ligazón está efectivamente caída e corríxaa ou retírea!',
+	},
+	# Author: Anson2812
+	# Author: Jetlag
+	'hak': {
+		'weblinkchecker-archive_msg': u'這個網頁已經畀互聯網檔案館（Internet Archive）保存。請為該網頁挑選一個適合鏈接个存檔版本: [%(URL)s]。',
+		'weblinkchecker-caption': u'失效鏈接',
+		'weblinkchecker-summary': u'機械人：報告無效个外部連結',
+		'weblinkchecker-report': u'自動運行个機械人發現下列外部連結可能已經無用。請幫助檢查，修復或移除有問題个連結。',
 	},
 	'he': {
 		'weblinkchecker-archive_msg': u'עמוד האינטרנט נשמר על־ידי ארכיון האינטרנט. אנא שקלו לקשר לגרסה המאורכבת המתאימה: [%(URL)s]',
@@ -209,7 +219,9 @@ msg = {
 	# Author: Praveenp
 	# Author: Santhosh.thottingal
 	'ml': {
+		'weblinkchecker-archive_msg': u'വെബ് താൾ ഇന്റർനെറ്റ് ശേഖരം സൂക്ഷിച്ചിരിക്കുന്നു. ദയവായി അനുയോജ്യമായ ശേഖരത്തിന്റെ പതിപ്പിലേയ്ക്ക് കണ്ണി ചേർക്കാൻ താത്പര്യപ്പെടുന്നു: [%(URL)s].',
 		'weblinkchecker-caption': u'പ്രവർത്തിക്കാത്ത കണ്ണി',
+		'weblinkchecker-summary': u'യന്ത്രം: ലഭ്യമല്ലാത്ത ബാഹ്യ കണ്ണി അറിയിക്കുന്നു',
 	},
 	# Author: Anakmalaysia
 	'ms': {
@@ -240,17 +252,18 @@ msg = {
 	# Author: Rezonansowy
 	# Author: Ty221
 	'pl': {
-		'weblinkchecker-archive_msg': u'%(URL)s',
+		'weblinkchecker-archive_msg': u'Ta strona została zapisana przez Archiwum Internetowe. Proszę sprawdzić czy jakieś strony nie linkują do tej zarchiwizowanej wersji : %(URL)s',
 		'weblinkchecker-caption': u'Niedziałający link',
 		'weblinkchecker-summary': u'Robot zgłasza niedostępny link zewnętrzny',
 		'weblinkchecker-report': u'W ciągu kilku automatycznych kontroli następujący link zewnętrzny był niedostępny. Proszę, sprawdź linki naprawdę "martwe" i w takim przypadku należy skorygować lub usunąć go!',
 	},
+	# Author: Borichèt
 	# Author: Dragonòt
 	'pms': {
-		'weblinkchecker-archive_msg': u'La pàgina dla Ragnà a l\'é stàita salvà da l\'Archivi Internet. Për piasì pensa se coleghé a na vërsion archivià aproprià: [%(URL)s].',
-		'weblinkchecker-caption': u'Colegament mòrt',
-		'weblinkchecker-summary': u'Trigomiro: Arpòrta un colegament estern pa disponìbil',
-		'weblinkchecker-report': u'An mente ëd vir automatisà ëd trigomiro costi colegament estern a son stàit trovà esse pa disponìbij. Për piasì contròla se ël colegament a esist pa e an col cas coregg-lo o gav-lo!',
+		'weblinkchecker-archive_msg': u'La pàgina dla Ragnà a l\'é stàita salvà da l\'Archivi Internet. Për piasì, ch\'a pensa se buté la liura a na version archivià aproprià: [%(URL)s].',
+		'weblinkchecker-caption': u'Liura mòrta',
+		'weblinkchecker-summary': u'Trigomiro: A arpòrta na liura esterna nen disponìbil',
+		'weblinkchecker-report': u'Durant vàire vìsite automatisà d\'un trigomiro le liure esterne sì-dapress a son trovasse esse nen disponìbij. Për piasì, ch\'a contròla se la liura a marcia pròpe nen e ant ës cas-sì ch\'a la coregia o ch\'a la gava!',
 	},
 	'pt': {
 		'weblinkchecker-archive_msg': u'Esta página web foi gravada na Internet Archive. Por favor considere o link para a versão arquivada: [%(URL)s].',

@@ -180,6 +180,12 @@ msg = {
 		'template-changing': u'Bot: Cambio {{PLURAL:%(num)d|o modelo|varios modelos}}: %(list)s',
 		'template-substituting': u'Bot: Substitúo {{PLURAL:%(num)d|o modelo|varios modelos}}: %(list)s',
 	},
+	# Author: Jetlag
+	'hak': {
+		'template-removing': u'機械人刪除%(num)d個模板：%(list)s',
+		'template-changing': u'機械人更改%(num)d個模板：%(list)s',
+		'template-substituting': u'機械人替換%(num)d個模板：%(list)s',
+	},
 	'he': {
 		'template-removing': u'בוט: מסיר {{PLURAL:%(num)d|תבנית|תבניות}}: %(list)s',
 		'template-changing': u'בוט: משנה {{PLURAL:%(num)d|תבנית|תבניות}}: %(list)s',
@@ -272,6 +278,8 @@ msg = {
 	# Author: Jagwar
 	'mg': {
 		'template-removing': u'Rôbô: Manala ny endrika{{PLURAL:%(num)d}}: %(list)s',
+		'template-changing': u'Rôbô : Manala ny endrika %(num)d : %(list)s',
+		'template-substituting': u'Rôbô: Manolo endrika %(num)d : %(list)s',
 	},
 	# Author: Bjankuloski06
 	# Author: Rancher

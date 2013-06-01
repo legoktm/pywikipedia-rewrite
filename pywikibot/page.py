@@ -75,6 +75,7 @@ class Page(object):
         """
         if isinstance(source, pywikibot.site.BaseSite):
             self._link = Link(title, source=source, defaultNamespace=ns)
+            self._revisions = {}
         elif isinstance(source, Page):
             # copy all of source's attributes to this object
             self.__dict__ = source.__dict__
@@ -83,11 +84,11 @@ class Page(object):
                 self._link = Link(title, source=source.site, defaultNamespace=ns)
         elif isinstance(source, Link):
             self._link = source
+            self._revisions = {}
         else:
             raise pywikibot.Error(
                   "Invalid argument type '%s' in Page constructor: %s"
                   % (type(source), source))
-        self._revisions = {}
 
     @property
     def site(self):
@@ -330,9 +331,8 @@ class Page(object):
         @param oldid: The revid of the revision desired.
 
         """
-        return "%s://%s/%sindex.php?title=%s&oldid=%s" \
-               % (self.site.protocol(),
-                  self.site.hostname(),
+        return "//%s%s/index.php?title=%s&oldid=%s" \
+               % (self.site.hostname(),
                   self.site.scriptpath(),
                   self.title(asUrl=True),
                   (oldid if oldid is not None else self.latestRevision()))
@@ -365,14 +365,16 @@ class Page(object):
         if hasattr(self, "_text"):
             del self._text
 
-    def expand_text(self):
+    def expand_text(self, refresh=False):
         """Return the page text with all templates expanded."""
-        req = pywikibot.data.api.Request(action="expandtemplates",
-                                         text=self.text,
-                                         title=self.title(withSection=False),
-                                         site=self.site)
-        result = req.submit()
-        return result["expandtemplates"]["*"]
+        if not hasattr(self, "_expanded_text") or (self._expanded_text is None) or refresh:
+            req = pywikibot.data.api.Request(action="expandtemplates", 
+                                             text=self.text,
+                                             title=self.title(withSection=False),
+                                             site=self.site)
+            self._expanded_text = req.submit()["expandtemplates"]["*"]
+            
+        return self._expanded_text
 
     def userName(self):
         """Return name or IP address of last user to edit page.
@@ -393,7 +395,7 @@ class Page(object):
         return self._revisions[rev].anon
 
     def editTime(self):
-        """Return timestamp (in ISO 8601 format) of last revision to page.
+        """Return timestamp of last revision to page.
 
         """
         rev = self.latestRevision()
@@ -729,7 +731,7 @@ class Page(object):
         return True
 
     def save(self, comment=None, watch=None, minor=True, botflag=None,
-             force=False, async=False, callback=None):
+             force=False, async=False, callback=None, **kwargs):
         """Save the current contents of page's text to the wiki.
 
         @param comment: The edit summary for the modification (optional, but
@@ -772,19 +774,20 @@ class Page(object):
         if async:
             pywikibot.async_request(self._save, comment=comment, minor=minor,
                                     watchval=watchval, botflag=botflag,
-                                    async=async, callback=callback)
+                                    async=async, callback=callback, **kwargs)
         else:
             self._save(comment=comment, minor=minor, watchval=watchval,
-                       botflag=botflag, async=async, callback=callback)
+                       botflag=botflag, async=async, callback=callback,
+                       **kwargs)
 
-    def _save(self, comment, minor, watchval, botflag, async, callback):
+    def _save(self, comment, minor, watchval, botflag, async, callback, **kwargs):
         err = None
         link = self.title(asLink=True)
         if config.cosmetic_changes:
             comment = self._cosmetic_changes_hook(comment) or comment
         try:
             done = self.site.editpage(self, summary=comment, minor=minor,
-                                      watch=watchval, bot=botflag)
+                                      watch=watchval, bot=botflag, **kwargs)
             if not done:
                 pywikibot.warning(u"Page %s not saved" % link)
                 raise pywikibot.PageNotSaved(link)
@@ -838,7 +841,7 @@ class Page(object):
             return comment
 
     def put(self, newtext, comment=u'', watchArticle=None, minorEdit=True,
-            botflag=None, force=False, async=False, callback=None):
+            botflag=None, force=False, async=False, callback=None, **kwargs):
         """Save the page with the contents of the first argument as the text.
 
         This method is maintained primarily for backwards-compatibility.
@@ -852,10 +855,11 @@ class Page(object):
         self.text = newtext
         return self.save(comment=comment, watch=watchArticle,
                          minor=minorEdit, botflag=botflag, force=force,
-                         async=async, callback=callback)
+                         async=async, callback=callback, **kwargs)
 
     def put_async(self, newtext, comment=u'', watchArticle=None,
-                  minorEdit=True, botflag=None, force=False, callback=None):
+                  minorEdit=True, botflag=None, force=False, callback=None,
+                  **kwargs):
         """Put page on queue to be saved to wiki asynchronously.
 
         Asynchronous version of put (takes the same arguments), which places
@@ -866,7 +870,7 @@ class Page(object):
         """
         return self.put(newtext, comment=comment, watchArticle=watchArticle,
                         minorEdit=minorEdit, botflag=botflag, force=force,
-                        async=True, callback=callback)
+                        async=True, callback=callback, **kwargs)
 
     def watch(self, unwatch=False):
         """Add or remove this page to/from bot account's watchlist.
@@ -2177,8 +2181,8 @@ class User(Page):
     def contributions(self, total=500, namespaces=[]):
         """ Yield tuples describing this user edits with an upper bound of
         'limit'. Each tuple is composed of a pywikibot.Page object,
-        the revision id (int), the edit timestamp (as int in mediawiki's
-        internal format), and the comment (unicode).
+        the revision id (int), the edit timestamp (as a pywikibot.Timestamp
+        object), and the comment (unicode).
         Pages returned are not guaranteed to be unique.
 
         @param total: limit result to this number of pages
@@ -2189,7 +2193,6 @@ class User(Page):
         for contrib in self.site.usercontribs(user=self.username,
                                         namespaces=namespaces, total=total):
             ts = pywikibot.Timestamp.fromISOformat(contrib['timestamp'])
-            ts = int(ts.strftime("%Y%m%d%H%M%S"))
             yield Page(self.site, contrib['title'], contrib['ns']), \
                   contrib['revid'], ts, contrib.get('comment', None)
 
@@ -2216,14 +2219,17 @@ class WikibasePage(Page):
     The base page for the Wikibase extension.
     There really should be no need to call this directly
     """
-    def __init__(self, site, title=u""):
-        Page.__init__(self, site, title)
-        if isinstance(self.site, pywikibot.site.DataSite):
-            self.repo = self.site
-            self.id = self.title(withNamespace=False).lower()
-        else:
-            self.repo = self.site.data_repository()
+    def __init__(self, site, title=u"", **kwargs):
+        Page.__init__(self, site, title, **kwargs)
+        self.repo = self.site
         self._isredir = False  # Wikibase pages cannot be a redirect
+
+    def title(self, **kwargs):
+        if self.namespace() == 0:
+            self._link._text = self.getID()
+            del self._link._title
+        return Page(self).title(**kwargs)
+
 
     def __defined_by(self, singular=False):
         """
@@ -2249,14 +2255,13 @@ class WikibasePage(Page):
             return params
 
         #the rest only applies to ItemPages, but is still needed here.
-
-        if isinstance(self.site, pywikibot.site.DataSite):
-            params[id] = self.title(withNamespace=False)
-        elif isinstance(self.site, pywikibot.site.BaseSite):
-            params[site] = self.site.dbName()
-            params[title] = self.title()
+        if hasattr(self, '_site') and hasattr(self, '_title'):
+            params[site] = self._site.dbName()
+            params[title] = self._title
         else:
-            raise pywikibot.exceptions.BadTitle
+            quit()
+            params[id] = self.getID()
+
         return params
 
     def exists(self):
@@ -2411,14 +2416,21 @@ class ItemPage(WikibasePage):
         site=pywikibot.DataSite & title=Q42
         site=pywikibot.Site & title=Main Page
         """
-        WikibasePage.__init__(self, site, title)
+        WikibasePage.__init__(self, site, title, ns=0)
+        self.id = title
 
     @staticmethod
     def fromPage(page):
         """
         Get the ItemPage based on a Page that links to it
         """
-        return ItemPage(page.site, page.title())
+        repo = page.site.data_repository()
+        i = ItemPage(repo, 'null')
+        del i.id
+        i._site = page.site
+        i._title = page.title()
+        return i
+        #return ItemPage(page.site, page.title())
 
     def __make_site(self, dbname):
         """
@@ -2547,7 +2559,7 @@ class PropertyPage(WikibasePage):
         PropertyPage(DataSite, 'Property:P21')
     """
     def __init__(self, source, title=u""):
-        WikibasePage.__init__(self, source, title)
+        WikibasePage.__init__(self, source, title, ns=120)
         self.id = self.title(withNamespace=False).lower()
         if not self.id.startswith(u'p'):
             raise ValueError(u"'%s' is not a property page!" % self.title())
@@ -2572,7 +2584,7 @@ class QueryPage(WikibasePage):
     For future usage, not implemented yet
     """
     def __init__(self, site, title):
-        WikibasePage.__init__(self, site, title)
+        WikibasePage.__init__(self, site, title, ns=122)
         self.id = self.title(withNamespace=False).lower()
         if not self.id.startswith(u'u'):
             raise ValueError(u"'%s' is not a query page!" % self.title())
@@ -2717,8 +2729,8 @@ class Revision(object):
         @type revid: int
         @param text: Revision wikitext.
         @type text: unicode, or None if text not yet retrieved
-        @param timestamp: Revision time stamp (in ISO 8601 format)
-        @type timestamp: unicode
+        @param timestamp: Revision time stamp
+        @type timestamp: pywikibot.Timestamp
         @param user: user who edited this revision
         @type user: unicode
         @param anon: user is unregistered
@@ -2821,6 +2833,9 @@ class Link(object):
         # Remove left-to-right and right-to-left markers.
         t = t.replace(u"\u200e", u"").replace(u"\u200f", u"")
         self._text = t
+
+    def __repr__(self):
+        return "pywikibot.page.Link(%r, %r)" % (self.title, self.site)
 
     def parse_site(self):
         """Parse only enough text to determine which site the link points to.

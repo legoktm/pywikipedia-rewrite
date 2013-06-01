@@ -74,6 +74,10 @@ msg = {
 	'cs': {
 		'noreferences-add-tag': u'Robot doplnil chybějící <references />',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'noreferences-add-tag': u'Robot: Wrthi\'n ychwanegu tag <references /> coll',
+	},
 	# Author: Christian List
 	# Author: Kaare
 	'da': {
@@ -133,6 +137,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'noreferences-add-tag': u'Bot: Engado a etiqueta <references />, que faltaba',
+	},
+	# Author: Jetlag
+	'hak': {
+		'noreferences-add-tag': u'機械人：添加缺少个<references/>標記',
 	},
 	'he': {
 		'noreferences-add-tag': u'בוט: מוסיף תגית <references /> חסרה',

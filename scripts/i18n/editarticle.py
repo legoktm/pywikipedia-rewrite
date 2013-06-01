@@ -67,6 +67,10 @@ msg = {
 	'cs': {
 		'editarticle-edit': u'Ruční úprava s pomocí robota: %(description)s',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'editarticle-edit': u'Golygu dynol gyda robot: %(description)s',
+	},
 	# Author: Peter Alberti
 	'da': {
 		'editarticle-edit': u'Manuel redigering udført med robot: %(description)s',
@@ -122,6 +126,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'editarticle-edit': u'Edición manual con bot: %(description)s',
+	},
+	# Author: Jetlag
+	'hak': {
+		'editarticle-edit': u'手動控制機械人進行更改：%(description)s',
 	},
 	'he': {
 		'editarticle-edit': u'עריכה ידנית: %(description)s',

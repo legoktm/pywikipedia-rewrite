@@ -72,6 +72,10 @@ msg = {
 	'cs': {
 		'catall-changing': u'Robot: Měním kategorie',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'catall-changing': u'Robot: Newid categoriau',
+	},
 	# Author: Christian List
 	# Author: Kaare
 	'da': {
@@ -133,6 +137,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'catall-changing': u'Bot: Cambio algunhas categorías',
+	},
+	# Author: Jetlag
+	'hak': {
+		'catall-changing': u'機械人：更改分類',
 	},
 	'he': {
 		'catall-changing': u'בוט: משנה קטגוריות',

@@ -57,6 +57,10 @@ msg = {
 	'cs': {
 		'djvutext-creating': u'Robot: Vytvářím stránku s textem extrahovaným z DjVu',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'djvutext-creating': u'Robot: Wrthi\'n creu tudalen gyda thestun a gafwyd o DjVu',
+	},
 	# Author: Christian List
 	# Author: Peter Alberti
 	'da': {
@@ -121,6 +125,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'djvutext-creating': u'Bot: Creo a páxina co texto extraído do DjVu',
+	},
+	# Author: Jetlag
+	'hak': {
+		'djvutext-creating': u'機械人：為從DjVu中提取頁面創建檔案',
 	},
 	# Author: Ofekalef
 	'he': {

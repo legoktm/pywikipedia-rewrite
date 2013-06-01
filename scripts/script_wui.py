@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8  -*-
 """
 Robot which runs python framework scripts as (sub-)bot and provides a
@@ -57,8 +58,6 @@ Syntax example:
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 #
 __version__       = '$Id$'
-__release_ver__   = '1.5'   # increase minor (1.x) at re-merges with framework
-__release_rev__   = '%i'
 #
 
 
@@ -69,14 +68,14 @@ import re
 
 # http://labix.org/lunatic-python
 try:
-    import lua                  # install f15 packages: 'lua', 'lunatic-python'
+    import lua          # installed packages (on f15: 'lua', 'lunatic-python')
 except ImportError:
-    import dtbext._lua as lua   # TS/labs (debian/ubuntu)
-import dtbext.crontab
+    import _lua as lua  # compiled in externals with patch (ubuntu on TS/labs)
+# https://github.com/josiahcarlson/parse-crontab
+import crontab
 
 import pywikibot
 import pywikibot.botirc
-from pywikibot import version
 
 
 bot_config = {    'BotName':    pywikibot.config.usernames[pywikibot.config.family][pywikibot.config.mylang],
@@ -167,15 +166,15 @@ class ScriptWUIBot(pywikibot.botirc.IRCBot):
 
     def do_check_CronJobs(self):
         # check cron/date (changes of self.refs are tracked (and reload) in on_pubmsg)
-        page    = self.refs[self.templ]
-        crontab = self.refs[self.cron].get()
+        page = self.refs[self.templ]
+        ctab = self.refs[self.cron].get()
         # extract 'rev' and 'timestmp' from 'crontab' page text ...
-        for line in crontab.splitlines():   # hacky/ugly/cheap; already better done in trunk dtbext
+        for line in ctab.splitlines():   # hacky/ugly/cheap; already better done in trunk dtbext
             (rev, timestmp) = [item.strip() for item in line[1:].split(',')]
 
             # [min] [hour] [day of month] [month] [day of week]
             # (date supported only, thus [min] and [hour] dropped)
-            entry = dtbext.crontab.CronTab(timestmp)
+            entry = crontab.CronTab(timestmp)
             # find the delay from current minute (does not return 0.0 - but next)
             delay = entry.next(datetime.datetime.now().replace(second=0,microsecond=0)-datetime.timedelta(microseconds=1))
             #pywikibot.output(u'CRON delay for execution: %.3f (<= %i)' % (delay, bot_config['CRONMaxDelay']))
@@ -190,16 +189,12 @@ class ScriptWUIBot(pywikibot.botirc.IRCBot):
         try:
             thread.start_new_thread( main_script, (self.refs[page_title], rev, params) )
         except:
-            #pywikibot.output(u"WARNING: unable to start thread")
+            # (done according to subster in trunk and submit in rewrite/.../data/api.py)
+            # TODO: is this error handling here needed at all??!?
+            pywikibot.exception(tb=True) # secure traceback print (from api.py submit)
             pywikibot.warning(u"Unable to start thread")
 
-            # (done according to subster in trunk and submit in rewrite/.../data/api.py)
-            #exc_info = sys.exc_info()
-            #tb = traceback.format_exception(exc_info[0], exc_info[1], exc_info[2])
-            tb = traceback.format_exc()
-            pywikibot.error(tb)    # secure traceback print (from api.py submit)
-            wiki_logger(tb, self.refs[page_title], rev)
-            # TODO: is this error handling here needed at all??!?
+            wiki_logger(traceback.format_exc(), self.refs[page_title], rev)
 
 # Define a function for the thread
 def main_script(page, rev=None, params=None):
@@ -233,10 +228,7 @@ def main_script(page, rev=None, params=None):
         exec( code )
     except:
         # (done according to subster in trunk and submit in rewrite/.../data/api.py)
-        #exc_info = sys.exc_info()
-        #tb = traceback.format_exception(exc_info[0], exc_info[1], exc_info[2])
-        tb = traceback.format_exc()
-        pywikibot.error(tb)    # secure traceback print (from api.py submit)
+        pywikibot.exception(tb=True) # secure traceback print (from api.py submit)
 
     sys.stdout = sys.__stdout__
     sys.stderr = sys.__stderr__
@@ -283,9 +275,6 @@ def main():
     __simulate = pywikibot.config.simulate
     __sys_argv = sys.argv
 
-    # verbosely output version info of all involved scripts
-    output_verinfo()
-
     site = pywikibot.getSite()
     site.login()
     chan = '#' + site.language() + '.' + site.family.name
@@ -296,16 +285,6 @@ def main():
         bot.t.cancel()
         raise
 
-def output_verinfo():
-    # script call
-    pywikibot.output(u'SCRIPT CALL:')
-    pywikibot.output(u'  ' + u' '.join(sys.argv))
-    pywikibot.output(u'')
-
 if __name__ == "__main__":
-#    # verbosely output version info of all involved scripts
-#    # PROBLEM: correct place, but output not logged here, thus moved to 'main()' -> improve logging!! (look e.g. at botirc.py)
-#    output_verinfo()
-
     # run bot
     main()
