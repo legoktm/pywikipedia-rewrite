@@ -99,6 +99,10 @@ msg = {
 	'gl': {
 		'spellcheck-checking': u'Corrección ortográfica asistida por un bot',
 	},
+	# Author: Jetlag
+	'hak': {
+		'spellcheck-checking': u'機械人輔助个拼寫檢查',
+	},
 	'he': {
 		'spellcheck-checking': u'בדיקת איות באמצעות בוט',
 	},
@@ -223,6 +227,10 @@ msg = {
 	},
 	# Author: Justincheng12345
 	'zh-hant': {
+		'spellcheck-checking': u'機械人輔助的拼字檢查',
+	},
+	# Author: Justincheng12345
+	'zh-hk': {
 		'spellcheck-checking': u'機械人輔助的拼字檢查',
 	},
 };

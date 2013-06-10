@@ -63,6 +63,10 @@ msg = {
 	'cs': {
 		'movepages-moving': u'Robot přesunul stránku',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'movepages-moving': u'Robot: Symudwyd y dudalen',
+	},
 	# Author: Sarrus
 	'da': {
 		'movepages-moving': u'Robot: Flyttede side',
@@ -117,6 +121,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'movepages-moving': u'Bot: Páxina trasladada',
+	},
+	# Author: Jetlag
+	'hak': {
+		'movepages-moving': u'機械人：移動頁面',
 	},
 	'he': {
 		'movepages-moving': u'בוט: מעביר דף',

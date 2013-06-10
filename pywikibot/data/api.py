@@ -121,8 +121,8 @@ class Request(object, DictMixin):
         except KeyError:
             self.site = pywikibot.Site()
         self.mime = kwargs.pop("mime", False)
-        self.max_retries = kwargs.pop("max_retries", 25)
-        self.retry_wait = kwargs.pop("retry_wait", 5)
+        self.max_retries = kwargs.pop("max_retries", pywikibot.config.max_retries)
+        self.retry_wait = kwargs.pop("retry_wait", pywikibot.config.retry_wait)
         self.params = {}
         if "action" not in kwargs:
             raise ValueError("'action' specification missing from Request.")
@@ -938,14 +938,14 @@ def update_page(page, pagedict):
     if 'revisions' in pagedict:
         for rev in pagedict['revisions']:
             revision = pywikibot.page.Revision(
-                                        revid=rev['revid'],
-                                        timestamp=rev['timestamp'],
-                                        user=rev.get('user', u''),
-                                        anon='anon' in rev,
-                                        comment=rev.get('comment',  u''),
-                                        minor='minor' in rev,
-                                        text=rev.get('*', None)
-                                      )
+                revid=rev['revid'],
+                timestamp=pywikibot.Timestamp.fromISOformat(rev['timestamp']),
+                user=rev.get('user', u''),
+                anon='anon' in rev,
+                comment=rev.get('comment',  u''),
+                minor='minor' in rev,
+                text=rev.get('*', None)
+              )
             page._revisions[revision.revid] = revision
 
     if 'lastrevid' in pagedict:

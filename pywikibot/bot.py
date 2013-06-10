@@ -226,9 +226,9 @@ def init_handlers(strm=None):
             debuglogger.setLevel(DEBUG)
             debuglogger.addHandler(file_handler)
 
-        writelogheader()
-
     _handlers_initialized = True
+
+    writelogheader()
 
 
 def writelogheader():
@@ -236,32 +236,40 @@ def writelogheader():
     Save additional version, system and status info to the logfile in use,
     so that the user can look it up later to track errors or report bugs.
     """
-    output(u'=== Pywikipediabot framework v2.0 -- Logging header ===')
+    # if site not available it's too early to print a header (work-a-round)
+    try:
+        site = pywikibot.getSite()
+    except AttributeError:
+        return
+
+    log(u'=== Pywikipediabot framework v2.0 -- Logging header ===')
 
     # script call
-    output(u'COMMAND: %s' % unicode(sys.argv))
+    log(u'COMMAND: %s' % unicode(sys.argv))
 
-    # new framework release/revision?
-    site = pywikibot.getSite()
-    output(u'VERSION: %s' % unicode((version.getversion().strip(' ()'),
-                                          version.getversion_onlinerepo(),
-                                          site.live_version())))
+    # new framework release/revision? (handleArgs needs to be called first)
+    try:
+        log(u'VERSION: %s' % unicode((version.getversion().strip(),
+                                         version.getversion_onlinerepo(),
+                                         site.live_version())))
+    except version.ParseError:
+        exception()
 
     # system
     if hasattr(os, 'uname'):
-        output(u'SYSTEM: %s' % unicode(os.uname()))
+        log(u'SYSTEM: %s' % unicode(os.uname()))
 
     # imported modules
-    #output(u'MODULES:')
-    #for item in sys.modules.keys():
-    #    ver = version.getfileversion('%s.py' % item)
-    #    if ver and (ver[0] == u'$'):
-    #        output(u'  %s' % ver)
+    log(u'MODULES:')
+    for item in sys.modules.keys():
+        ver = version.getfileversion('%s.py' % item.replace('.', '/'))
+        if ver and (ver[0] == u'$'):
+            log(u'  %s' % ver)
 
     # messages on bot discussion page?
-    output(u'MESSAGES: %s' % ('unanswered' if site.messages() else 'none'))
+    log(u'MESSAGES: %s' % ('unanswered' if site.messages() else 'none'))
 
-    output(u'=== ' * 14)
+    log(u'=== ' * 14)
 
 
 # User output/logging functions
@@ -394,26 +402,29 @@ def debug(text, layer, decoder=None, newline=True, **kwargs):
     """Output a debug record to the log file."""
     logoutput(text, decoder, newline, DEBUG, layer, **kwargs)
 
-def exception(msg=None, decoder=None, newline=True, full=False, **kwargs):
+def exception(msg=None, decoder=None, newline=True, tb=False, **kwargs):
     """Output an error traceback to the user via the userinterface.
 
-       Use directly after an 'except' statement:
-           ...
-           except:
-               pywikibot.exception()
-           ...
-       or alternatively:
-           ...
-           except Exception, e:
-               pywikibot.exception(e)
-           ...
+    @param tb: Set to True in order to output traceback also.
+
+    Use directly after an 'except' statement:
+      ...
+      except:
+          pywikibot.exception()
+      ...
+    or alternatively:
+      ...
+      except Exception, e:
+          pywikibot.exception(e)
+      ...
     """
     if isinstance(msg, BaseException):
         exc_info = 1
     else:
         exc_info = sys.exc_info()
-        msg = unicode(exc_info[1]).strip()
-    if full:
+        msg = u'%s: %s' % (repr(exc_info[1]).split('(')[0], 
+                           unicode(exc_info[1]).strip())
+    if tb:
         kwargs['exc_info'] = exc_info
     logoutput(msg, decoder, newline, ERROR, **kwargs)
 

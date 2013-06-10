@@ -227,7 +227,7 @@ class TestPageObject(unittest.TestCase):
         self.assertType(mainpage.isDisambig(), bool)
         self.assertType(mainpage.canBeEdited(), bool)
         self.assertType(mainpage.botMayEdit(), bool)
-        self.assertType(mainpage.editTime(), unicode)
+        self.assertType(mainpage.editTime(), pywikibot.Timestamp)
         self.assertType(mainpage.previousRevision(), int)
         self.assertType(mainpage.permalink(), basestring)
 
@@ -281,13 +281,19 @@ class TestPageObject(unittest.TestCase):
         repo = site.data_repository()
         item = pywikibot.ItemPage.fromPage(mainpage)
         self.assertType(item, pywikibot.ItemPage)
-        self.assertTrue(item.getID(), 'q5296')
+        self.assertEqual(item.getID(), 'q5296')
+        self.assertEqual(item.title(), 'Q5296')
         self.assertTrue('en' in item.labels)
         self.assertEqual(item.labels['en'], 'Main Page')
         self.assertTrue('en' in item.aliases)
         self.assertTrue('HomePage' in item.aliases['en'])
+        self.assertEqual(item.namespace(), 0)
+        item2 = pywikibot.ItemPage(repo, 'q5296')
+        self.assertEqual(item2.getID(), 'q5296')
+        self.assertEqual(item.labels['en'], 'Main Page')
         prop = pywikibot.PropertyPage(repo, 'Property:P21')
         self.assertEqual(prop.getType(), 'wikibase-item')
+        self.assertEqual(prop.namespace(), 120)
 
 
 

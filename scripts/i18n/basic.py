@@ -153,6 +153,10 @@ msg = {
 	'gl': {
 		'basic-changing': u'Bot: Cambiando...',
 	},
+	# Author: Jetlag
+	'hak': {
+		'basic-changing': u'機械人：修改緊...',
+	},
 	# Author: Amire80
 	'he': {
 		'basic-changing': u'בוט: משנה...',
@@ -481,6 +485,10 @@ msg = {
 	# Author: Minh Nguyen
 	'vi': {
 		'basic-changing': u'Bot: Thay đổi…',
+	},
+	# Author: Malafaya
+	'vo': {
+		'basic-changing': u'bot läükon: ...',
 	},
 	# Author: Srtxg
 	'wa': {

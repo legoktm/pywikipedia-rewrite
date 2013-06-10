@@ -61,6 +61,10 @@ msg = {
 	'cs': {
 		'ndashredir-create': u'Bot: Vytvářím spojovníkové přesměrování k [[%(title)s]]',
 	},
+	# Author: Robin Owain
+	'cy': {
+		'ndashredir-create': u'Bot: Wrthi\'n creu ailgyfeiriadau â heiffen i [[%(title)s]]',
+	},
 	# Author: Christian List
 	'da': {
 		'ndashredir-create': u'Robot: Opretter omdirigering med bindestreg til [[%(title)s]]',
@@ -105,6 +109,10 @@ msg = {
 	# Author: Toliño
 	'gl': {
 		'ndashredir-create': u'Bot: Creo unha redirección con guión cara a "[[%(title)s]]"',
+	},
+	# Author: Jetlag
+	'hak': {
+		'ndashredir-create': u'機械人：創建連字符重定向到[[%(title)s]]',
 	},
 	# Author: ערן
 	'he': {

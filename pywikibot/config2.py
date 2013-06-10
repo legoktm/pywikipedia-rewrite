@@ -372,6 +372,11 @@ maxlag = 5
 # running solve_disambiguation.py with the -primary argument.
 special_page_limit = 500
 
+# Maximum number of times to retry an API request before quitting.
+max_retries = 25
+# Minimum time to wait before resubmitting a failed API request.
+retry_wait = 5
+
 ############## TABLE CONVERSION BOT SETTINGS ##############
 
 # will split long paragraphs for better reading the source.
@@ -517,6 +522,17 @@ cosmetic_changes_disable = {}
 # Appending the script name also works:
 # cosmetic_changes_deny_script.append('your_script_name')
 cosmetic_changes_deny_script = ['cosmetic_changes', 'touch']
+
+############## REPLICATION BOT ################
+# You can add replicate_replace to your user_config.py, which has the following format:
+#
+# replicate_replace = {
+#            'wikipedia:li': {'Hoofdpagina': 'Veurblaad'}
+# }
+#
+# to replace all occurences of 'Hoofdpagina' with 'Veurblaad' when writing to liwiki. Note that this does
+# not take the origin wiki into account.
+replicate_replace = {}
 
 ############## FURTHER SETTINGS ##############
 

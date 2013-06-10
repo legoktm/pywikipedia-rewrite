@@ -25,6 +25,7 @@ from pywikibot import config2 as config
 from pywikibot.bot import *
 from pywikibot.exceptions import *
 from pywikibot.textlib import *
+from pywikibot.i18n import translate
 
 
 class Timestamp(datetime.datetime):
@@ -55,9 +56,17 @@ class Timestamp(datetime.datetime):
         """Convert the internal MediaWiki timestamp format to a Timestamp object."""
         return cls.strptime(ts, cls.mediawikiTSFormat)
 
+    def toISOformat(self):
+        """Converts the Timestamp object to an ISO 8601 timestamp"""
+        return self.strftime(self.ISO8601Format)
+
+    def totimestampformat(self):
+        """Converts the Timestamp object to the internal MediaWiki timestamp format."""
+        return self.strftime(self.mediawikiTSFormat)
+
     def __str__(self):
         """Return a string format recognized by the API"""
-        return self.strftime(self.ISO8601Format)
+        return self.toISOformat()
 
     def __add__(self, other):
         newdt = datetime.datetime.__add__(self, other)
@@ -183,7 +192,7 @@ from page import html2unicode, url2unicode
 from site import DataSite
 
 
-link_regex = re.compile(r'\[\[(?P<title>[^\]|[#<>{}]*)(\|.*?)?\]\]')
+link_regex = re.compile(r'\[\[(?P<title>[^\]|[<>{}]*)(\|.*?)?\]\]')
 
 
 def setAction(s):
