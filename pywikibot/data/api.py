@@ -355,10 +355,19 @@ u"http_params: Key '%s' could not be encoded to '%s'; params=%r"
             if "warnings" in result:
                 print result['warnings']
                 modules = [k for k in result["warnings"] if k != "info"]
-                #for mod in modules:
-                #    pywikibot.warning(
-                #        u"API warning (%s): %s"
-                #         % (mod, result["warnings"][mod]["*"]))
+                for mod in modules:
+                    if '*' in result["warnings"][mod]:
+                        text = result["warnings"][mod]['*']
+                    elif 'html' in result["warnings"][mod]:
+                        # Bugzilla 49978
+                        text = result["warnings"][mod]['html']['*']
+                    else:
+                        # This is just a warning, we shouldn't raise an
+                        # exception because of it
+                        continue
+                    pywikibot.warning(
+                        u"API warning (%s): %s"
+                        % (mod, text))
             if "error" not in result:
                 return result
             if "*" in result["error"]:
@@ -971,6 +980,19 @@ def update_page(page, pagedict):
                                                  source=page.site)
             links.append(link)
         page._langlinks = links
+
+    if "coordinates" in pagedict:
+        coords = []
+        for co in pagedict['coordinates']:
+            coord = pywikibot.Coordinate(lat=co['lat'],
+                                         lon=co['lon'],
+                                         typ=co.get('type', ''),
+                                         name=co['name'],
+                                         dim=int(co['dim']),
+                                         globe=co['globe'],  # See [[gerrit:67886]]
+                                         )
+            coords.append(coord)
+        page._coords = coords
 
 
 if __name__ == "__main__":

@@ -255,11 +255,12 @@ msg = {
 		'category-was-moved': u'Bot: Tumbung dipindahakan ka [[:Category:%(newcat)s|%(title)s]]',
 		'category-listifying': u'Bot: Maulah daptar matan %(fromcat)s (%(num)d entri)',
 	},
+	# Author: Aftab1995
 	# Author: Bellayet
 	# Author: Wikitanvir
 	'bn': {
-		'category-changing': u'বট: পরিবর্তন করছে %(oldcat)s',
-		'category-adding': u'বট: যোগ করছে category [[:Category:%(newcat)s|%(newcat)s]]',
+		'category-changing': u'বট: %(oldcat)s পরিবর্তন করছে %(newcat)s এ',
+		'category-adding': u'রোবট: বিষয়শ্রেণী [[:Category:%(newcat)s|%(newcat)s]] যোগ করছে',
 		'category-also-in': u'(%(alsocat)s বিষয়শ্রেণীতেও আছে)',
 		'category-replacing': u'বট: %(oldcat)s কে %(newcat)s দ্বারা প্রতিস্থাপন করছে',
 		'category-removing': u'বট: %(oldcat)s থেকে বিষয়শ্রেণী অপসারণ',
@@ -385,7 +386,7 @@ msg = {
 		'category-removing': u'Bot: Yn ei dynnu o %(oldcat)s',
 		'category-was-moved': u'Robot: Symudwyd y categori i [[:Category:%(newcat)s|%(title)s]]',
 		'category-renamed': u'Robot: Symudwyd o %s. Awduron: %s',
-		'category-section-title': u'Hanes hen dudalennau %(oldcat)',
+		'category-section-title': u'Hanes tudalen y cyn-gategori %(oldcat)s',
 		'category-listifying': u'Bot: Yn rhestru cynnwys %(fromcat)s (%(num)d o gofnodion)',
 	},
 	# Author: Christian List
@@ -564,6 +565,7 @@ msg = {
 	},
 	# Author: EileenSanda
 	'fo': {
+		'category-version-history': u'Bottur: Goymir versjónssøgu fyri fyrrverandi %(oldcat)s',
 		'category-changing': u'Bottur: Broytir %(oldcat)s til %(newcat)s',
 		'category-adding': u'Bottur: Leggur afturat bólkin [[:Category:%(newcat)s|%(newcat)s]]',
 		'category-also-in': u'(eisini í %(alsocat)s)',
@@ -571,6 +573,8 @@ msg = {
 		'category-replacing': u'Bottur: Skiftir út bólk %(oldcat)s við %(newcat)s',
 		'category-removing': u'Bottur: Tekur burtur frá %(oldcat)s',
 		'category-was-moved': u'Bottur: Bólkur varð fluttur til [[:Category:%(newcat)s|%(title)s]]',
+		'category-renamed': u'Bottur: Flutti frá %s. Høvundar: %s',
+		'category-section-title': u'Síðusøgan hjá fyrrverandi %(oldcat)s',
 		'category-listifying': u'Bottur: Umskapar frá %(fromcat)s ({{PLURAL:%(num)d|1 entry|%(num)d entries}})',
 	},
 	# Author: Boniface
@@ -903,16 +907,16 @@ msg = {
 	},
 	# Author: Akoppad
 	'kn': {
-		'category-version-history': u'ರೋಬೋಟ್:   %(oldcat) ನ   ಮಾಜಿ  ಇತಿಹಾಸದ  ಆವೃತ್ತಿಯನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ',
-		'category-changing': u'ರೋಬೋಟ್:%(oldcat) ಯನ್ನು % (newcat) ಗೆ ಬದಲಾಯಿಸುವುದು',
-		'category-adding': u'ರೋಬೋಟ್:   ವರ್ಗಗಳನ್ನು ಸೇರಿಸುವುದು',
+		'category-version-history': u'ರೋಬೋಟ್:   %(oldcat)ನ   ಮಾಜಿ  ಇತಿಹಾಸದ  ಆವೃತ್ತಿಯನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ',
+		'category-changing': u'ರೋಬೋಟ್:%(oldcat)ಯನ್ನು % (newcat)ಗೆ ಬದಲಾಯಿಸುವುದು',
+		'category-adding': u'ರೋಬೋಟ್: [[:ವರ್ಗ:%(newcat)s|%(newcat)s]] ವರ್ಗಗಳನ್ನು ಸೇರಿಸುವುದು',
 		'category-also-in': u'(ಇದರಲ್ಲಿಯು  %(alsocat)s)',
 		'category-was-disbanded': u'ರೋಬೋಟ್: ವರ್ಗ ವಿಸರ್ಜಿಸಲಾಯಿತು',
-		'category-replacing': u'ರೋಬೋಟ್: %(oldcat) ಯನ್ನು % (newcat)ಗೆ ಬದಲಾಯಿಸುವುದು',
+		'category-replacing': u'ರೋಬೋಟ್: %(oldcat)ಯನ್ನು % (newcat)ಗೆ ಬದಲಾಯಿಸುವುದು',
 		'category-removing': u'ರೋಬೋಟ್:  %(oldcat) ಇಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ',
 		'category-was-moved': u'ರೋಬೋಟ್: ವರ್ಗವನ್ನು [[:Category:%(newcat)s|%(title)s]]ಗೆ  ಸರಿಸಲಾಗುತ್ತಿದೆ',
 		'category-renamed': u'ರೋಬೋಟ್: %s. Authors: %s ಇಂದ ಸರಿಸಲಾಗಿದೆ',
-		'category-section-title': u'ಮಾಜಿ  %(oldcat)ನ ಪುಟದ ಇತಿಹಾಸ',
+		'category-section-title': u'ಮಾಜಿ %(oldcat)ನ ಪುಟದ ಇತಿಹಾಸ',
 	},
 	# Author: 아라
 	'ko': {
@@ -920,7 +924,7 @@ msg = {
 		'category-changing': u'로봇: %(oldcat)s에서 %(newcat)s(으)로 바꿈',
 		'category-adding': u'로봇: [[:Category:%(newcat)s|%(newcat)s]] 분류 추가',
 		'category-also-in': u'(%(alsocat)s에도 들어 있습니다)',
-		'category-was-disbanded': u'로봇: 분류를 폐지했습니다',
+		'category-was-disbanded': u'로봇: 분류를 폐지함',
 		'category-replacing': u'로봇: %(oldcat)s(을)를 %(newcat)s(으)로 분류를 바꿈',
 		'category-removing': u'로봇: %(oldcat)s 제거',
 		'category-was-moved': u'로봇: 분류를 [[:Category:%(newcat)s|%(title)s]](으)로 옮겼습니다',
@@ -1018,9 +1022,11 @@ msg = {
 	# Author: Cyklopas
 	# Author: Eitvys200
 	# Author: Hugo.arg
+	# Author: Mantak111
 	'lt': {
 		'category-changing': u'Robotas: Keičiama %(oldcat)s į %(newcat)s',
 		'category-adding': u'Robotas: Pridedama kategorija [[:Category:%(newcat)s|%(newcat)s]]',
+		'category-also-in': u'(taip pat ir %(alsocat)s)',
 		'category-was-disbanded': u'robotas: kategorija išformuota',
 		'category-replacing': u'robotas: kategorija %(oldcat)s keičiama į %(newcat)s',
 		'category-removing': u'robotas: šalinama iš %(oldcat)s',
@@ -1219,6 +1225,7 @@ msg = {
 		'category-replacing': u'Robot: kategorie %(oldcat)s is vervöngen deur %(newcat)s',
 		'category-removing': u'Bot: vortehaold uut %(oldcat)s',
 		'category-was-moved': u'Bot: kategorie is herneumd naor [[:Category:%(newcat)s|%(title)s]]',
+		'category-renamed': u'Robot: herneumd van %s. Auteurs: %s',
 		'category-section-title': u'Paginageschiedenisse van veurmaolige %(oldcat)s',
 		'category-listifying': u'Bot: lieste van %(fromcat)s (%(num)d pagina\'s)',
 	},
@@ -1294,9 +1301,12 @@ msg = {
 	'nrm': {
 		'category-adding': u'robot: ajouôte category [[:Category:%(newcat)s|%(newcat)s]]',
 	},
+	# Author: Cedric31
 	# Author: Xqt
 	'oc': {
 		'category-adding': u'Robòt: Apondre category [[:Category:%(newcat)s|%(newcat)s]]',
+		'category-also-in': u'(tanben dins %(alsocat)s)',
+		'category-was-disbanded': u'Robot : La categoria es estada suprimida',
 	},
 	# Author: Val2397
 	'pam': {
@@ -1747,8 +1757,9 @@ msg = {
 	'ur': {
 		'category-adding': u'روبالہ: جمع category [[:Category:%(newcat)s|%(newcat)s]]',
 	},
+	# Author: Sociologist
 	'uz': {
-		'category-adding': u'Bot: Qoʻshdi category [[:Category:%(newcat)s|%(newcat)s]]',
+		'category-adding': u'Bot: Turkum qoʻshish [[:Category:%(newcat)s|%(newcat)s]]',
 	},
 	# Author: Alunardon90
 	# Author: Candalua
