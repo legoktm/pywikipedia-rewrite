@@ -310,6 +310,13 @@ class TestPageObject(unittest.TestCase):
         prop = pywikibot.PropertyPage(repo, 'Property:P21')
         self.assertEqual(prop.getType(), 'wikibase-item')
         self.assertEqual(prop.namespace(), 120)
+        claim = pywikibot.Claim(repo, 'p21')
+        self.assertRaises(ValueError, claim.setTarget, value="test")
+        claim.setTarget(pywikibot.ItemPage(repo, 'q1'))
+        self.assertEqual(claim._formatDataValue(), {'entity-type': 'item', 'numeric-id': 1})
+
+        # test WikibasePage.__cmp__
+        self.assertEqual(pywikibot.ItemPage.fromPage(mainpage), pywikibot.ItemPage(repo, 'q5296'))
 
     def testItemPageExtensionability(self):
         class MyItemPage(pywikibot.ItemPage):

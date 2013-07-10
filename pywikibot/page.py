@@ -1093,6 +1093,20 @@ class Page(object):
         """
         return self.site.page_extlinks(self, step=step, total=total)
 
+    def coordinates(self, primary_only=False):
+        """Return a list of Coordinate objects for points
+        on the page using [[mw:Extension:GeoData]]
+
+        @param primary_only: Only return the coordinate indicated to be primary
+        @return: A list of Coordinate objects
+        """
+        if not hasattr(self, '_coords'):
+            self.site.loadcoordinfo(self)
+        if primary_only:
+            return self._coords[0]
+        else:
+            return self._coords
+
     def getRedirectTarget(self):
         """Return a Page object for the target this Page redirects to.
 
@@ -2229,6 +2243,25 @@ class WikibasePage(Page):
         self.repo = self.site
         self._isredir = False  # Wikibase pages cannot be a redirect
 
+    def __cmp__(self, other):
+        """Test for equality and inequality of WikibasePage objects.
+
+        Page objects are "equal" if and only if they are on the same site
+        and have the same normalized title, including section if any.
+
+        Page objects are sortable by namespace first, then by title.
+
+        This is basically the same as Page.__cmp__ but slightly different.
+        """
+        if not isinstance(other, Page):
+            # especially, return -1 if other is None
+            return -1
+        if self.site != other.site:
+            return cmp(self.site, other.site)
+        if self.namespace() != other.namespace():
+            return cmp(self.namespace(), other.namespace())
+        return cmp(self.title(), other.title())
+
     def title(self, **kwargs):
         if self.namespace() == 0:
             self._link._text = self.getID()
@@ -2422,7 +2455,7 @@ class ItemPage(WikibasePage):
         site=pywikibot.Site & title=Main Page
         """
         super(ItemPage, self).__init__(site, title, ns=0)
-        self.id = title
+        self.id = title.lower()
 
     @classmethod
     def fromPage(cls, page):
@@ -2460,7 +2493,9 @@ class ItemPage(WikibasePage):
             for pid in self._content['claims']:
                 self.claims[pid] = list()
                 for claim in self._content['claims'][pid]:
-                    self.claims[pid].append(Claim.fromJSON(self.repo, claim))
+                    c = Claim.fromJSON(self.repo, claim)
+                    c.on_item = self
+                    self.claims[pid].append(c)
 
         #sitelinks
         self.sitelinks = {}
@@ -2481,7 +2516,7 @@ class ItemPage(WikibasePage):
 
     def getSitelink(self, site, force=False):
         """
-        Returns a page object for the specific site
+        Returns the title (unicode string) for the specific site
         site is a pywikibot.Site or database name
         force will override caching
         If the item doesn't have that language, raise NoPage
@@ -2547,6 +2582,7 @@ class ItemPage(WikibasePage):
         @type bot bool
         """
         self.repo.addClaim(self, claim, bot=bot)
+        claim.on_item = self
 
     def removeClaims(self, claims, **kwargs):
         """
@@ -2598,7 +2634,8 @@ class Claim(PropertyPage):
     """
     Claims are standard claims as well as references.
     """
-    def __init__(self, site, pid, snak=None, hash=None, isReference=False):
+    def __init__(self, site, pid, snak=None, hash=None, isReference=False,
+                 isQualifier=False):
         """
         Defined by the "snak" value, supplemented by site + pid
         """
@@ -2606,9 +2643,14 @@ class Claim(PropertyPage):
         self.snak = snak
         self.hash = hash
         self.isReference = isReference
+        self.isQualifier = isQualifier
+        if self.isQualifier and self.isReference:
+            raise ValueError(u'Claim cannot be both a qualifier and reference.')
         self.sources = []
+        self.qualifiers = {}
         self.target = None
         self.snaktype = 'value'
+        self.on_item = None  # The item it's on
 
     @staticmethod
     def fromJSON(site, data):
@@ -2619,8 +2661,11 @@ class Claim(PropertyPage):
         claim = Claim(site, data['mainsnak']['property'])
         if 'id' in data:
             claim.snak = data['id']
-        else:
+        elif 'hash' in data:
             claim.isReference = True
+            claim.hash = data['hash']
+        else:
+            claim.isQualifier = True
         claim.snaktype = data['mainsnak']['snaktype']
         if claim.getSnakType() == 'value':
             if claim.getType() == 'wikibase-item':
@@ -2629,12 +2674,22 @@ class Claim(PropertyPage):
             elif claim.getType() == 'commonsMedia':
                 claim.target = ImagePage(site.image_repository(), 'File:' +
                                                                   data['mainsnak']['datavalue']['value'])
+            elif claim.getType() == 'globecoordinate':
+                claim.target = pywikibot.Coordinate.fromWikibase(data['mainsnak']['datavalue']['value'], site)
             else:
                 #This covers string type
                 claim.target = data['mainsnak']['datavalue']['value']
         if 'references' in data:
             for source in data['references']:
                 claim.sources.append(Claim.referenceFromJSON(site, source))
+        if 'qualifiers' in data:
+            for prop in data['qualifiers']:
+                for qualifier in data['qualifiers'][prop]:
+                    qual = Claim.qualifierFromJSON(site, qualifier)
+                    if prop in claim.qualifiers:
+                        claim.qualifiers[prop].append(qual)
+                    else:
+                        claim.qualifiers[prop] = [qual]
         return claim
 
     @staticmethod
@@ -2645,10 +2700,19 @@ class Claim(PropertyPage):
         more handling.
         """
         mainsnak = data['snaks'].values()[0][0]
-        wrap = {'mainsnak': mainsnak}
-        c = Claim.fromJSON(site, wrap)
-        c.hash = data['hash']
-        return c
+        wrap = {'mainsnak': mainsnak, 'hash': data['hash']}
+        return Claim.fromJSON(site, wrap)
+
+    @staticmethod
+    def qualifierFromJSON(site, data):
+        """
+        Qualifier objects are represented a bit
+        differently like references, but I'm not
+        sure if this even requires it's own function.
+        """
+        wrap = {'mainsnak': data}
+        return Claim.fromJSON(site, wrap)
+
 
     def setTarget(self, value):
         """
@@ -2658,6 +2722,7 @@ class Claim(PropertyPage):
         types = {'wikibase-item': ItemPage,
                  'string': basestring,
                  'commonsMedia': ImagePage,
+                 'globecoordinate': pywikibot.Coordinate,
                  }
         if self.getType() in types:
             if not isinstance(value, types[self.getType()]):
@@ -2719,7 +2784,27 @@ class Claim(PropertyPage):
         """
         data = self.repo.editSource(self, source, new=True, **kwargs)
         source.hash = data['reference']['hash']
+        self.on_item.lastrevid = data['pageinfo']['lastrevid']
         self.sources.append(source)
+
+    def _formatDataValue(self):
+        """
+        Format the target into the proper JSON datavalue that Wikibase wants
+        """
+        if self.getType() == 'wikibase-item':
+            value = {'entity-type': 'item',
+                     'numeric-id': self.getTarget().getID(numeric=True)}
+        elif self.getType() == 'string':
+            value = self.getTarget()
+        elif self.getType() == 'commonsMedia':
+            value = self.getTarget().title(withNamespace=False)
+        elif self.getType() == 'globecoordinate':
+            value = self.getTarget().toWikibase()
+        else:
+            raise NotImplementedError('%s datatype is not supported yet.' % self.getType())
+        return value
+
+
 
 
 class Revision(object):
@@ -3127,8 +3212,12 @@ not supported by PyWikiBot!"""
             if ns:
                 link._namespace = ns
                 title = t
+        if u"#" in title:
+            t, sec = title.split(u'#', 1)
+            title, link._section = t.rstrip(), sec.lstrip()
+        else:
+            link._section = None
         link._title = title
-
         return link
 
 # Utility functions for parsing page titles

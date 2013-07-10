@@ -76,7 +76,7 @@ def Family(fam=None, fatal=True):
     @return: a Family instance configured for the named family.
 
     """
-    if fam == None:
+    if fam is None:
         fam = config.family
     try:
         # first try the built-in families
@@ -87,13 +87,13 @@ def Family(fam=None, fatal=True):
         # next see if user has defined a local family module
         try:
             sys.path.append(config.datafilepath('families'))
-            myfamily =  __import__("%s_family" % fam)
+            myfamily = __import__("%s_family" % fam)
         except ImportError:
             if fatal:
                 pywikibot.error(u"""\
 Error importing the %s family. This probably means the family
 does not exist. Also check your configuration file."""
-                                  % fam, exc_info=True)
+                                % fam, exc_info=True)
                 sys.exit(1)
             else:
                 raise Error("Family %s does not exist" % fam)
@@ -729,6 +729,24 @@ class APISite(BaseSite):
         self._loginstatus = LoginStatus.NOT_ATTEMPTED
         return
 
+    @staticmethod
+    def fromDBName(dbname):
+        # TODO this only works for some WMF sites
+        req = api.CachedRequest(datetime.timedelta(days=10),
+                                site=pywikibot.Site('meta', 'meta'),
+                                action='sitematrix')
+        data = req.submit()
+        for num in data['sitematrix']:
+            if num in ['specials', 'count']:
+                continue
+            lang = data['sitematrix'][num]['code']
+            for site in data['sitematrix'][num]['site']:
+                if site['dbname'] == dbname:
+                    if site['code'] == 'wiki':
+                        site['code'] = 'wikipedia'
+                    return APISite(lang, site['code'])
+        raise ValueError("Cannot parse a site out of %s." % dbname)
+
     def _generator(self, gen_class, type_arg=None, namespaces=None,
                    step=None, total=None, **args):
         """Convenience method that returns an API generator.
@@ -1179,6 +1197,25 @@ class APISite(BaseSite):
                 pywikibot.warning(
                     u"loadpageinfo: Query on %s returned data on '%s'"
                       % (page, pageitem['title']))
+                continue
+            api.update_page(page, pageitem)
+
+    def loadcoordinfo(self, page):
+        """Load [[mw:Extension:GeoData]] info"""
+        #prop=coordinates&titles=Wikimedia Foundation&format=jsonfm&coprop=type|name|dim|country|region&coprimary=all
+        title = page.title(withSection=False)
+        query = self._generator(api.PropertyGenerator,
+                                type_arg="coordinates",
+                                titles=title.encode(self.encoding()),
+                                coprop=['type', 'name', 'dim',
+                                        'country', 'region',
+                                        'globe'],
+                                coprimary='all')
+        for pageitem in query:
+            if not self.sametitle(pageitem['title'], title):
+                pywikibot.warning(
+                    u"loadcoordinfo: Query on %s returned data on '%s'"
+                    % (page, pageitem['title']))
                 continue
             api.update_page(page, pageitem)
 
@@ -1830,6 +1867,7 @@ class APISite(BaseSite):
 
     @deprecate_arg("throttle", None)
     @deprecate_arg("limit", "total")
+    @deprecate_arg("includeredirects", "filterredir")
     def allpages(self, start="!", prefix="", namespace=0, filterredir=None,
                  filterlanglinks=None, minsize=None, maxsize=None,
                  protect_type=None, protect_level=None, reverse=False,
@@ -3446,11 +3484,17 @@ class DataSite (APISite):
         #Store it for 100 years
         req = api.CachedRequest(expiry, site=self, **params)
         data = req.submit()
-        return data['entities'][prop.getID()]['datatype']
+        dtype =  data['entities'][prop.getID()]['datatype']
+        if dtype == 'globe-coordinate':
+            dtype = 'globecoordinate'
+            #TODO Fix this
+        return dtype
 
     @must_be(group='user')
     def editEntity(self, identification, data, bot=True, **kwargs):
         params = dict(**identification)
+        if not params:  # If no identification was provided
+            params['new'] = 'item'  # TODO create properties+queries
         params['action'] = 'wbeditentity'
         if bot:
             params['bot'] = 1
@@ -3477,15 +3521,7 @@ class DataSite (APISite):
         if bot:
             params['bot'] = 1
         if claim.getSnakType() == 'value':
-            if claim.getType() == 'wikibase-item':
-                params['value'] = json.dumps({'entity-type': 'item',
-                                              'numeric-id': claim.getTarget().getID(numeric=True)})
-            elif claim.getType() == 'string':
-                params['value'] = json.dumps(claim.getTarget())
-            elif claim.getType() == 'commonsMedia':
-                params['value'] = json.dumps(claim.getTarget().title(withNamespace=False))
-            else:
-                raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())
+            params['value'] = json.dumps(claim._formatDataValue())
         params['token'] = self.token(item, 'edit')
         req = api.Request(site=self, **params)
         data = req.submit()
@@ -3516,16 +3552,7 @@ class DataSite (APISite):
             params['bot'] = 1
         params['token'] = self.token(claim, 'edit')
         if snaktype == 'value':
-            #This code is repeated from above, maybe it should be it's own function?
-            if claim.getType() == 'wikibase-item':
-                params['value'] = json.dumps({'entity-type': 'item',
-                                              'numeric-id': claim.getTarget().getID(numeric=True)})
-            elif claim.getType() == 'string':
-                params['value'] = json.dumps(claim.getTarget())
-            elif claim.getType() == 'commonsMedia':
-                params['value'] = json.dumps(claim.getTarget().title(withNamespace=False))
-            else:
-                raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())
+            params['value'] = json.dumps(claim._formatDataValue())
 
         for arg in kwargs:
             #TODO: Get the lastrevid from the item
@@ -3551,21 +3578,21 @@ class DataSite (APISite):
         params = dict(action='wbsetreference',
                       statement=claim.snak,
                       )
+        if claim.on_item:  # I can't think of when this would be false, but lets be safe
+            params['baserevid'] = claim.on_item.lastrevid
         if bot:
-           params['bot'] = 1
+            params['bot'] = 1
         params['token'] = self.token(claim, 'edit')
         if not new and hasattr(source, 'hash'):
             params['reference'] = source.hash
         #build up the snak
         if source.getType() == 'wikibase-item':
             datavalue = {'type': 'wikibase-entityid',
-                         'value': {'entity-type': 'item',
-                                   'numeric-id': source.getTarget().getID(numeric=True),
-                                   },
+                         'value': source._formatDataValue(),
                          }
         elif source.getType() == 'string':
             datavalue = {'type': 'string',
-                         'value': source.getTarget(),
+                         'value': source._formatDataValue(),
                          }
         else:
             raise NotImplementedError('%s datatype is not supported yet.' % claim.getType())

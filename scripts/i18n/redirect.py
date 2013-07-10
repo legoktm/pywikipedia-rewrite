@@ -325,6 +325,8 @@ msg = {
 	'fo': {
 		'redirect-fix-double': u'Bottur: Rættar dupulta umdirigering til %(to)s',
 		'redirect-remove-broken': u'Bottur: Umstjórnan til eina strikaða síðu ella til eina síðu sum ikki er til',
+		'redirect-fix-broken-moved': u'Bottur: Rættar brotnar umdirigeringar til flutta málsíðu %(to)s',
+		'redirect-fix-loop': u'Bottur: Rættar endurstýris (redirect) lykkju til %(to)s',
 		'redirect-broken-redirect-template': u'{{db-r1}}',
 	},
 	# Author: Boniface
@@ -552,9 +554,11 @@ msg = {
 		'redirect-broken-redirect-template': u'{{delete|Weisdoorverwiezing of doorverwiezing nao eweggesjafde pagina}}',
 	},
 	# Author: Hugo.arg
+	# Author: Mantak111
 	'lt': {
 		'redirect-fix-double': u'robotas: Taisomas dvigubas peradresavimas → %(to)s',
 		'redirect-remove-broken': u'robotas: peradresavimas į ištrintą ar nesantį puslapį',
+		'redirect-broken-redirect-template': u'{{db-r1}}',
 	},
 	# Author: Karlis
 	'lv': {
@@ -651,6 +655,7 @@ msg = {
 	'nds-nl': {
 		'redirect-fix-double': u'Bot: dubbele deurverwiezing verbeterd naor %(to)s',
 		'redirect-remove-broken': u'Bot: de doelpagina van de deurverwiezing besteet niet',
+		'redirect-fix-broken-moved': u'Robot: kapotte deurverwiezing verbeterd deur anpassing naor herneumden doelzied %(to)s',
 		'redirect-fix-loop': u'Bot: deurverwiessirkel naor %(to)s erepareerd',
 		'redirect-remove-loop': u'Bot: deurverwiezing verwis weer naor zichzelf',
 		'redirect-broken-redirect-template': u'{{vort|Kapotte deurverwiezing of deurverwijzing naor vort-edaone pagina}}',
@@ -698,6 +703,10 @@ msg = {
 	'nv': {
 		'redirect-fix-double': u'Bot: dah astsihígíí łahgo áyiilaa -> %(to)s',
 	},
+	# Author: Cedric31
+	'oc': {
+		'redirect-broken-redirect-template': u'{{db-r1}}',
+	},
 	# Author: Geitost
 	# Author: Xqt
 	'pdc': {
@@ -731,14 +740,15 @@ msg = {
 		'redirect-broken-redirect-template': u'{{db-r1}}',
 	},
 	# Author: Hamilton Abreu
+	# Author: Luckas
 	# Author: Malafaya
 	# Author: Xqt
 	'pt': {
-		'redirect-fix-double': u'Robô: A corrigir o redireccionamento duplo para %(to)s',
-		'redirect-remove-broken': u'Robô: Redireccionamento para uma página eliminada ou inexistente',
-		'redirect-fix-broken-moved': u'Robô: A corrigir redireccionamento quebrado para página alvo movida %(to)s',
+		'redirect-fix-double': u'Robô: A corrigir o redirecionamento duplo para %(to)s',
+		'redirect-remove-broken': u'Robô: Redirecionamento para uma página eliminada ou inexistente',
+		'redirect-fix-broken-moved': u'Robô: A corrigir redirecionamento quebrado para página alvo movida %(to)s',
 		'redirect-fix-loop': u'Robô: A corrigir o ciclo de redireccionamentos para %(to)s',
-		'redirect-remove-loop': u'Robô: O destino do redireccionamento cria um ciclo de redireccionamentos',
+		'redirect-remove-loop': u'Robô: O destino do redirecionamento cria um ciclo de redirecionamentos',
 		'redirect-broken-redirect-template': u'{{db-r1}}',
 	},
 	# Author: Hamilton Abreu
@@ -981,6 +991,7 @@ msg = {
 	'yi': {
 		'redirect-fix-double': u'באט: פארראכטן פארטאפלטע ווייטערפירונג → %(to)s',
 		'redirect-remove-broken': u'באט: ווײַטערפֿירונג צו א בלאט וואס איז אויסגעמעקט אדער עקזיסטירט נישט',
+		'redirect-fix-broken-moved': u'באט: פאררעכטן צעבראכענע ווייטערפירונג צו באוועגטן ציל בלאט  %(to)s',
 		'redirect-fix-loop': u'באט: פאררעכטן ווייטערפירונג שלייף אויף %(to)s',
 		'redirect-remove-loop': u'באט: [[װיקיפּעדיע:ווייטערפירונג|ווייטערפירוג]] ציל שאפט א שלייף',
 		'redirect-broken-redirect-template': u'ווײַטערפֿירונג אןָ א ציל',

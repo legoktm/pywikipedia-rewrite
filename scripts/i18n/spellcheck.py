@@ -133,6 +133,10 @@ msg = {
 	'lb': {
 		'spellcheck-checking': u'Bot-ënnerstëtzte Spellchecker',
 	},
+	# Author: Mantak111
+	'lt': {
+		'spellcheck-checking': u'Boto automatinis rašybos tikrintuvas',
+	},
 	# Author: StefanusRA
 	'map-bms': {
 		'spellcheck-checking': u'Bot-nulungi mriksa ejaan',
@@ -152,6 +156,10 @@ msg = {
 	# Author: Anakmalaysia
 	'ms': {
 		'spellcheck-checking': u'Penyemak ejaan dibantu bot',
+	},
+	# Author: Servien
+	'nds-nl': {
+		'spellcheck-checking': u'Spellingskontraole',
 	},
 	# Author: Eukesh
 	'new': {

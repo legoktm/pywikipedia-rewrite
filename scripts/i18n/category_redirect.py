@@ -293,6 +293,7 @@ msg = {
 	# Author: EileenSanda
 	'fo': {
 		'category_redirect-comment': u'Bottur til at viðlíkahalda bólka flytingar',
+		'category_redirect-fix-double': u'Bottur: Orðnar dupulta-umstýring',
 	},
 	# Author: Boniface
 	# Author: Crochet.david
@@ -473,7 +474,7 @@ msg = {
 		'category_redirect-add-template': u'로봇: 유지 보스에 대한 분류 넘겨주기 틀 추가',
 		'category_redirect-edit-request': u'다음 보호된 문서는 분류 링크 업데이트가 필요하다고 감지했습니다: %(itemlist)s',
 		'category_redirect-edit-request-item': u'* %(title)s(은)는 %(newcat)s(으)로 넘겨주기한 %(oldcat)s에 속해 있습니다',
-		'category_redirect-fix-double': u'로봇: 이중 넘겨주기 고침',
+		'category_redirect-fix-double': u'로봇: 이중 넘겨주기를 고침',
 	},
 	# Author: Purodha
 	'ksh': {
@@ -483,6 +484,11 @@ msg = {
 		'category_redirect-edit-request': u'Hee di Sigge sin jeschötz un möße ier Saachjroppe odder Lingks op Saachjroppe aanjepaß krijje: %(itemlist)s',
 		'category_redirect-edit-request-item': u'* %(title)s es en %(oldcat)s, un dat es en Ömleidung op %(newcat)s',
 		'category_redirect-fix-double': u'Bot: Dubbel Ömlëijdong fottjemaat.',
+	},
+	# Author: Викиней
+	'ky': {
+		'category_redirect-comment': u'Категория багыттамаларын тейлөөчү бот',
+		'category_redirect-fix-double': u'Бот: Кош багыттаманы оңдоо',
 	},
 	'la': {
 		'category_redirect-fix-double': u'automaton: rectificatio redirectionis duplicis',
@@ -645,13 +651,14 @@ msg = {
 		'category_redirect-fix-double': u'Trigomiro: a rangia le ridiression dobie',
 	},
 	# Author: Hamilton Abreu
+	# Author: Luckas
 	'pt': {
 		'category_redirect-comment': u'Robô de manutenção de redireccionamentos de categorias',
 		'category_redirect-change-category': u'Robô: Alteração da categoria redireccionada [[:%(oldCatLink)s|%(oldCatTitle)s]] para [[:%(newCatLink)s|%(newCatTitle)s]]',
-		'category_redirect-add-template': u'Robô: Adição da predefinição de redireccionamento da categoria',
+		'category_redirect-add-template': u'Robô: Adição da predefinição de redirecionamento da categoria',
 		'category_redirect-edit-request': u'As seguintes páginas protegidas necessitam de actualização dos links de categorias: %(itemlist)s',
-		'category_redirect-edit-request-item': u'* %(title)s está em %(oldcat)s, que é um redireccionamento para %(newcat)s',
-		'category_redirect-fix-double': u'Robô: Correcção de redireccionamento duplo',
+		'category_redirect-edit-request-item': u'* %(title)s está em %(oldcat)s, que é um redirecionamento para %(newcat)s',
+		'category_redirect-fix-double': u'Robô: Correção de redirecionamento duplo',
 	},
 	# Author: Giro720
 	# Author: 555

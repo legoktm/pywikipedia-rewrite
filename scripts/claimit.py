@@ -14,6 +14,7 @@ You can use any typical pagegenerator to provide with a list of pages
 
 Then list the property-->target pairs to add.
 """
+import json
 import pywikibot
 from pywikibot import pagegenerators
 
@@ -33,30 +34,17 @@ class ClaimRobot:
         self.repo = pywikibot.Site().data_repository()
         self.source = None
         self.setSource(pywikibot.Site().language())
-    
+
     def setSource(self, lang):
         '''
         Get the source
         '''
-        source_values = {'en': pywikibot.ItemPage(self.repo, 'Q328'),
-                         'sv': pywikibot.ItemPage(self.repo, 'Q169514'),
-                         'de': pywikibot.ItemPage(self.repo, 'Q48183'),
-                         'it': pywikibot.ItemPage(self.repo, 'Q11920'),
-                         'no': pywikibot.ItemPage(self.repo, 'Q191769'),
-                         'ar': pywikibot.ItemPage(self.repo, 'Q199700'),
-                         'es': pywikibot.ItemPage(self.repo, 'Q8449'),
-                         'pl': pywikibot.ItemPage(self.repo, 'Q1551807'),
-                         'ca': pywikibot.ItemPage(self.repo, 'Q199693'),
-                         'fr': pywikibot.ItemPage(self.repo, 'Q8447'),
-                         'nl': pywikibot.ItemPage(self.repo, 'Q10000'),
-                         'pt': pywikibot.ItemPage(self.repo, 'Q11921'),
-                         'ru': pywikibot.ItemPage(self.repo, 'Q206855'),
-                         'vi': pywikibot.ItemPage(self.repo, 'Q200180'),
-                         'be': pywikibot.ItemPage(self.repo, 'Q877583'),
-                         'uk': pywikibot.ItemPage(self.repo, 'Q199698'),
-                         'tr': pywikibot.ItemPage(self.repo, 'Q58255'),
-                 }  # TODO: This should include all projects
-        
+        page = pywikibot.Page(self.repo, 'Wikidata:List of wikis/python')
+        source_values = json.loads(page.get())
+        source_values = source_values['wikipedia']
+        for lang in source_values:
+            source_values[lang] = pywikibot.ItemPage(self.repo, source_values[lang])
+
         if lang in source_values:
             self.source = pywikibot.Claim(self.repo, 'p143')
             self.source.setTarget(source_values.get(lang))
@@ -77,7 +65,7 @@ class ClaimRobot:
                         pywikibot.output(u'A claim for %s already exists. Skipping' % (claim.getID(),))
                         #TODO FIXME: This is a very crude way of dupe checking
                     else:
-                        pywikibot.output('Adding %s --> %s' % (claim.getID(), claim.getTarget().getID()))
+                        pywikibot.output('Adding %s --> %s' % (claim.getID(), claim.getTarget()))
                         item.addClaim(claim)
                         if self.source:
                             claim.addSource(self.source, bot=True)
@@ -99,7 +87,13 @@ def main():
 
     for i in xrange (0, len(commandline_claims), 2):
         claim = pywikibot.Claim(repo, commandline_claims[i])
-        claim.setTarget(pywikibot.ItemPage(repo, commandline_claims[i+1]))
+        if claim.getType() == 'wikibase-item':
+            target = pywikibot.ItemPage(repo, commandline_claims[i+1])
+        elif claim.getType() == 'string':
+            target = commandline_claims[i+1]
+        else:
+            raise NotImplementedError("%s datatype is not yet supported by claimit.py" % claim.getType())
+        claim.setTarget(target)
         claims.append(claim)
 
     generator = gen.getCombinedGenerator()
